@@ -1,0 +1,199 @@
+Pico CTF 2018
+
+----------------------------------------
+
+* Forensics Warmup 1
+flag.zip
+Can you unzip this file for me and retreive the flag?
+
+picoCTF{welcome_to_forensics}
+
+----------------------------------------
+
+* Forensics Warmup 2
+flag.png
+Hmm for some reason I can't open this PNG? Any ideas?
+
+picoCTF{extensions_are_a_lie}
+
+----------------------------------------
+
+* General Warmup 1
+If I told you your grade was 0x41 in hexadecimal, what would it be in ASCII?
+
+picoCTF{A}
+
+----------------------------------------
+
+* General Warmup 2
+Can you convert the number 27 (base 10) to binary (base 2)?
+
+picoCTF{11011}
+
+----------------------------------------
+
+* General Warmup 3
+What is 0x3D (base 16) in decimal (base 10)?
+
+picoCTF{61}
+
+----------------------------------------
+
+* Resources
+We put together a bunch of resources to help you out on our website!
+If you go over there, you might even find a flag!
+https://picoctf.com/resources
+
+picoCTF{xiexie_ni_lai_zheli}
+
+----------------------------------------
+
+* Reversing Warmup 1
+run
+Can you navigate to /problems/reversing-warmup-1_2_a237211c4be8902c67102f827027e633 on the shell server and run this program to retreive the flag?
+
+picoCTF{welc0m3_t0_r3VeRs1nG}
+
+----------------------------------------
+
+* Reversing Warmup 2
+Can you decode the following string dGg0dF93NHNfczFtcEwz from base64 format to ASCII?
+
+picoCTF{th4t_w4s_s1mpL3}
+
+----------------------------------------
+
+* Crypto Warmup 1 (not done)
+table.txt
+Crpyto can often be done by hand, here's a message you got from a friend, llkjmlmpadkkc with the key of thisisalilkey.
+Can you use this table to solve it?.
+
+----------------------------------------
+
+* Crypto Warmup 2
+Cryptography doesn't have to be complicated, have you ever heard of something called rot13?
+cvpbPGS{guvf_vf_pelcgb!}
+
+picoCTF{this_is_crypto!}
+
+----------------------------------------
+
+* grep 1
+file
+Can you find the flag in file?
+
+picoCTF{grep_and_you_will_find_42783683}
+
+----------------------------------------
+
+* net cat
+Can you connect to 2018shell.picoctf.com at port 22847 to get the flag?
+
+picoCTF{NEtcat_iS_a_NEcESSiTy_69222dcc}
+
+----------------------------------------
+
+* HEEEEEEERE'S Johnny! (not done)
+passwd
+shadow
+Okay, so we found some important looking files on a linux computer.
+Maybe they can be used to get a password to the process.
+Connect with nc 2018shell.picoctf.com 5221.
+
+----------------------------------------
+
+* strings
+strings
+Can you find the flag in this file without actually running it?
+
+picoCTF{sTrIngS_sAVeS_Time_2fbe2166}
+
+----------------------------------------
+
+* pipe
+ Can you find a way to save the output from this program and search for the flag?
+ Connect with 2018shell.picoctf.com 44310
+
+picoCTF{almost_like_mario_a13e5b27}
+
+----------------------------------------
+
+* Inspect Me (not done)
+Inpect this code! http://2018shell.picoctf.com:47428
+
+----------------------------------------
+
+* grep 2 (not done)
+Can you find the flag in /problems/grep-2_3_826f886f547acb8a9c3fccb030e8168d/files on the shell server?
+
+----------------------------------------
+
+* Aca-Shell-A (not done)
+Connect with nc 2018shell.picoctf.com 42334
+
+----------------------------------------
+
+* Client Side is Still Bad (not done)
+I forgot my password again, but this time there doesn't seem to be a reset, can you help me?
+http://2018shell.picoctf.com:53990
+
+----------------------------------------
+
+* Desrouleaux
+incidents.json
+Our network administrator is having some trouble handling the tickets for all of of our incidents.
+Can you help him out by answering all the questions?
+Connect with nc 2018shell.picoctf.com 54782
+
+picoCTF{J4y_s0n_d3rUUUULo_c74e3495}
+
+----------------------------------------
+
+* Logon (not done)
+http://2018shell.picoctf.com:37861
+
+----------------------------------------
+
+* Reading Between the Eyes (not done)
+husky.png
+Stego-Saurus hid a message for you in this image, can you retreive it?
+
+----------------------------------------
+
+picoCTF{}
+
+----------------------------------------
+
+picoCTF{}
+
+----------------------------------------
+
+picoCTF{}
+
+----------------------------------------
+
+picoCTF{}
+
+----------------------------------------
+
+picoCTF{}
+
+----------------------------------------
+
+picoCTF{}
+
+----------------------------------------
+
+picoCTF{}
+
+----------------------------------------
+
+picoCTF{}
+
+----------------------------------------
+
+picoCTF{}
+
+----------------------------------------
+
+
