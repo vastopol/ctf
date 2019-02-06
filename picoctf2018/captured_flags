@@ -269,7 +269,41 @@ picoCTF{con4n_r3411y_1snt_1r1sh_9cbc118f}
 
 ----------------------------------------
 
-picoCTF{}
+* Mr. Robots (not done)
+
+Do you see the same things I see? The glimpses of the flag hidden away?
+http://2018shell.picoctf.com:10157
+
+----------------------------------------
+
+* Truly an Artist (not done)
+
+2018.png
+Can you help us find the flag in this Meta-Material?
+
+----------------------------------------
+
+* assembly-1
+
+eq_asm_rev.S
+What does asm1(0xcd) return? Submit the flag as a hexadecimal value (starting with '0x').
+NOTE: Your submission for this question will NOT be in the normal flag format.
+
+0xca
+
+----------------------------------------
+
+* be-quick-or-be-dead-1 (not done)
+
+be-quick-or-be-dead-1
+You find this when searching for some music, which leads you to be-quick-or-be-dead-1. Can you run it fast enough?
+
+----------------------------------------
+
+* buffer overflow 1 (not done)
+
+vuln.c
+Okay now you're cooking! This time can you overflow the buffer and return to the flag function in this program?
 
 ----------------------------------------
 
@@ -296,3 +330,6 @@ picoCTF{}
 picoCTF{}
 
 ----------------------------------------
+
+
+

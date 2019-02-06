@@ -1,0 +1,16 @@
+* images jpeg/png
+    try and open in text editor
+    see if has stenography to hide a key
+
+* web exploitation
+    view source, look through html, css, js
+    try an sql inject into text box fields like: ' or 1 = 1;
+
+* binaries
+    run strings on the file
+    open in hexedit
+    for buffer overflow find amount of input needed to overwrite buffer and change the eip
+    
+
+
+
