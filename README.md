@@ -1,5 +1,5 @@
 # ctf
 
-capture the flag trophies
+capture the flag trophies and solutions
 
 * picoctf - https://picoctf.com/

@@ -5,6 +5,7 @@ Pico CTF 2018
 * Forensics Warmup 1
 
 flag.zip
+
 Can you unzip this file for me and retreive the flag?
 
 picoCTF{welcome_to_forensics}
@@ -14,6 +15,7 @@ picoCTF{welcome_to_forensics}
 * Forensics Warmup 2
 
 flag.png
+
 Hmm for some reason I can't open this PNG? Any ideas?
 
 picoCTF{extensions_are_a_lie}
@@ -57,6 +59,7 @@ picoCTF{xiexie_ni_lai_zheli}
 * Reversing Warmup 1
 
 run
+
 Can you navigate to /problems/reversing-warmup-1_2_a237211c4be8902c67102f827027e633 on the shell server and run this program to retreive the flag?
 
 picoCTF{welc0m3_t0_r3VeRs1nG}
@@ -74,6 +77,7 @@ picoCTF{th4t_w4s_s1mpL3}
 * Crypto Warmup 1 (not done)
 
 table.txt
+
 Crpyto can often be done by hand, here's a message you got from a friend, llkjmlmpadkkc with the key of thisisalilkey.
 Can you use this table to solve it?
 
@@ -91,6 +95,7 @@ picoCTF{this_is_crypto!}
 * grep 1
 
 file
+
 Can you find the flag in file?
 
 picoCTF{grep_and_you_will_find_42783683}
@@ -109,15 +114,17 @@ picoCTF{NEtcat_iS_a_NEcESSiTy_69222dcc}
 
 passwd
 shadow
+
 Okay, so we found some important looking files on a linux computer.
 Maybe they can be used to get a password to the process.
-Connect with nc 2018shell.picoctf.com 5221.
+Connect with nc 2018shell.picoctf.com 5221
 
 ----------------------------------------
 
 * strings
 
 strings
+
 Can you find the flag in this file without actually running it?
 
 picoCTF{sTrIngS_sAVeS_Time_2fbe2166}
@@ -167,6 +174,7 @@ picoCTF{client_is_bad_040594}
 * Desrouleaux
 
 incidents.json
+
 Our network administrator is having some trouble handling the tickets for all of of our incidents.
 Can you help him out by answering all the questions?
 Connect with nc 2018shell.picoctf.com 54782
@@ -185,6 +193,7 @@ http://2018shell.picoctf.com:37861
 * Reading Between the Eyes (not done)
 
 husky.png
+
 Stego-Saurus hid a message for you in this image, can you retreive it?
 
 ----------------------------------------
@@ -192,6 +201,7 @@ Stego-Saurus hid a message for you in this image, can you retreive it?
 * Recovering From the Snap (not done)
 
 animals.dd
+
 There used to be a bunch of animals here, what did Dr. Xernon do to them?
 
 ----------------------------------------
@@ -199,6 +209,7 @@ There used to be a bunch of animals here, what did Dr. Xernon do to them?
 * admin panel
 
 data.pcap
+
 We captured some traffic logging into the admin panel, can you find the password?
 
 picoCTF{n0ts3cur3_894a6546}
@@ -206,6 +217,8 @@ picoCTF{n0ts3cur3_894a6546}
 ----------------------------------------
 
 * assembly-0
+
+intro_asm_rev.S
 
 What does asm0(0x2a,0x4f) return? Submit the flag as a hexadecimal value (starting with '0x').
 NOTE: Your submission for this question will NOT be in the normal flag format.
@@ -216,6 +229,9 @@ NOTE: Your submission for this question will NOT be in the normal flag format.
 
 * buffer overflow 0
 
+vuln
+vuln.c
+
 Let's start off simple, can you overflow the right buffer in this program to get the flag?
 
 picoCTF{ov3rfl0ws_ar3nt_that_bad_3598a894}
@@ -223,6 +239,8 @@ picoCTF{ov3rfl0ws_ar3nt_that_bad_3598a894}
 ----------------------------------------
 
 * caesar cipher 1 (not done)
+
+ciphertext
 
 This is one of the older ciphers in the books, can you decrypt the message?
 
@@ -247,6 +265,7 @@ NOTE: Flag is not in the usual flag format
 * hex editor
 
 hex_editor.jpg
+
 This cat has a secret to teach you.
 
 picoCTF{and_thats_how_u_edit_hex_kittos_22C1d865}
@@ -279,6 +298,7 @@ http://2018shell.picoctf.com:10157
 * Truly an Artist (not done)
 
 2018.png
+
 Can you help us find the flag in this Meta-Material?
 
 ----------------------------------------
@@ -286,6 +306,7 @@ Can you help us find the flag in this Meta-Material?
 * assembly-1
 
 eq_asm_rev.S
+
 What does asm1(0xcd) return? Submit the flag as a hexadecimal value (starting with '0x').
 NOTE: Your submission for this question will NOT be in the normal flag format.
 
@@ -296,15 +317,108 @@ NOTE: Your submission for this question will NOT be in the normal flag format.
 * be-quick-or-be-dead-1 (not done)
 
 be-quick-or-be-dead-1
+
 You find this when searching for some music, which leads you to be-quick-or-be-dead-1. Can you run it fast enough?
 
 ----------------------------------------
 
-* buffer overflow 1 (not done)
+* buffer overflow 1
 
+vuln
 vuln.c
+
 Okay now you're cooking! This time can you overflow the buffer and return to the flag function in this program?
 
+picoCTF{addr3ss3s_ar3_3asy65489706}
+
+----------------------------------------
+
+* leak me
+
+auth
+auth.c
+
+Can you authenticate to this service and get the flag?
+Connect with nc 2018shell.picoctf.com 31045
+
+picoCTF{aLw4y5_Ch3cK_tHe_bUfF3r_s1z3_d1667872}
+
+----------------------------------------
+
+* now you don't (not done)
+
+nowYouDont.png
+
+We heard that there is something hidden in this picture. Can you find it?
+
+----------------------------------------
+
+* quackme (not done)
+
+main
+
+Can you deal with the Duck Web? Get us the flag from this program.
+
+----------------------------------------
+
+* shellcode (not done)
+
+vuln
+vuln.c
+
+This program executes any input you give it. Can you get a shell?
+
+----------------------------------------
+
+* what base is this?
+
+To be successful on your mission, you must be able read data represented in different ways, such as hexadecimal or binary.
+Can you get the flag from this program to prove you are ready?
+Connect with nc 2018shell.picoctf.com 1225
+
+picoCTF{delusions_about_finding_values_451a9a74}
+
+----------------------------------------
+
+* you can't see me
+
+'...reading transmission... Y.O.U. .C.A.N.'.T. .S.E.E. .M.E. ...transmission ended...'
+Maybe something lies in /problems/you-can-t-see-me_3_1a39ec6c80b3f3a18610074f68acfe69
+
+picoCTF{j0hn_c3na_paparapaaaaaaa_paparapaaaaaa_cf5156ef}
+
+----------------------------------------
+
+* Buttons (not done)
+
+There is a website running at http://2018shell.picoctf.com:7949
+Try to see if you can push their buttons.
+
+----------------------------------------
+
+* Ext Super Magic (not done)
+
+We salvaged a ruined Ext SuperMagic II-class mech recently and pulled the filesystem out of the black box.
+It looks a bit corrupted, but maybe there's something interesting in there.
+
+----------------------------------------
+
+* Lying Out (not done)
+
+Some odd traffic has been detected on the network, can you identify it?
+Connect with nc 2018shell.picoctf.com 2245 to help us answer some questions.
+
+----------------------------------------
+
+* The Vault
+
+login.txt
+
+There is a website running at http://2018shell.picoctf.com:64349
+Try to see if you can login!
+
+picoCTF{w3lc0m3_t0_th3_vau1t_e4ca2258}
+
 ----------------------------------------
 
 picoCTF{}
@@ -326,10 +440,4 @@ picoCTF{}
 picoCTF{}
 
 ----------------------------------------
-
-picoCTF{}
-
-----------------------------------------
-
-
 
