@@ -110,7 +110,7 @@ picoCTF{NEtcat_iS_a_NEcESSiTy_69222dcc}
 
 ----------------------------------------
 
-* HEEEEEEERE'S Johnny! (not done)
+* HEEEEEEERE'S Johnny!
 
 passwd
 shadow
@@ -118,6 +118,8 @@ shadow
 Okay, so we found some important looking files on a linux computer.
 Maybe they can be used to get a password to the process.
 Connect with nc 2018shell.picoctf.com 5221
+
+picoCTF{J0hn_1$_R1pp3d_289677b5}
 
 ----------------------------------------
 
@@ -156,9 +158,11 @@ picoCTF{grep_r_and_you_will_find_556620f7}
 
 ----------------------------------------
 
-* Aca-Shell-A (not done)
+* Aca-Shell-A
 
 Connect with nc 2018shell.picoctf.com 42334
+
+picoCTF{CrUsHeD_It_d6f202f1}
 
 ----------------------------------------
 
@@ -183,10 +187,12 @@ picoCTF{J4y_s0n_d3rUUUULo_c74e3495}
 
 ----------------------------------------
 
-* Logon (not done)
+* Logon
 
 I made a website so now you can log on to! I don't seem to have the admin password. See if you can't get to the flag.
 http://2018shell.picoctf.com:37861
+
+picoCTF{l0g1ns_ar3nt_r34l_a280e12c}
 
 ----------------------------------------
 
@@ -292,6 +298,24 @@ picoCTF{con4n_r3411y_1snt_1r1sh_9cbc118f}
 
 Do you see the same things I see? The glimpses of the flag hidden away?
 http://2018shell.picoctf.com:10157
+
+----------------------------------------
+
+* No Login
+
+Looks like someone started making a website but never got around to making a login, but I heard there was a flag if you were the admin.
+http://2018shell.picoctf.com:52920
+
+picoCTF{n0l0g0n_n0_pr0bl3m_3184f702}
+
+----------------------------------------
+
+* Secret Agent
+
+Here's a little website that hasn't fully been finished. But I heard google gets all your info anyway.
+http://2018shell.picoctf.com:3827
+
+picoCTF{s3cr3t_ag3nt_m4n_12387c22}
 
 ----------------------------------------
 

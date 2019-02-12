@@ -1,9 +1,15 @@
+* random/general
+    look for hidden files by cd into a directory and ls -a to see all files
+    try tab auto complete to see if something works and extends
+
 * images jpeg/png
     try and open in text editor
     see if has stenography to hide a key
 
 * web exploitation
-    view source, look through html, css, js
+    Ctrl+u to view source, look through html, css, js
+    Ctrl+Shift+i to open developer tools, go to application tab and in the storage section mess with the cookies, set/create an admin from False to True, refresh page
+    Ctrl+Shift+i to open developer tools, go to network conditions, uncheck select automatically and change the user agent to be Googlebot or something else
     try an sql inject into text box fields like: ' or 1 = 1;
 
 * binaries
@@ -19,16 +25,14 @@
     sha256
     sha512
 
-* random/general
-    look for hidden files by cd into a directory and ls -a to see all files
-    try tab auto complete to see if something works and extends
+* linux passwd and shadow file cracking
+    This can be done using unshadow on both files and then using John the Ripper on the combined file
+    2 basic steps:
+    unshadow passwd.txt shadow.txt > passwords.txt
+    john --show passwords.txt
 
-
-* simple commands to do
-
-netcat website port
-
-grep -r directory
-
-strings filename | grep pattern
+* other simple commands to do
+    netcat website port
+    grep -r directory
+    strings filename | grep pattern
 
