@@ -1,0 +1,35 @@
+using radare2 for reverse engineering
+
+opening up a file
+
+    analyze a file
+    r2 -AA file
+
+    analyze and debug
+    r2 -AAd
+
+    analyze write mode
+    r2 -AAw
+
+inside of the program
+
+    list all the functions
+    afl
+
+    print a disassembled function
+    pdf @ function_name
+
+    seek a specific function or ddress
+    s name_or_address
+
+    write to an address
+    wa assembly_code
+
+    doing math stuff to show things
+    ? [0x01 + 0x02]
+
+    print call graph
+    VV
+
+    hex view
+    xc @ function_name

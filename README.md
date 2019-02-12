@@ -1,8 +1,11 @@
 # ctf
 
-capture the flag trophies and solutions
+Capture the flag trophies, solutions, and write-ups.
+
+The main focus here is on reverse engineering and binary exploits for Linux platform.
 
 Some of these are from organized sites or ctf challenges while others are crackmes people made and uploaded.
+
 
 * picoCTF
     * https://picoctf.com/
