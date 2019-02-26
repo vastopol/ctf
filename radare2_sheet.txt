@@ -1,6 +1,6 @@
 using radare2 for reverse engineering
 
-opening up a file
+opening up a file:
 
     analyze a file
     r2 -AA file
@@ -11,7 +11,7 @@ opening up a file
     analyze write mode
     r2 -AAw
 
-inside of the program
+inside of the program:
 
     list all the functions
     afl
@@ -33,3 +33,15 @@ inside of the program
 
     hex view
     xc @ function_name
+
+    rename something
+    afvn thing newname
+
+stuff for a bof:
+
+debruijn pattern
+ragg2 -P 100 -r
+
+inspect a register see offset needed to overflow
+wopO dr eip
+
