@@ -1,0 +1,185 @@
+Problems from pwnable.kr
+
+when ssh in
+- to use peda, issue `source /usr/share/peda/peda.py` in gdb terminal
+- can also use radare2
+
+Completed: 2
+
+[Toddler's Bottle] : 21 problems
+[Rookiss]          : 17 problems
+[Grotesque]        : 17 problems
+[Hacker's Secret]  : 13 problems
+
+----------------------------------------
+[Toddler's Bottle]
+
+    fd      (DONE)
+
+            Mommy! what is a file descriptor in Linux?
+
+            * try to play the wargame your self but if you are ABSOLUTE beginner, follow this tutorial link:
+            https://youtu.be/971eZhMHQQw
+
+            ssh fd@pwnable.kr -p2222 (pw:guest)
+
+    collision
+
+            Daddy told me about cool MD5 hash collision today.
+            I wanna do something like that too!
+
+            ssh col@pwnable.kr -p2222 (pw:guest)
+
+    bof     (DONE)
+
+            Nana told me that buffer overflow is one of the most common software vulnerability.
+            Is that true?
+
+            Download : http://pwnable.kr/bin/bof
+            Download : http://pwnable.kr/bin/bof.c
+
+            Running at : nc pwnable.kr 9000
+
+    flag
+
+    passcode
+
+    random
+
+    input
+
+    leg
+
+    mistake
+
+    shellshock
+
+    coin1
+
+    blackjack
+
+    lotto
+
+    cmd1
+
+    cmd2
+
+    uaf
+
+    memcpy
+
+    asm
+
+    unlink
+
+    blukat
+
+    horcruxes
+
+----------------------------------------
+
+[Rookiss]
+
+    brain fuck
+
+    md5 calculator
+
+    simple login
+
+    otp
+
+    ascii_easy
+
+    tiny_easy
+
+    fsb
+
+    dragon
+
+    fix
+
+    syscall
+
+    crypto1
+
+    echo1
+
+    echo2
+
+    rsa calculator
+
+    note
+
+    alloca
+
+    loveletter
+
+----------------------------------------
+
+[Grotesque]
+
+    proxy server
+
+    rootkit
+
+    dos4fun
+
+    ascii
+
+    aeg
+
+    coin2
+
+    maze
+
+    wtf
+
+    sudoku
+
+    starcraft
+
+    cmd3
+
+    elf
+
+    lfh
+
+    lokihardt
+
+    asg
+
+    hunter
+
+    mipstake
+
+----------------------------------------
+
+[Hacker's Secret]
+
+    unexploitable
+
+    tiny
+
+    softmmu
+
+    towelroot
+
+    nuclear
+
+    malware
+
+    exploitable
+
+    tiny_hard
+
+    kcrc
+
+    exynos
+
+    combabo calculator
+
+    pwnsandbox
+
+    crcgen
+
+

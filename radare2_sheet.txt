@@ -28,7 +28,10 @@ inside of the program:
     doing math stuff to show things
     ? [0x01 + 0x02]
 
-    print call graph
+    show hex and ascii
+    V
+
+    show call graph
     VV
 
     hex view
