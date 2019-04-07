@@ -6,7 +6,7 @@ when ssh in
 
 Levels:
 
-[Toddler's Bottle] : 2/21
+[Toddler's Bottle] : 3/21
 [Rookiss]          : 0/17
 [Grotesque]        : 0/17
 [Hacker's Secret]  : 0/13
@@ -51,13 +51,15 @@ Levels:
 
     ----------------------------------------
 
-    flag
+    flag    (DONE)
 
             Papa brought me a packed present! let's open it.
 
             Download : http://pwnable.kr/bin/flag
 
             This is reversing task. all you need is binary
+
+            FLAG = "UPX...? sounds like a delivery service :)"
 
     ----------------------------------------
 

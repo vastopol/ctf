@@ -1,2 +1,78 @@
-The file is packed with the UPX Packer
+* The file is packed with the UPX Packer
+
+    strings | grep upx
+
+* first it must be unpacked
+
+* copy original and unpack with upx
+
+    cp  flag flag_unpack
+
+    upx -d flag_unpack
+
+* open in radare2
+
+    r2 -AA flag_unpack
+
+    pdf @ main
+
+/ (fcn) sym.main 61
+|           0x00401164    55           push rbp
+|           0x00401165    4889e5       mov rbp, rsp
+|           0x00401168    4883ec10     sub rsp, 0x10
+|           0x0040116c    bf58664900   mov edi, str.Iwillmallocandstrcpytheflagthere.takeit.
+|           0x00401171    e80a0f0000   call sym._IO_puts
+|              sym._IO_puts(unk) ; sym.puts
+|           0x00401176    bf64000000   mov edi, 0x64
+|           0x0040117b    e850880000   call sym.__libc_malloc
+|              sym.__libc_malloc() ; sym.malloc
+|           0x00401180    488945f8     mov [rbp-0x8], rax
+|           ; CODE (CALL) XREF from 0x00402070 (fcn.00402070)
+|           ; DATA XREF from 0x00402070 (fcn.00402070)
+|           0x00401184    488b15e50e2. mov rdx, [rip+0x2c0ee5] ; 0x00402070
+|           0x0040118b    488b45f8     mov rax, [rbp-0x8]
+|           0x0040118f    4889d6       mov rsi, rdx
+|           0x00401192    4889c7       mov rdi, rax
+|           0x00401195    e886f1ffff   call loc.00400320
+|              fcn.00400316() ; loc.00400320
+|           0x0040119a    b800000000   mov eax, 0x0
+|           0x0040119f    c9           leave
+\           0x004011a0    c3           ret
+
+
+* look for the str.Iwillmallocandstrcpytheflagthere.takeit.
+
+    iz | grep flag
+
+Do you want to print 203805 chars? (y/N)
+addr=0x00496658 off=0x00096658 ordinal=001 sz=52 section=.rodata string=Iwillmallocandstrcpytheflagthere.takeit.
+addr=0x0049b87c off=0x0009b87c ordinal=502 sz=15 section=.rodata string=s_flags24
+addr=0x0049fc00 off=0x0009fc00 ordinal=995 sz=93 section=.rodata string=versionvoid0flagsDL_LOOKUP_ADD_DEPENDENCYDL_LOOKUP_GSCOPE_LOCK0
+addr=0x004b2ee0 off=0x000b2ee0 ordinal=2423 sz=65 section=.rodata string=imapl_typelt_loadedimapl_flags_10x000000080
+
+seek for address and look
+
+    s str.Iwillmallocandstrcpytheflagthere.takeit.
+
+    pdf
+
+/ (fcn) fcn.0049664e 3195
+|           0x0049664e     .string "UPX...? sounds like a delivery service :)" ; len=42
+|      ||   0x00496678     .string "I will malloc() and strcpy the flag there. take it." ; len=52
+|   |||||   0x004966ac     .string "/dev/urandom" ; len=13
+|   |||||   0x004966b9     .string "FATAL: cannot determine kernel version" ; len=39
+| | | ||    0x004966e0     .string "/dev/full" ; len=10
+| | |  |    0x004966ea     .string "/dev/null" ; len=10
+
+...
+..
+.
+.
+.
+
+
+
+FLAG = "UPX...? sounds like a delivery service :)"
+
+
 
