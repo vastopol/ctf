@@ -165,7 +165,7 @@ Levels:
 
     ----------------------------------------
 
-    cmd2
+    cmd2    *** need cmd1 flag as ssh password
 
             Daddy bought me a system command shell.
             but he put some filters to prevent me from playing with it without his permission...
