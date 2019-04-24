@@ -20,3 +20,6 @@ Some of these are from organized sites or ctf challenges while others are crackm
 * protostar
     * https://exploit.education/protostar/
 
+* Hack The Box
+    * https://www.hackthebox.eu
+    
