@@ -1,0 +1,70 @@
+nmap the connection 10.10.10.152
+
+Nmap scan report for 10.10.10.152
+Host is up (0.086s latency).
+Not shown: 995 closed ports
+PORT    STATE SERVICE      VERSION
+21/tcp  open  ftp          Microsoft ftpd
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+| 02-03-19  12:18AM                 1024 .rnd
+| 02-25-19  10:15PM       <DIR>          inetpub
+| 07-16-16  09:18AM       <DIR>          PerfLogs
+| 02-25-19  10:56PM       <DIR>          Program Files
+| 02-03-19  12:28AM       <DIR>          Program Files (x86)
+| 02-03-19  08:08AM       <DIR>          Users
+|_02-25-19  11:49PM       <DIR>          Windows
+80/tcp  open  http         Indy httpd 18.1.37.13946 (Paessler PRTG bandwidth monitor)
+|_http-server-header: PRTG/18.1.37.13946
+| http-title: Welcome | PRTG Network Monitor (NETMON)
+|_Requested resource was /index.htm
+135/tcp open  msrpc        Microsoft Windows RPC
+139/tcp open  netbios-ssn  Microsoft Windows 98 netbios-ssn
+445/tcp open  microsoft-ds Microsoft Windows Server 2008 R2 microsoft-ds
+Service Info: OSs: Windows, Windows 98, Windows Server 2008 R2; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_98, cpe:/o:microsoft:windows_server_2008:r2
+
+Host script results:
+| smb-security-mode:
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+|_smbv2-enabled: Server supports SMBv2 protocol
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 19.37 seconds
+
+----------------------------------------
+
+USER:
+
+anonymous ftp
+
+file "user.txt" in the Users/Public folder
+
+----------------------------------------
+
+ROOT:
+
+ProgramData
+Paessler
+PRTG\ Network\ Monitor
+get "PRTG Configuration.old.bak"
+
+search for admin
+
+User: prtgadmin
+Pass: PrTg@dmin2018
+
+login to the 10.10.10.152
+but use new password
+PrTg@dmin2019
+
+Paessler Installed Version 18.1.37.13946
+
+exploit-db.com
+search for PRTG exploits
+PRTG Network Monitor 18.2.38 - (Authenticated) Remote Code Execution
+46527.sh
+
+look for the cookies
+sqlite3 ~/.mozilla/firefox/q83ryjfe.default/cookies.sqlite
