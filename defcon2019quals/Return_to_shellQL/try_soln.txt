@@ -1,0 +1,10 @@
+Return_to_shellQL
+La Forge built a new web application platform for our ShellQL product. Can you get the flag out?
+The flag is the file /flag. Although the flag is not in the database this time; using shellQL to query the database might be helpful.
+
+http://shellretql.quals2019.oooverflow.io:9090
+
+Files:
+
+shellme.so
+

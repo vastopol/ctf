@@ -1,0 +1,8 @@
+challenge.py
+pow.py
+
+asrybab.quals2019.oooverflow.io 1280
+
+(Pssst, http://oooverflow.io/pow.py)
+
+

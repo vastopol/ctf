@@ -1,0 +1,19 @@
+babyheap
+Yet another babyheap.
+
+babyheap.quals2019.oooverflow.io 5000
+
+Files:
+
+exe: babyheap
+lib: libc.so
+
+information on files
+
+babyheap: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/l, BuildID[sha1]=afa4d4d076786b1a690f1a49923d1e054027e8e7, for GNU/Linux 3.2.0, stripped
+nm: babyheap: no symbols
+
+
+libc.so: ELF 64-bit LSB shared object, x86-64, version 1 (GNU/Linux), dynamically linked, interpreter /lib64/l, BuildID[sha1]=d561ec515222887a1e004555981169199d841024, for GNU/Linux 3.2.0, stripped
+
+

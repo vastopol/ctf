@@ -1,0 +1,11 @@
+RTOoOS
+
+i submitted this for my first operating system homework at starfleet academy.
+scotty gave me a poor grade on it because he said this is exploitable.
+
+rtooos.quals2019.oooverflow.io 5000
+
+Files:
+
+crux_7377a1f43e35924971ef1b172c080e03131bed56
+
