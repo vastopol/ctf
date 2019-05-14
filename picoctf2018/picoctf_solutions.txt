@@ -12,7 +12,15 @@ the easy buffer overflow ones mostly just require the input to be larger than th
 
 some of the more complex challenges take a bit more effort
 
+some form of write up should exist for the non trivial challenges
+these will be listed below:
+    * buffer overflow 1
+    * ...
+    * ...
+
 -----------------------------------------------------------
+
+simple example writeup:
 
 * buffer overflow 1
 

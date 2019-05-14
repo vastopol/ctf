@@ -1,28 +1,62 @@
-Pico CTF 2018
+picoCTF 2018 challenges
+
+2018 Shell Server Consolidation
+Problem Status Notice:
+As part of the groundwork for the upcoming 2019 competition, we are re-organizing our infrastructure of past competition servers.
+The 2018shell1 through 2018shell4 servers have been consolidated to a single 2018shell.picoctf.com host.
+
+As a result, a small number of problems have been re-assigned to different ports, and a few problems have newly randomized flags.
+Please see the Piazza problem status post for details, and double-check your problem descriptions for any n that list.
+
+Progress Overview:
+
+Forensics
+5 / 14
+
+General Skills
+13 / 19
+
+Reversing
+4 / 7
+
+Cryptography
+2 / 6
+
+Web Exploitation
+7 / 16
+
+Binary Exploitation
+3 / 8
 
 ----------------------------------------
 
-* Forensics Warmup 1
+* Forensics Warmup 1    (DONE)
 
-flag.zip
+Forensics
 
 Can you unzip this file for me and retreive the flag?
+
+flag.zip
 
 picoCTF{welcome_to_forensics}
 
 ----------------------------------------
 
-* Forensics Warmup 2
+* Forensics Warmup 2    (DONE)
 
-flag.png
+Forensics
 
 Hmm for some reason I can't open this PNG? Any ideas?
+
+flag.png
 
 picoCTF{extensions_are_a_lie}
 
 ----------------------------------------
 
-* General Warmup 1
+* General Warmup 1    (DONE)
+
+General Skills
 
 If I told you your grade was 0x41 in hexadecimal, what would it be in ASCII?
 
@@ -30,7 +64,9 @@ picoCTF{A}
 
 ----------------------------------------
 
-* General Warmup 2
+* General Warmup 2    (DONE)
+
+General Skills
 
 Can you convert the number 27 (base 10) to binary (base 2)?
 
@@ -38,7 +74,9 @@ picoCTF{11011}
 
 ----------------------------------------
 
-* General Warmup 3
+* General Warmup 3    (DONE)
+
+General Skills
 
 What is 0x3D (base 16) in decimal (base 10)?
 
@@ -46,7 +84,9 @@ picoCTF{61}
 
 ----------------------------------------
 
-* Resources
+* Resources    (DONE)
+
+General Skills
 
 We put together a bunch of resources to help you out on our website!
 If you go over there, you might even find a flag!
@@ -56,17 +96,21 @@ picoCTF{xiexie_ni_lai_zheli}
 
 ----------------------------------------
 
-* Reversing Warmup 1
+* Reversing Warmup 1    (DONE)
 
-run
+Reversing
 
 Can you navigate to /problems/reversing-warmup-1_2_a237211c4be8902c67102f827027e633 on the shell server and run this program to retreive the flag?
+
+run
 
 picoCTF{welc0m3_t0_r3VeRs1nG}
 
 ----------------------------------------
 
-* Reversing Warmup 2
+* Reversing Warmup 2    (DONE)
+
+Reversing
 
 Can you decode the following string dGg0dF93NHNfczFtcEwz from base64 format to ASCII?
 
@@ -74,16 +118,20 @@ picoCTF{th4t_w4s_s1mpL3}
 
 ----------------------------------------
 
-* Crypto Warmup 1 (not done)
+* Crypto Warmup 1
 
-table.txt
+Cryptography
 
 Crpyto can often be done by hand, here's a message you got from a friend, llkjmlmpadkkc with the key of thisisalilkey.
 Can you use this table to solve it?
 
+table.txt
+
 ----------------------------------------
 
-* Crypto Warmup 2
+* Crypto Warmup 2    (DONE)
+
+Cryptography
 
 Cryptography doesn't have to be complicated, have you ever heard of something called rot13?
 cvpbPGS{guvf_vf_pelcgb!}
@@ -92,17 +140,21 @@ picoCTF{this_is_crypto!}
 
 ----------------------------------------
 
-* grep 1
+* grep 1    (DONE)
 
-file
+General Skills
 
 Can you find the flag in file?
+
+file
 
 picoCTF{grep_and_you_will_find_42783683}
 
 ----------------------------------------
 
-* net cat
+* net cat    (DONE)
+
+General Skills
 
 Can you connect to 2018shell.picoctf.com at port 22847 to get the flag?
 
@@ -110,30 +162,36 @@ picoCTF{NEtcat_iS_a_NEcESSiTy_69222dcc}
 
 ----------------------------------------
 
-* HEEEEEEERE'S Johnny!
+* HEEEEEEERE'S Johnny!    (DONE)
 
-passwd
-shadow
+Cryptography
 
 Okay, so we found some important looking files on a linux computer.
 Maybe they can be used to get a password to the process.
 Connect with nc 2018shell.picoctf.com 5221
 
+passwd
+shadow
+
 picoCTF{J0hn_1$_R1pp3d_289677b5}
 
 ----------------------------------------
 
-* strings
+* strings    (DONE)
 
-strings
+General Skills
 
 Can you find the flag in this file without actually running it?
+
+strings
 
 picoCTF{sTrIngS_sAVeS_Time_2fbe2166}
 
 ----------------------------------------
 
-* pipe
+* pipe    (DONE)
+
+General Skills
 
 Can you find a way to save the output from this program and search for the flag?
 Connect with 2018shell.picoctf.com 44310
@@ -142,7 +200,9 @@ picoCTF{almost_like_mario_a13e5b27}
 
 ----------------------------------------
 
-* Inspect Me
+* Inspect Me    (DONE)
+
+Web Exploitation
 
 Inpect this code! http://2018shell.picoctf.com:47428
 
@@ -150,7 +210,9 @@ picoCTF{ur_4_real_1nspect0r_g4dget_e96dd105}
 
 ----------------------------------------
 
-* grep 2
+* grep 2    (DONE)
+
+General Skills
 
 Can you find the flag in /problems/grep-2_3_826f886f547acb8a9c3fccb030e8168d/files on the shell server?
 
@@ -158,7 +220,9 @@ picoCTF{grep_r_and_you_will_find_556620f7}
 
 ----------------------------------------
 
-* Aca-Shell-A
+* Aca-Shell-A    (DONE)
+
+General Skills
 
 Connect with nc 2018shell.picoctf.com 42334
 
@@ -166,7 +230,9 @@ picoCTF{CrUsHeD_It_d6f202f1}
 
 ----------------------------------------
 
-* Client Side is Still Bad
+* Client Side is Still Bad    (DONE)
+
+Web Exploitation
 
 I forgot my password again, but this time there doesn't seem to be a reset, can you help me?
 http://2018shell.picoctf.com:53990
@@ -175,19 +241,23 @@ picoCTF{client_is_bad_040594}
 
 ----------------------------------------
 
-* Desrouleaux
+* Desrouleaux    (DONE)
 
-incidents.json
+Forensics
 
 Our network administrator is having some trouble handling the tickets for all of of our incidents.
 Can you help him out by answering all the questions?
 Connect with nc 2018shell.picoctf.com 54782
 
+incidents.json
+
 picoCTF{J4y_s0n_d3rUUUULo_c74e3495}
 
 ----------------------------------------
 
-* Logon
+* Logon    (DONE)
+
+Web Exploitation
 
 I made a website so now you can log on to! I don't seem to have the admin password. See if you can't get to the flag.
 http://2018shell.picoctf.com:37861
@@ -196,63 +266,77 @@ picoCTF{l0g1ns_ar3nt_r34l_a280e12c}
 
 ----------------------------------------
 
-* Reading Between the Eyes (not done)
+* Reading Between the Eyes
 
-husky.png
+Forensics
 
 Stego-Saurus hid a message for you in this image, can you retreive it?
 
+husky.png
+
 ----------------------------------------
 
-* Recovering From the Snap (not done)
+* Recovering From the Snap
 
-animals.dd
+Forensics
 
 There used to be a bunch of animals here, what did Dr. Xernon do to them?
 
+animals.dd
+
 ----------------------------------------
 
-* admin panel
+* admin panel    (DONE)
 
-data.pcap
+Forensics
 
 We captured some traffic logging into the admin panel, can you find the password?
+
+data.pcap
 
 picoCTF{n0ts3cur3_894a6546}
 
 ----------------------------------------
 
-* assembly-0
+* assembly-0    (DONE)
 
-intro_asm_rev.S
+Reversing
 
 What does asm0(0x2a,0x4f) return? Submit the flag as a hexadecimal value (starting with '0x').
 NOTE: Your submission for this question will NOT be in the normal flag format.
+
+intro_asm_rev.S
 
 0x4f
 
 ----------------------------------------
 
-* buffer overflow 0
+* buffer overflow 0    (DONE)
+
+Binary Exploitation
+
+Let's start off simple, can you overflow the right buffer in this program to get the flag?
 
 vuln
 vuln.c
-
-Let's start off simple, can you overflow the right buffer in this program to get the flag?
 
 picoCTF{ov3rfl0ws_ar3nt_that_bad_3598a894}
 
 ----------------------------------------
 
-* caesar cipher 1 (not done)
+* caesar cipher 1
 
-ciphertext
+Cryptography
 
 This is one of the older ciphers in the books, can you decrypt the message?
 
+ciphertext
+
 ----------------------------------------
 
-* environ
+* environ    (DONE)
+
+General Skills
 
 Can you find the flag we've hidden in an environment variable on the shell server?
 
@@ -260,7 +344,9 @@ picoCTF{eNv1r0nM3nT_v4r14Bl3_fL4g_3758492}
 
 ----------------------------------------
 
-* hertz (not done)
+* hertz
+
+Cryptography
 
 Here's another simple cipher for you where we made a bunch of substitutions.
 Can you decrypt it? Connect with nc 2018shell.picoctf.com 48487
@@ -268,24 +354,30 @@ NOTE: Flag is not in the usual flag format
 
 ----------------------------------------
 
-* hex editor
+* hex editor    (DONE)
 
-hex_editor.jpg
+Forensics
 
 This cat has a secret to teach you.
+
+hex_editor.jpg
 
 picoCTF{and_thats_how_u_edit_hex_kittos_22C1d865}
 
 ----------------------------------------
 
-* ssh-keyz (not done)
+* ssh-keyz
+
+General Skills
 
 please add your own public key to ~/.ssh/authorized_keys, using the webshell.
 The flag is in the ssh banner which will be displayed when you login remotely with ssh to with your username.
 
 ----------------------------------------
 
-* Irish Name Repo
+* Irish Name Repo    (DONE)
+
+Web Exploitation
 
 There is a website running at http://2018shell.picoctf.com:11899
 Do you think you can log us in? Try to see if you can login!
@@ -294,14 +386,18 @@ picoCTF{con4n_r3411y_1snt_1r1sh_9cbc118f}
 
 ----------------------------------------
 
-* Mr. Robots (not done)
+* Mr. Robots
+
+Web Exploitation
 
 Do you see the same things I see? The glimpses of the flag hidden away?
 http://2018shell.picoctf.com:10157
 
 ----------------------------------------
 
-* No Login
+* No Login    (DONE)
+
+Web Exploitation
 
 Looks like someone started making a website but never got around to making a login, but I heard there was a flag if you were the admin.
 http://2018shell.picoctf.com:52920
@@ -310,7 +406,9 @@ picoCTF{n0l0g0n_n0_pr0bl3m_3184f702}
 
 ----------------------------------------
 
-* Secret Agent
+* Secret Agent    (DONE)
+
+Web Exploitation
 
 Here's a little website that hasn't fully been finished. But I heard google gets all your info anyway.
 http://2018shell.picoctf.com:3827
@@ -319,82 +417,102 @@ picoCTF{s3cr3t_ag3nt_m4n_12387c22}
 
 ----------------------------------------
 
-* Truly an Artist (not done)
+* Truly an Artist
 
-2018.png
+Forensics
 
 Can you help us find the flag in this Meta-Material?
 
+2018.png
+
 ----------------------------------------
 
-* assembly-1
+* assembly-1    (DONE)
 
-eq_asm_rev.S
+Reversing
 
 What does asm1(0xcd) return? Submit the flag as a hexadecimal value (starting with '0x').
 NOTE: Your submission for this question will NOT be in the normal flag format.
+
+eq_asm_rev.S
 
 0xca
 
 ----------------------------------------
 
-* be-quick-or-be-dead-1 (not done)
+* be-quick-or-be-dead-1
 
-be-quick-or-be-dead-1
+Reversing
 
 You find this when searching for some music, which leads you to be-quick-or-be-dead-1. Can you run it fast enough?
 
+be-quick-or-be-dead-1
+
 ----------------------------------------
 
-* buffer overflow 1
+* buffer overflow 1    (DONE)
+
+Binary Exploitation
+
+Okay now you're cooking! This time can you overflow the buffer and return to the flag function in this program?
 
 vuln
 vuln.c
-
-Okay now you're cooking! This time can you overflow the buffer and return to the flag function in this program?
 
 picoCTF{addr3ss3s_ar3_3asy65489706}
 
 ----------------------------------------
 
-* leak me
+* leak me    (DONE)
 
-auth
-auth.c
+Binary Exploitation
 
 Can you authenticate to this service and get the flag?
 Connect with nc 2018shell.picoctf.com 31045
+
+auth
+auth.c
 
 picoCTF{aLw4y5_Ch3cK_tHe_bUfF3r_s1z3_d1667872}
 
 ----------------------------------------
 
-* now you don't (not done)
+* now you don't
 
-nowYouDont.png
+Forensics
 
 We heard that there is something hidden in this picture. Can you find it?
 
+nowYouDont.png
+
 ----------------------------------------
 
-* quackme (not done)
+* quackme
+
+Forensics
+
+Can you deal with the Duck Web? Get us the flag from this program.
+You can also find the program in /problems/quackme_1_374d85dc071ada50a08b36597288bcfd.
 
 main
 
-Can you deal with the Duck Web? Get us the flag from this program.
-
 ----------------------------------------
 
-* shellcode (not done)
+* shellcode
+
+Binary Exploitation
+
+This program executes any input you give it. Can you get a shell?
+You can find the program in /problems/shellcode_4_99838609970da2f5f6cf39d6d9ed57cd on the shell server.
 
 vuln
 vuln.c
 
-This program executes any input you give it. Can you get a shell?
-
 ----------------------------------------
 
-* what base is this?
+* what base is this?    (DONE)
+
+General Skills
 
 To be successful on your mission, you must be able read data represented in different ways, such as hexadecimal or binary.
 Can you get the flag from this program to prove you are ready?
@@ -404,7 +522,9 @@ picoCTF{delusions_about_finding_values_451a9a74}
 
 ----------------------------------------
 
-* you can't see me
+* you can't see me    (DONE)
+
+General Skills
 
 '...reading transmission... Y.O.U. .C.A.N.'.T. .S.E.E. .M.E. ...transmission ended...'
 Maybe something lies in /problems/you-can-t-see-me_3_1a39ec6c80b3f3a18610074f68acfe69
@@ -413,55 +533,269 @@ picoCTF{j0hn_c3na_paparapaaaaaaa_paparapaaaaaa_cf5156ef}
 
 ----------------------------------------
 
-* Buttons (not done)
+* Buttons
+
+Web Exploitation
 
 There is a website running at http://2018shell.picoctf.com:7949
 Try to see if you can push their buttons.
 
 ----------------------------------------
 
-* Ext Super Magic (not done)
+* Ext Super Magic
+
+Forensics
 
 We salvaged a ruined Ext SuperMagic II-class mech recently and pulled the filesystem out of the black box.
 It looks a bit corrupted, but maybe there's something interesting in there.
 
 ----------------------------------------
 
-* Lying Out (not done)
+* Lying Out
+
+Forensics
 
 Some odd traffic has been detected on the network, can you identify it?
 Connect with nc 2018shell.picoctf.com 2245 to help us answer some questions.
 
 ----------------------------------------
 
-* The Vault
+* The Vault    (DONE)
 
-login.txt
+Web Exploitation
 
 There is a website running at http://2018shell.picoctf.com:64349
 Try to see if you can login!
+
+login.txt
 
 picoCTF{w3lc0m3_t0_th3_vau1t_e4ca2258}
 
 ----------------------------------------
 
-picoCTF{}
+* What's My Name?
+
+Forensics
+
+Say my name, say my name.
+
+myname.pcap
 
 ----------------------------------------
 
-picoCTF{}
+* absolutely-relative
+
+General Skills
+
+In a filesystem, everything is relative ¯\_(ツ)_/¯. Can you find a way to get a flag from this program?
+You can find it in /problems/absolutely-relative_0_d4f0f1c47f503378c4bb81981a80a9b6 on the shell server.
+Source.
+
+absolutely-relative
+absolutely-relative.c
 
 ----------------------------------------
 
-picoCTF{}
+* assembly-2
+
+Reversing
+
+What does asm2(0x8,0x21) return? Submit the flag as a hexadecimal value (starting with '0x').
+NOTE: Your submission for this question will NOT be in the normal flag format.
+Source located in the directory at /problems/assembly-2_1_c1900e7d33989b0191c51ef927b24f37.
+
+loop_asm_rev.S
 
 ----------------------------------------
 
-picoCTF{}
+* buffer overflow 2
+
+Binary Exploitation
+
+Alright, this time you'll need to control some arguments. Can you get the flag from this program?
+You can find it in /problems/buffer-overflow-2_3_02aff35ae94896082cad513865e6c2eb on the shell server
+
+vuln
+vuln.c
 
 ----------------------------------------
 
-picoCTF{}
+* got-2-learn-libc
+
+Binary Exploitation
+
+This program gives you the address of some system calls. Can you get a shell?
+You can find the program in /problems/got-2-learn-libc_4_526cc290dde8d914a30538d3d0ac4ef1 on the shell server
+
+vuln
+vuln.c
 
 ----------------------------------------
 
+* rsa-madlibs
+
+Cryptography
+
+We ran into some weird puzzles we think may mean something, can you help me solve one?
+Connect with nc 2018shell.picoctf.com 36859
+
+----------------------------------------
+
+* in out error
+
+General Skills
+
+Can you utlize stdin, stdout, and stderr to get the flag from this program?
+You can also find it in /problems/in-out-error_2_c33e2a987fbd0f75e78481b14bfd15f4 on the shell server
+
+in-out-error
+
+----------------------------------------
+
+* Artisinal Handcrafted HTTP 3
+
+Web Exploitation
+
+We found a hidden flag server hiding behind a proxy, but the proxy has some... _interesting_ ideas of what qualifies someone to make HTTP requests.
+Looks like you'll have to do this one by hand. Try connecting via nc 2018shell.picoctf.com 4914, and use the proxy to send HTTP requests to `flag.local`.
+We've also recovered a username and a password for you to use on the login page: `realbusinessuser`/`potoooooooo`.
+
+----------------------------------------
+
+* echooo
+
+Binary Exploitation
+
+This program prints any input you give it. Can you leak the flag?
+Connect with nc 2018shell.picoctf.com 23397.
+
+echo
+echo.c
+
+----------------------------------------
+
+* learn gdb
+
+General Skills
+
+Using a debugging tool will be extremely useful on your missions.
+Can you run this program in gdb and find the flag?
+You can find the file in /problems/learn-gdb_0_716957192e537ac769f0975c74b34194 on the shell server.
+
+run
+
+----------------------------------------
+
+* Flaskcards
+
+Web Exploitation
+
+We found this fishy website for flashcards that we think may be sending secrets. Could you take a look?
+http://2018shell.picoctf.com:51878/
+
+----------------------------------------
+
+* got-shell?
+
+Binary Exploitation
+
+Can you authenticate to this service and get the flag?
+Connect to it with nc 2018shell.picoctf.com 27952
+
+auth.c
+
+----------------------------------------
+
+* Malware Shops
+
+Forensics
+
+There has been some malware detected, can you help with the analysis?
+Connect with nc 2018shell.picoctf.com 57920
+
+info.txt
+plot.png
+
+----------------------------------------
+
+* fancy-alive-monitoring
+
+Web Exploitation
+
+One of my school mate developed an alive monitoring tool.
+Can you get a flag from http://2018shell.picoctf.com:8587
+
+----------------------------------------
+
+* store
+
+General Skills
+
+We started a little store, can you buy the flag?
+Connect with 2018shell.picoctf.com 43581
+
+store
+source.c
+
+----------------------------------------
+
+* Secure Logon
+
+Web Exploitation
+
+Uh oh, the login page is more secure... I think.
+http://2018shell.picoctf.com:13747
+
+server_noflag.py
+
+----------------------------------------
+
+* script me
+
+General Skills
+
+Can you understand the language and answer the questions to retrieve the flag?
+Connect to the service with nc 2018shell.picoctf.com 61344
+
+----------------------------------------
+
+* LoadSomeBits
+
+Forensics
+
+Can you find the flag encoded inside this image?
+You can also find the file in /problems/loadsomebits_1_5ccf71e5726692c713405bb17da5cb37 on the shell server.
+
+pico2018-special-logo.bmp
+
+----------------------------------------
+
+* Help Me Reset 2
+
+Web Exploitation
+
+There is a website running at http://2018shell.picoctf.com:29523
+We need to get into any user for a flag!
+
+----------------------------------------
+
+* A Simple Question
+
+Web Exploitation
+
+There is a website running at http://2018shell.picoctf.com:36052
+Try to see if you can answer its question.
+
+----------------------------------------
+
+* LambDash 3
+
+Web Exploitation
+
+C? Who uses that anymore. If we really want to be secure, we should all start learning lambda calculus.
+http://2018shell.picoctf.com:34424
+
+BROKEN ????
+site is down
+
+----------------------------------------

@@ -5,6 +5,10 @@
 * images jpeg/png
     try and open in text editor
     see if has stenography to hide a key
+    steghide
+    pngcheck
+    binwalk
+    foremost
 
 * web exploitation
     Ctrl+u to view source, look through html, css, js
