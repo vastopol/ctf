@@ -1,8 +1,0 @@
-Snake
-
-Flag should be in the format: HTB{username:password}
-
- Zip Password: hackthebox
- sha256: 72e11b2f6faed91593c0004e10be7d10c2a3c0b4cd6c72f381c0581a6a3226ab
-
- 

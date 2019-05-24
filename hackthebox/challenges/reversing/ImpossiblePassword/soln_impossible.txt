@@ -1,0 +1,9 @@
+Impossible Password
+
+Are you able to cheat me and get the flag?
+
+Zip Password: hackthebox
+sha256: 815524fa57f7d8ad3593b1400c26ff7a8424e85b365ccdf815f83a790a444341
+
+----------------------------------------
+

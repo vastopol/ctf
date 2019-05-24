@@ -1,0 +1,93 @@
+Snake
+
+Flag should be in the format: HTB{username:password}
+
+Zip Password: hackthebox
+sha256: 72e11b2f6faed91593c0004e10be7d10c2a3c0b4cd6c72f381c0581a6a3226ab
+
+----------------------------------------
+
+PART1: user name
+
+aa = '\x61'
+db = '\x6e'
+nn = '\x61'
+ef = '\x63'
+rr = '\x6f'
+gh = '\x6e'
+lr = '\x64'
+ty = '\x61'
+
+slither = aa + db + nn + ef + rr + gh + lr + ty
+
+if user_input == slither:
+    pass
+
+name = "anaconda"
+
+----------------------------------------
+
+PART2: password
+
+
+note: auth[] and password[] are not used
+
+tells you the magic number when run
+
+calculate by formula
+
+lock_pick = random.randint(0, 0x3e8)
+lock = lock_pick * 2
+lock = lock + 10
+lock = lock / 2
+lock = lock - lock_pick
+
+calculate out and the lock is always 5 every time
+
+lock = 5
+
+keys = [ 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x21, 0x21 ]
+
+keys = "password!!"
+
+chains = [0x74, 0x68, 0x69, 0x73, 0x20, 0x69, 0x73, 0x20, 0x61, 0x20, 0x74, 0x72, 0x6f, 0x6c, 0x6c]
+
+chains = "this is a troll"
+
+chars = []
+
+for key in keys:
+    keys_encrypt = lock ^ key
+    chars.append(keys_encrypt)
+
+chars = [u,d,v,v,r,j,w,a,$,$]
+
+for chain in chains:
+    chains_encrypt = chain + 0xA
+    chars.append(chains_encrypt)
+
+chars = [u,d,v,v,r,j,w,a,$,$,~,r,s,},*,s,},*,k,*,~,|,y,v,v]
+
+password = "udvvrjwa$$~rs}*s}*k*~|yvv"
+
+----------------------------------------
+
+Enter your username
+anaconda
+Enter your password
+udvvrjwa$$~rs}*s}*k*~|yvv
+Good Job
+
+----------------------------------------
+
+this challenge is stupid
+
+keys is the password and chains is just random trash added to the  end
+it will print Good Job since the first part is correct then it breaks out.
+
+actually
+username: anaconda
+passowrd: udvvrjwa$$
+
+Flag should be in the format: HTB{username:password}
+
