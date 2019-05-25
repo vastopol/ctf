@@ -1,0 +1,29 @@
+0ld is g0ld
+
+Old algorithms are not a waste, but are really precious...
+
+Zip Password: hackthebox sha256: 26961d9545f97bdd8effbfd95038dca84281728d2200c5767e8ad9b94989def1
+
+----------------------------------------
+
+this is a password protected PDF file
+
+#1
+
+crack the password using pdfcrack and dictionary
+
+pdfcrack -w ~/Downloads/rockyou.txt 0ld\ is\ g0ld.pdf
+
+found user-password: 'jumanji69'
+
+#2
+
+open pdf
+
+morse code string
+
+.-. .---- .--. ... .- -- ..- ...-- .-.. -- ----- .-. ... ...--
+
+translate
+
+R1PSAMU3LM0RS3

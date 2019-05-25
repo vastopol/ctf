@@ -1,17 +1,23 @@
-FLAGS
+Hack The Box
+
+RANK: noob
 
 ----------------------------------------
 
-Machines:
+MACHINES:
 
 * Netmon
     * user.txt
 
 ----------------------------------------
 
-Challenges:
+CHALLENGES:
 
-* Reversing
+* Reversing : 1/10
     * Snake
+
+* Misc : 2/8
+    * Eternal Loop
+    * 0ld is g0ld
 
 ----------------------------------------

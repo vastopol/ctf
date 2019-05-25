@@ -1,0 +1,9 @@
+Tear Or Dear
+
+Find the username and password and put them in the flag in the format: HTB{username:password}
+Warning: It can produce false positives.
+
+Zip Password: hackthebox sha256: 2f8c16e7f724ac713c2c849bf315facd44236b9ffbced9cf6b87dd51e8adcfce
+
+----------------------------------------
+

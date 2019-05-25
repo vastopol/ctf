@@ -29,6 +29,10 @@
     sha256
     sha512
 
+* cracking    
+    pdfcrack
+    fcrackzip
+
 * linux passwd and shadow file cracking
     This can be done using unshadow on both files and then using John the Ripper on the combined file
     2 basic steps:

@@ -1,0 +1,50 @@
+Eternal Loop
+
+Can you find a way out of this loop?
+
+Zip Password: hackthebox sha256: 4246a77b6ca2a2844749437d1a441fc759c6b8ec316187647cd9b1019da6f6fc
+
+----------------------------------------
+
+#1
+
+after unzipping the "Eternal_Loop.zip" all the passwords are the nested zip folder name starting with 37366.zip
+
+use a script to unzip...
+
+https://unix.stackexchange.com/questions/461275/bash-loop-unzip-passworded-file-script
+
+Eternal_Loop.zip
+pass: hackthebox
+
+37366.zip
+pass: 5900
+
+5900.zip
+pass: 49805
+
+49805.zip
+pass: 13811
+
+etc...
+
+last folder is "6969.zip"
+
+#2
+
+crack the final zip folder using passwords list
+
+fcrackzip -v -D -u -p ~/Downloads/rockyou.txt 6969.zip
+
+found file 'DoNotTouch', (size cp/uc 335181/884736, flags 9, chk 5b04)
+
+PASSWORD FOUND!!!!: pw == letmeinplease
+
+#3
+
+sqlite database file "DoNotTouch"
+
+strings DoNotTouch | grep HTB
+
+HTB{z1p_and_unz1p_ma_bruddahs}
+
