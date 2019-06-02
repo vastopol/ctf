@@ -1,0 +1,18 @@
+Matrioshka
+
+This challenge is divided into 5 layers or Matrioshkas, the goal is to open one by one until you reach the last Matrioshka that contains the flag. Can you get it?
+
+ Zip Password: hackthebox sha256: ec755e97aac53aa59d9977b537f54be57e2216cc8dc083482ebc638906edc451
+
+----------------------------------------
+
+step #1
+
+pngcheck matrioshka1.png
+
+binwalk -e matrioshka1.png
+
+----------
+
+step #2
+

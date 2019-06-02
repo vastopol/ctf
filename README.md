@@ -22,4 +22,8 @@ Some of these are from organized sites or ctf challenges while others are crackm
 
 * Hack The Box
     * https://www.hackthebox.eu
+
+* Python Challenge
+    * http://www.pythonchallenge.com/
+
     

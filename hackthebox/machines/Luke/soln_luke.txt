@@ -1,0 +1,66 @@
+Luke
+
+10.10.10.137
+
+----------------------------------------
+
+Nmap scan report for 10.10.10.137
+Host is up (0.086s latency).
+Not shown: 995 closed ports
+PORT     STATE SERVICE VERSION
+21/tcp   open  ftp     vsftpd 3.0.3+ (ext.1)
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_drwxr-xr-x    2 0        0             512 Apr 14 12:35 webapp
+22/tcp   open  ssh?
+80/tcp   open  http    Apache httpd 2.4.38 ((FreeBSD) PHP/7.3.3)
+| http-methods:
+|_  Potentially risky methods: TRACE
+|_http-server-header: Apache/2.4.38 (FreeBSD) PHP/7.3.3
+|_http-title: Luke
+3000/tcp open  http    Node.js Express framework
+|_http-title: Site doesn't have a title (application/json; charset=utf-8).
+8000/tcp open  http    Ajenti http control panel
+|_http-title: Ajenti
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.01%E=4%D=6/1%OT=21%CT=1%CU=36467%PV=Y%DS=2%DC=T%G=Y%TM=5CF36578
+OS:%P=x86_64-pc-linux-gnu)SEQ(SP=104%GCD=1%ISR=10B%TI=Z%CI=Z%TS=21)OPS(O1=M
+OS:508NW6ST11%O2=M508NW6ST11%O3=M508NW6NNT11%O4=M508NW6ST11%O5=M508NW6ST11%
+OS:O6=M508ST11)WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4=FFFF%W5=FFFF%W6=FFFF)ECN(R=Y%
+OS:DF=Y%T=40%W=FFFF%O=M508NW6SLL%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=
+OS:0%Q=)T2(R=N)T3(R=Y%DF=Y%T=40%W=FFFF%S=O%A=S+%F=AS%O=M508NW6ST11%RD=0%Q=)
+OS:T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S
+OS:+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=
+OS:Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G
+OS:%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=S%T=40%CD=S)
+
+Network Distance: 2 hops
+
+TRACEROUTE (using port 993/tcp)
+HOP RTT      ADDRESS
+1   86.24 ms 10.10.14.1
+2   86.72 ms 10.10.10.137
+
+----------
+
+Trace vulnerability
+
+https://www.owasp.org/index.php/Cross_Site_Tracing
+
+curl -X TRACE 10.10.10.137
+
+----------
+
+anonymous ftp
+
+file in a folder
+
+webapp/for_Chihiro.txt
+
+----------
+
+10.10.10.137:8000
+
+Ajenti admin login panel
+
+

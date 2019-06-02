@@ -1,0 +1,54 @@
+Da Vinci
+
+Try to find out the secret which is hiding inside of these pictures and learn the truth about Mona Lisa!
+
+Zip Password: hackthebox sha256: 6fc8b0d0d77ef7d01f303d9f7a4ba078255a52dc8da154bf5986064e55a9602d
+
+----------------------------------------
+
+steghide extract -sf Thepassword_is_the_small_name_of_the_actor_named_Hanks.jpg
+
+pass: TOM
+
+creates S3cr3t_m3ss@g3.txt
+
+inside file
+
+(key:020e60c6a84db8c5d4c2d56a4e4fe082)
+
+32 bit key
+
+md5 decrypt = leonardo
+
+----------
+
+binwalk -e monalisa.jpg
+
+generates some files
+
+famous.zip is a password protected zip
+
+this uses the decrypted md5 hash as the pass to unzip
+
+this gets the Mona.jpg picture
+
+----------
+
+strings Plans.jpg
+
+this has a link to a video
+
+Guernica 3D
+
+https://www.youtube.com/watch?v=jc1Nfx4c5LQ
+
+Guernica is the phrase to use for Mona.jpg
+
+steghide extract -sf Mona.jpg
+
+this writes out a base64 key
+
+decrypt 3 times
+
+echo VTBaU1EyVXdNSGRpYTBKbVZFUkdObEZHT0doak1UbEZUVEJDUldaUlBUMD0= | base64 -d | base64 -d | base64 -d
+

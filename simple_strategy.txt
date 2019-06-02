@@ -29,7 +29,7 @@
     sha256
     sha512
 
-* cracking    
+* cracking
     pdfcrack
     fcrackzip
 
@@ -48,8 +48,25 @@
 
 -----------
 
-https://github.com/OJ/gobuster
-
-
 ippsec - hackthebox walkthroughs
 
+https://github.com/OJ/gobuster
+
+-----------
+
+websites
+
+hashcrack
+https://hashtoolkit.com/
+
+esoteric languages
+piet
+https://www.bertnase.de/npiet/npiet-execute.php
+malbolge
+https://zb3.me/malbolge-tools/
+
+cesar cipher
+https://www.dcode.fr/caesar-cipher
+
+unicode stego
+https://www.irongeek.com/i.php?page=security/unicode-steganography-homoglyph-encoder

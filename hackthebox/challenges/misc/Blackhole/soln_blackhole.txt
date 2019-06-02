@@ -1,0 +1,34 @@
+Blackhole
+
+A strange file has been discovered in Stephen Hawking's computer. Can you discover what it is?
+
+ Zip Password: hackthebox sha256: 7eb770ee9fdadaccfa2dda10895c1eb3f10a572025e99eac2c01d4ea23ee904a
+
+ ----------------------------------------
+
+ this is a zip file
+ in the zip file is a jpeg
+
+the jpeg has stego
+
+ steghide extract -sf hawking
+
+ the password is "hawking"
+
+ this makes a flag.txt file
+ has a base64 string
+
+ this has to be decrypted multiple times
+
+ base64 -> base64 -> caesar cipher
+
+cat flag.txt | base64 --decode | base64 --decode
+
+take the caesar cipher and decode online
+
+https://www.dcode.fr/caesar-cipher
+
+brute force show shift is by 12
+
+TFN{Z3hqD_x3F_fT3_n4eFmDp5_S3f_K0g_p0iZ}
+

@@ -1,0 +1,15 @@
+Art
+
+Can you find the flag?
+
+ Zip Password: hackthebox sha256: 9ae27f1b71d22cb49f473630699d79d353db49e6b9e6d0a51cfcf268e753b48e
+
+----------------------------------------
+
+art.png
+
+this is a png which is a program for esoteric language piet
+
+https://www.bertnase.de/npiet/npiet-execute.php
+
+

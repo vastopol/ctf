@@ -7,3 +7,110 @@ sha256: 815524fa57f7d8ad3593b1400c26ff7a8424e85b365ccdf815f83a790a444341
 
 ----------------------------------------
 
+in main function
+
+|           0x0040086c      48c745f8700a.  mov qword [s2], str.SuperSeKretKey ; 0x400a70 ; "SuperSeKretKey"
+
+|           0x00400874      c645c041       mov byte [var_40h], 0x41    ; 'A' ; 65
+|           0x00400878      c645c15d       mov byte [var_3fh], 0x5d    ; ']' ; 93
+|           0x0040087c      c645c24b       mov byte [var_3eh], 0x4b    ; 'K' ; 75
+|           0x00400880      c645c372       mov byte [var_3dh], 0x72    ; 'r' ; 114
+|           0x00400884      c645c43d       mov byte [var_3ch], 0x3d    ; '=' ; 61
+|           0x00400888      c645c539       mov byte [var_3bh], 0x39    ; '9' ; 57
+|           0x0040088c      c645c66b       mov byte [var_3ah], 0x6b    ; 'k' ; 107
+|           0x00400890      c645c730       mov byte [var_39h], 0x30    ; '0' ; 48
+|           0x00400894      c645c83d       mov byte [var_38h], 0x3d    ; '=' ; 61
+|           0x00400898      c645c930       mov byte [var_37h], 0x30    ; '0' ; 48
+|           0x0040089c      c645ca6f       mov byte [var_36h], 0x6f    ; 'o' ; 111
+|           0x004008a0      c645cb30       mov byte [var_35h], 0x30    ; '0' ; 48
+|           0x004008a4      c645cc3b       mov byte [var_34h], 0x3b    ; ';' ; 59
+|           0x004008a8      c645cd6b       mov byte [var_33h], 0x6b    ; 'k' ; 107
+|           0x004008ac      c645ce31       mov byte [var_32h], 0x31    ; '1' ; 49
+|           0x004008b0      c645cf3f       mov byte [var_31h], 0x3f    ; '?' ; 63
+|           0x004008b4      c645d06b       mov byte [var_30h], 0x6b    ; 'k' ; 107
+|           0x004008b8      c645d138       mov byte [var_2fh], 0x38    ; '8' ; 56
+|           0x004008bc      c645d231       mov byte [var_2eh], 0x31    ; '1' ; 49
+|           0x004008c0      c645d374       mov byte [var_2dh], 0x74    ; 't' ; 116
+
+
+  char local_28 [20];
+  int local_14;
+  char *local_10;
+
+  local_10 = "SuperSeKretKey";
+  local_48 = 0x41;
+  local_47 = 0x5d;
+  local_46 = 0x4b;
+  local_45 = 0x72;
+  local_44 = 0x3d;
+  local_43 = 0x39;
+  local_42 = 0x6b;
+  local_41 = 0x30;
+  local_40 = 0x3d;
+  local_3f = 0x30;
+  local_3e = 0x6f;
+  local_3d = 0x30;
+  local_3c = 0x3b;
+  local_3b = 0x6b;
+  local_3a = 0x31;
+  local_39 = 0x3f;
+  local_38 = 0x6b;
+  local_37 = 0x38;
+  local_36 = 0x31;
+  local_35 = 0x74;
+
+  // input first password
+  printf("* ");
+  __isoc99_scanf(&DAT_00400a82,local_28);
+  printf("[%s]\n",local_28);
+  local_14 = strcmp(local_28,local_10);
+  if (local_14 != 0) {
+    exit(1);
+  }
+
+  // input second password
+  printf("** ");
+  __isoc99_scanf(&DAT_00400a82,local_28);
+  __s2 = (char *)FUN_0040078d(0x14);
+  iVar1 = strcmp(local_28,__s2);
+  if (iVar1 == 0) {
+    FUN_00400978(&local_48);
+  }
+  return;
+
+
+-----
+
+the first password is "SuperSeKretKey"
+
+the other local data is "A]Kr=9k0=0o0;k1?k81t"
+
+then there is a second password made by srand(time(0))
+basically impossible to reverse
+
+just skip to the final part
+
+the final flag is the encrypted local data
+this decrypted by FUN_00400978
+
+void FUN_00400978(byte *param_1)
+{
+  int i;
+  byte *local_10;
+
+  i = 0;
+  local_10 = param_1;
+  while ((*local_10 != 9 && (i < 0x14))) {
+    putchar((int)(char)(*local_10 ^ 9));
+    local_10 = local_10 + 1;
+    i = i + 1;
+  }
+  putchar(10);
+  return;
+}
+
+xor each char by 9 in python
+
+for char in "A]Kr=9k0=0o0;k1?k81t"
+    print(chr(ord(char) ^ 9), end='')
+

@@ -1,0 +1,20 @@
+Inferno
+
+Find the flag.
+
+Zip Password: hackthebox sha256: b178fc8605169bf0d9fd7ba74cd172a193db867d0057be74b5ad6f103d22dc80
+
+----------------------------------------
+
+the inferno.txt is base64 string
+
+base64 --decode
+
+D'`_$^"7m5X32Vxfvu?1NMpLml$jGFggUdSbb}<{)]xqpunm3qpohmfe+Lbgf_^]#a`Y^WVz=<XWVONrLQJINGkEiIHG)?c&BA:?>=<5Yzy765432+O/.'&%$H(!g%$#z@~}vu;srqvun4Uqjinmle+cKaf_d]#[`_X|\[ZYXWVUTSRQP2NMFKJCBfFE>&<`@9!=<5Y9y7654-,P0/o-,%I)ih~}${A!a}v{t:[Zvo5srTSonmf,jiKg`_dc\"`BXWVzZ<;WVUTMqQP2NGFEiIHGF?>bB$@9]=<;4381Uvu-2+0/('K+*)('~f|B/
+
+dante inferno esoteric language -> malbolge
+
+this a malbolge program
+
+https://zb3.me/malbolge-tools/
+

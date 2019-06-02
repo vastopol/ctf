@@ -1,0 +1,65 @@
+Beatles
+
+John Lennon send a secret message to Paul McCartney about the next music tour of Beatles... Could you find the message and sumbit the flag?
+
+ Zip Password: hackthebox sha256: 709398f12455cf34f084bb1806e0bf8626dc91cf2852b282a48788816f01f3e8
+
+----------------------------------------
+
+
+the m3ss@g#_f0r_pAuL file is a ceasar cipher with shift 13
+decrypt it with rot13
+
+Hey Paul,
+
+My Folder has passphrase with four (4) characters.
+
+Could you fcrack it for me???
+
+I send you a message for our Tour next month...
+
+Don't Share it with other members of our band...
+
+-John Lennon
+
+PS: Peace and Love my friend... Beatles Band for ever!
+
+
+
+fcrackzip -D -u -p rockyou.txt BAND.zip
+
+PASSWORD FOUND!!!!: pw == pass
+
+unzip BAND.ZIP gets BAND.JPG
+
+strings on BAND.JPG
+the very last string is a base64 encrypt
+
+
+VkhKNUlFaGhjbVJsY2lFPQ==
+
+base64 --decode
+
+VHJ5IEhhcmRlciE=
+
+base64 --decode
+
+Try Harder!
+
+this isn't it...
+
+steghide extract -sf BAND.JPG
+
+the password is: THEBEATLES
+
+this extracts an executable program
+
+strings reveals the message
+
+VGhlIHRvdXIgd2FzIGNhbmNlbGVkIGZvciB0aGUgZm9sbG93aW5nIG1vbnRoLi4uIQ0KDQpJJ2xsIGdvIG91dCBmb3IgZGlubmVyIHdpdGggbXkgZ2lybGZyaWVuZCBuYW1lZCBZb2NvISA7KQ0KDQpIVEJ7UzByUnlfTXlfRlIxM25EfQ0K
+
+base64 -decode 
+
+
+
+

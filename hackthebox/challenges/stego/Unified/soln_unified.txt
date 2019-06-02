@@ -1,0 +1,14 @@
+Unified
+
+This file seems to contain innocuous information. What is the true message?
+
+Zip Password: hackthebox sha256: 8cee8ba8e0304cc0796bcc51a8171db0402932a09e793b20cc534574fba8a6ee
+
+----------------------------------------
+
+this is unicode
+
+go to a unicode stego decoder
+
+https://www.irongeek.com/i.php?page=security/unicode-steganography-homoglyph-encoder
+

@@ -8,7 +8,7 @@ STEP 0: get a login
 
 look at the source for the page
 
-there is a file invitepi.js
+there is a file "inviteapi.min.js"
 
 call the makeInviteCode()
 

@@ -1,0 +1,119 @@
+misDIRection
+
+During an assessment of a unix system the HTB team found a suspicious directory. They looked at everything within but couldn't find any files with malicious intent.
+
+ Zip Password: hackthebox sha256: 31e8e4bd7838c4731831ceb5ca42e2b94430c241aea0cf2814ef8e9bd53c5043
+
+ ----------------------------------------
+
+ extract a hidden directory .secret
+
+ there is nothing in it
+
+├── secret
+│   ├── 0
+│   │   └── 6
+│   ├── 1
+│   │   ├── 22
+│   │   └── 30
+│   ├── 2
+│   │   └── 34
+│   ├── 3
+│   ├── 4
+│   ├── 5
+│   │   └── 16
+│   ├── 6
+│   ├── 7
+│   ├── 8
+│   ├── 9
+│   │   └── 36
+│   ├── a
+│   ├── A
+│   ├── b
+│   ├── B
+│   │   └── 23
+│   ├── c
+│   ├── C
+│   │   └── 4
+│   ├── d
+│   │   └── 13
+│   ├── D
+│   │   └── 26
+│   ├── e
+│   │   └── 5
+│   ├── E
+│   │   └── 14
+│   ├── f
+│   ├── F
+│   │   ├── 19
+│   │   ├── 2
+│   │   └── 27
+│   ├── g
+│   ├── G
+│   ├── h
+│   ├── H
+│   ├── i
+│   ├── I
+│   ├── j
+│   │   ├── 10
+│   │   └── 12
+│   ├── J
+│   │   └── 8
+│   ├── k
+│   ├── K
+│   ├── l
+│   ├── L
+│   ├── m
+│   ├── M
+│   ├── n
+│   ├── N
+│   │   ├── 11
+│   │   ├── 25
+│   │   ├── 31
+│   │   └── 33
+│   ├── o
+│   ├── O
+│   ├── p
+│   │   └── 32
+│   ├── P
+│   ├── q
+│   ├── Q
+│   ├── r
+│   ├── R
+│   │   ├── 3
+│   │   └── 7
+│   ├── s
+│   │   └── 24
+│   ├── S
+│   │   └── 1
+│   ├── t
+│   ├── T
+│   ├── u
+│   │   ├── 20
+│   │   └── 28
+│   ├── U
+│   │   └── 9
+│   ├── v
+│   ├── V
+│   │   └── 35
+│   ├── w
+│   ├── W
+│   ├── x
+│   │   └── 15
+│   ├── X
+│   │   ├── 17
+│   │   ├── 21
+│   │   └── 29
+│   ├── y
+│   ├── Y
+│   ├── z
+│   │   └── 18
+│   └── Z
+
+
+folder name is letter, file name is the position
+
+SFRCe0RJUjNjdEx5XzFuX1BsNDFuX1NpN2V9
+
+base64 --decode
+
