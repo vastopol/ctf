@@ -1,0 +1,25 @@
+Starting Nmap 7.01 ( https://nmap.org ) at 2019-07-04 15:21 PDT
+Nmap scan report for 10.10.10.138
+Host is up (0.13s latency).
+Not shown: 998 filtered ports
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.4p1 Debian 10+deb9u6 (protocol 2.0)
+| ssh-hostkey:
+|   2048 dd:53:10:70:0b:d0:47:0a:e2:7e:4a:b6:42:98:23:c7 (RSA)
+|_  256 37:2e:14:68:ae:b9:c2:34:2b:6e:d9:92:bc:bf:bd:28 (ECDSA)
+80/tcp open  http    Apache httpd 2.4.25 ((Debian))
+| http-robots.txt: 1 disallowed entry
+|_/writeup/
+|_http-server-header: Apache/2.4.25 (Debian)
+|_http-title: Nothing here yet.
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+at 10.10.10.138
+
+ascii art by Normand Veilleux
+
+at 10.10.10.138/writeup/
+
+simple webpage
+links to  NetSec Focus Mattermost
+https://mm.netsecfocus.com/login

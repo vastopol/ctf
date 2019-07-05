@@ -70,3 +70,17 @@ https://www.dcode.fr/caesar-cipher
 
 unicode stego
 https://www.irongeek.com/i.php?page=security/unicode-steganography-homoglyph-encoder
+
+
+-----------------
+
+
+elastic search
+
+list all indices:
+    GET /_cat/indices?v
+
+searching:
+    GET localhost:9200/_search?q=query
+
+

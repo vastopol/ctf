@@ -1,0 +1,96 @@
+Nmap scan report for 10.10.10.115
+Host is up (0.15s latency).
+Not shown: 997 filtered ports
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 7.4 (protocol 2.0)
+| ssh-hostkey:
+|   2048 2a:8d:e2:92:8b:14:b6:3f:e4:2f:3a:47:43:23:8b:2b (RSA)
+|_  256 e7:5a:3a:97:8e:8e:72:87:69:a3:0d:d1:00:bc:1f:09 (ECDSA)
+80/tcp   open  http    nginx 1.12.2
+|_http-server-header: nginx/1.12.2
+|_http-title: Site doesn't have a title (text/html).
+9200/tcp open  http    nginx 1.12.2
+| http-methods:
+|_  Potentially risky methods: DELETE
+|_http-server-header: nginx/1.12.2
+|_http-title: Site doesn't have a title (application/json; charset=UTF-8).
+
+
+10.10.10.115:80
+
+needle.jpg
+
+10.10.10.115:9200
+
+{
+  "name" : "iQEYHgS",
+  "cluster_name" : "elasticsearch",
+  "cluster_uuid" : "pjrX7V_gSFmJY-DxP4tCQg",
+  "version" : {
+    "number" : "6.4.2",
+    "build_flavor" : "default",
+    "build_type" : "rpm",
+    "build_hash" : "04711c2",
+    "build_date" : "2018-09-26T13:34:09.098244Z",
+    "build_snapshot" : false,
+    "lucene_version" : "7.4.0",
+    "minimum_wire_compatibility_version" : "5.6.0",
+    "minimum_index_compatibility_version" : "5.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+
+
+hints:
+
+Port 80 isn't worthless, ie hints there
+ELK stack
+database of some kind
+elastic search
+something about the image of the needle
+    when find something interesting search on port 9200
+spanish ?
+access a server, trigger a vulnerability, try using a debugger
+
+for root
+local service, see services running as root for changes
+pivot from initial shell to another user
+whats on the box -> documented -> vuln/exploit
+see whats running as root
+enumerate what you're allowed to do -> configs
+the higher port/service works as a db and may contains something useful.
+
+HTTP requesting:
+trying to use the GET with elastic search to query database
+
+messages:
+
+GET 10.10.10.115:9200/_search?q=
+needle || haystack
+
+{"took":22,"timed_out":false,"_shards":{"total":11,"successful":11,"skipped":0,"failed":0},"hits":{"total":1,"max_score":5.427053,"hits":[{"_index":"quotes","_type":"quote","_id":"2","_score":5.427053,"_source":{"quote":"There's a needle in this haystack, you have to search for it"}}]}}
+
+
+spanish quotes:
+
+GET 10.10.10.115:9200/_search?q=
+hay,base,a,b,c,d,e,h,i,n,o,s,u,v,w,x,y,2,3,5
+
+
+bank emails:
+many queries will have them, no passwords yet though
+
+GET 10.10.10.115:9200/_search?q=
+*,f,m,0,1,4,6,7,8,9,
+
+
+list indices:
+
+GET http://10.10.10.115:9200/_cat/indices?v
+
+health status index   uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   .kibana 6tjAYZrgQ5CwwR0g6VOoRg   1   0          1            0        4kb            4kb
+yellow open   quotes  ZG2D1IqkQNiNZmi2HRImnQ   5   1        253            0    262.7kb        262.7kb
+yellow open   bank    eSVpNfCfREyYoVigNWcrMw   5   1       1000            0    483.2kb        483.2kb
+
+

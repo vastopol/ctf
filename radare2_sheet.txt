@@ -19,7 +19,7 @@ inside of the program:
     print a disassembled function
     pdf @ function_name
 
-    seek a specific function or ddress
+    seek a specific function or address
     s name_or_address
 
     write to an address

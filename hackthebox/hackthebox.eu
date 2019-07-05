@@ -1,12 +1,12 @@
-Hack The Box
+Hack The Box Scorecard
 
-RANK: noob
+RANK: Script Kiddie
 
 ----------------------------------------
 
 MACHINES:
 
-* Netmon
+* Netmon (Retired)
     * user.txt
 
 ----------------------------------------
@@ -18,11 +18,12 @@ CHALLENGES:
     * Impossible Password
 
 * Stego : 3/10
+    * Unified (Retired)
     * Da Vinci
     * Beatles
-    * Unified
 
-* Misc : 8/9
+
+* Misc : 8/10
     * fs0ciety
     * 0ld is g0ld
     * Art
