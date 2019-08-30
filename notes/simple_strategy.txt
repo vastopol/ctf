@@ -22,6 +22,18 @@
     for buffer overflow find amount of input needed to overwrite buffer and change the eip
     always check the buffer size, see if there is a gets or a strcpy with no checks
 
+* debugging
+    exploit
+
+    want to redirect to system and call it with bin/sh as argument.
+    need to find system's location in memory.
+    need to find where the string for the shell is stored in environment variables
+
+    in gdb
+    print &system
+    print $environ
+
+
 * crypto
     base64
     rot13
@@ -83,4 +95,13 @@ list all indices:
 searching:
     GET localhost:9200/_search?q=query
 
+
+-----
+
+gdb redirect
+
+info functions
+print & fun
+set $ rip = <addr>
+c
 

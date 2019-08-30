@@ -1,0 +1,18 @@
+DSYM
+
+Try to add me and you will notme
+
+Zip Password: hackthebox
+sha256: f6744f21e3fda705a06aeb33fbb51b467d82945706c0b3865868d93a055be476
+
+----------------------------------------
+
+run the executable getme
+there are 2 functions
+main() is basically empty and exits.
+notme() prints out a message
+
+You almost got me :D
+Here is small price for you: 55474f7b6c30685f65333479796c5f7430675f7a337d
+
+hex decode -> rot13

@@ -1,0 +1,52 @@
+toolbox
+
+Disassemblers:
+objdump
+radare2
+
+etc:
+gdb
+hexedit
+strings
+readelf
+kdump
+
+other stuff on internet
+
+compiler explorer
+https://godbolt.org/
+
+assembler:
+m2elf
+irasm
+nasm shell
+asmx
+
+disassemblers/decompilers:
+
+ida (free version)
+hex-rays (ida plugin, cost big $$)
+https://www.hex-rays.com/
+
+hopper (free version)
+
+snowman
+
+retdec
+https://retdec.com/
+
+r2dec (radare2)
+https://github.com/wargio/r2dec-js
+
+radeco (radare2)
+https://github.com/radareorg/radeco
+
+---------
+
+javap -  java class file disassembler
+
+javah - generate c source and header files from a java file
+
+jdb - java debugger
+
+opal - java byte cdoe disassembler

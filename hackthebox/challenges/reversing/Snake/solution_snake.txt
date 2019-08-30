@@ -80,14 +80,13 @@ Good Job
 
 ----------------------------------------
 
-this challenge is stupid
 
-keys is the password and chains is just random trash added to the  end
+keys is the password and chains is just random trash added to the end
 it will print Good Job since the first part is correct then it breaks out.
 
 actually
 username: anaconda
-passowrd: udvvrjwa$$
+password: udvvrjwa$$
 
 Flag should be in the format: HTB{username:password}
 

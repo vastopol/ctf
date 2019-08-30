@@ -4,7 +4,7 @@ RANK: Script Kiddie
 
 ----------------------------------------
 
-MACHINES:
+MACHINES: 1
 
 * Netmon (Retired)
     * user.txt
@@ -13,17 +13,17 @@ MACHINES:
 
 CHALLENGES:
 
-* Reversing : 2/10
+* Reversing: 3
     * Snake
     * Impossible Password
+    * DSYM
 
-* Stego : 3/10
-    * Unified (Retired)
+* Stego: 3
+    * Unified
     * Da Vinci
-    * Beatles
+    * Beatles (Retired)
 
-
-* Misc : 8/10
+* Misc: 8
     * fs0ciety
     * 0ld is g0ld
     * Art

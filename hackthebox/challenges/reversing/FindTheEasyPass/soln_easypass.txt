@@ -17,3 +17,14 @@ sub_454070
 this is where the check is ?
 
 probably array of size 10
+
+----------
+
+using ollydbg
+
+nop this to get to the good job message
+
+00454136     75 0C          JNZ SHORT EasyPass.00454144
+
+
+

@@ -14,12 +14,23 @@ PORT   STATE SERVICE VERSION
 |_http-title: Nothing here yet.
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
-at 10.10.10.138
+enumeration
+    http://10.10.10.138/
+    http://10.10.10.138/robots.txt
+    http://10.10.10.138/writeup
+    http://10.10.10.138/writeup/admin
 
-ascii art by Normand Veilleux
+wappalyzer on writeup dir
+http://10.10.10.138/writeup
 
-at 10.10.10.138/writeup/
+    CMS
+        CMS Made Simple
+    Web Server
+        Apache2.4.25
+    Programming Language
+        PHP
+    Operating System
+        Debian
 
-simple webpage
-links to  NetSec Focus Mattermost
-https://mm.netsecfocus.com/login
+admin login interface
+http://10.10.10.138/writeup/admin

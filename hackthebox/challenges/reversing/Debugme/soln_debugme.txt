@@ -1,0 +1,103 @@
+Debugme
+
+A develper is experiementing with different ways to protect their software.
+They have sent in a windows binary that is suposed to super secureand really hard to debug. Debug and see if you can find the flag.
+
+Zip Password: hackthebox
+sha256: 101a7625cae64e8d17b83443b1b8f453a5af5014ada93e9e4b1418e306d3c394
+
+----------------------------------------
+
+run the exe
+
+I heard you like bugs so I put bugs in your debugger so you can have bugs while you debug!!!
+Seriously though try and find the flag, you will find it in your debugger!!!
+
+GDB functions
+
+0x00401620  main
+0x0040163b  G
+0x00401680  d
+0x00401694  n
+0x004016c1  lol
+0x004016cc  yaya
+0x004016e6  lala
+0x004016f8  dsfghtgf
+0x00401712  ertrwe
+0x0040172c  kjnjk
+0x0040173e  qsacb
+0x00401758  tftrtftc
+0x00401772  sup
+0x00401788  l
+
+IDA main
+
+.text:00401620
+.text:00401620 ; int __cdecl main(int argc, const char **argv, const char **envp)
+.text:00401620                 public _main
+.text:00401620 _main:                                  ; CODE XREF: ___tmainCRTStartup+2C3↑p
+.text:00401620                                         ; DATA XREF: _mainCRTStartup_0+6A↓o
+.text:00401620                 or      ebp, edx
+.text:00401622                 mov     ecx, 8E6D9C6Dh
+.text:00401627                 cmp     ch, bh
+.text:00401629                 insb
+.text:0040162A                 pop     esp
+.text:0040162B                 pop     esp
+.text:0040162C                 pop     esp
+.text:0040162D                 setalc
+.text:0040162E                 sbb     al, 5Eh
+.text:00401630                 aam     9Eh
+.text:00401632                 pusha
+.text:00401633                 pop     esp
+.text:00401634                 sub     [esi], edx
+.text:00401636                 mov     ch, 5Ch
+.text:00401638                 pop     esp
+.text:00401639                 pop     esp
+.text:0040163A                 pop     esp
+.text:0040163B
+.text:0040163B _G:
+.text:0040163B                 insd
+.text:0040163C                 pushf
+.text:0040163D                 insd
+.text:0040163D ; ---------------------------------------------------------------------------
+.text:0040163E                 dw 388Eh
+.text:00401640                 dd 5C5C6CFDh, 341CD65Ch, 5C609ED4h, 6D536E29h, 50D9FD5h
+.text:00401640                 dd 0A375A35Dh, 955D020Ah, 20A9575h, 0A375A35Dh, 955D050Dh
+.text:00401640                 dd 0A35D9575h, 20AA375h, 84756D53h, 5C5FB461h, 0B559235Ch
+.text:00401640                 dd 5C5C5C48h
+.text:00401680 _d              dd 1CCC5C34h, 333EB45Ch, 98DD5C5Ch, 5C5C5C58h, 9F01B0D5h
+.text:00401694 _n              dd 1CCC6934h, 3312B45Ch, 98DD5C5Ch, 5C5C5C58h, 1CCCCF34h
+.text:00401694                 dd 3362B45Ch, 98DD5C5Ch, 5C5C5C58h, 71E49C6Dh, 0C367962h
+.text:00401694                 dd 5C5C5CB5h
+.text:004016C0                 db 5Ch
+.text:004016C1 _lol            db 71h, 0A0h, 75h
+.text:004016C4                 dd 0B50C0A50h, 5C5C5C5Ch
+.text:004016CC _yaya           dd 1D1D1D79h, 6262791Dh, 71E46262h, 71367962h, 15A147A8h
+.text:004016CC                 dd 5C5CB50Ch
+.text:004016E4                 db 2 dup(5Ch)
+.text:004016E6 _lala           dw 9C6Dh
+.text:004016E8                 dd 796271E4h, 78A37136h, 0B50C774Dh, 5C5C5C5Ch
+.text:004016F8 _dsfghtgf       dd 1D1D1D79h, 6262791Dh, 71E46262h, 71367962h, 2455C58h
+.text:004016F8                 dd 5C5CB50Ch
+.text:00401710                 db 2 dup(5Ch)
+.text:00401712 _ertrwe         dw 1D79h
+.text:00401714                 dd 791D1D1Dh, 62626262h, 796271E4h, 8A115936h, 0B50C51B5h
+.text:00401714                 dd 5C5C5C5Ch
+.text:0040172C _kjnjk          dd 71E49C6Dh, 71367962h, 775C6845h, 5C5CB50Ch
+.text:0040173C                 db 2 dup(5Ch)
+.text:0040173E _qsacb          dw 1D79h
+.text:00401740                 dd 791D1D1Dh, 62626262h, 796271E4h, 405A7136h, 0B50C625Ch
+.text:00401740                 dd 5C5C5C5Ch
+.text:00401758 _tftrtftc       dd 1D1D1D79h, 6262791Dh, 71E46262h, 71367962h, 1EF65952h
+.text:00401758                 dd 5C5CB50Ch
+.text:00401770                 db 2 dup(5Ch)
+.text:00401772 _sup            dw 208h
+.text:00401774                 dd 0ABD58E6Dh, 0E5A0A6D5h, 5C5C5C78h, 5C5C17E7h, 0C9C6D5Ch
+.text:00401788 _l              dd 0F6846DF0h, 0B0D5A6BEh
+.text:00401790                 db 1
+.text:00401791 ; ---------------------------------------------------------------------------
+.text:00401791
+.text:00401791 loc_401791:                             ; DATA XREF: _mainCRTStartup_0+73↓o
+.text:00401791                 lahf
+.text:00401792                 xchg    ax, ax
+.text:00401794

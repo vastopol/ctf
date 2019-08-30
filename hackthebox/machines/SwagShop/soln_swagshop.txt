@@ -1,19 +1,59 @@
+https://leetvilu.blogspot.com/2019/06/write-up-on-htb-swagshop.html
+https://www.reddit.com/r/hackthebox/comments/boyxts/swagshop/
+
 Nmap scan report for 10.10.10.140
-Host is up (0.11s latency).
-Not shown: 997 closed ports
-PORT      STATE    SERVICE VERSION
-22/tcp    open     ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey:
 |   2048 b6:55:2b:d2:4e:8f:a3:81:72:61:37:9a:12:f6:24:ec (RSA)
 |_  256 2e:30:00:7a:92:f0:89:30:59:c1:77:56:ad:51:c0:ba (ECDSA)
-80/tcp    open     http    Apache httpd 2.4.18 ((Ubuntu))
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+|_http-favicon: Unknown favicon MD5: 88733EE53676A47FC354A61C32516E82
+| http-methods:
+|_  Supported Methods: GET HEAD POST OPTIONS
 |_http-server-header: Apache/2.4.18 (Ubuntu)
 |_http-title: Home page
-34572/tcp filtered unknown
+5810/tcp  filtered unknown
+10025/tcp filtered unknown
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
-
+http://10.10.10.140/app/
+http://10.10.10.140/lib/
+http://10.10.10.140/var/
+http://10.10.10.140/media/
 http://10.10.10.140/index.php/
+http://10.10.10.140/index.php/admin
 
 © 2014 Magento Demo Store. All Rights Reserved.
+
+
+* wappalyzer on index page
+
+    Ecommerce
+        Magento
+    JavaScript Framework
+        Prototype1.7
+    Font Script
+        Google Font API
+    Programming Language
+        PHP
+    Database
+        MySQL
+    JavaScript Libraries
+        Modernizr2.6.2
+        jQuery1.10.2
+        script.aculo.us
+
+* look for Magento on exploitdb to modify and use
+
+    Magento eCommerce - Remote Code Execution
+    https://www.exploit-db.com/exploits/37977
+
+* login at 10.10.10.140/index.php/admin
+    Magento Admin Panel
+    Magento ver. 1.9.0.0
+
+
+
 
