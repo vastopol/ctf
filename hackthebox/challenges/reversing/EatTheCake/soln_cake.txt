@@ -1,0 +1,20 @@
+Eat The Cake
+
+Find the password (say PASS) and enter the flag in the form HTB{PASS}
+
+Zip Password: hackthebox sha256: bd2efc7a1b23885d88d401b2a1fa1d4b307f6efcd76ee0a7d9486f0a8b06e586
+
+----------------------------------------
+
+unpack with upx
+
+interesting function at 0x401350
+
+after print challenge banner it wants 2 passwords
+
+Please enter the 10-digit password (Only numbers and capital letters):
+Please enter the 15-digit password (Only numbers and capital letters):
+
+the first seems not to matter, can be anything of size 1 to 10
+the second must be 15 chars
+

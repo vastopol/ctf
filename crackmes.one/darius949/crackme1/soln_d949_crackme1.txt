@@ -1,0 +1,37 @@
+Language: Assembler
+Level: 2
+Platform: Unix/linux etc.
+Description:
+This crackme has been imported from crackmes.de.
+The original author is darius949.
+The password of the archive is "crackmes.de"
+
+----------------------------------------
+
+unzip the file gives crackme1.tgz
+
+file crackme1.tgz
+crackme1.tgz: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-, for GNU/Linux 2.6.15, BuildID[sha1]=16545ada66bc4750755fb3fb488b7906a177c771, not stripped
+
+chmod +x crackme1.tgz
+
+./crackme1.tgz
+
+it asks for name and serial number, displays a message if correct or not
+
+name: "Donnez votre nom:"
+code: "Donnez le no de serie:"
+
+pass: "Vous avez craque le no de serie"
+fail: "Vous n'etes pas autorise, le no de serie est incorrect"
+
+patched by overwrite jump in main
+
+at address 0x08048696 in main
+    je 0x80486b0
+
+change to
+    jmp 0x80486b0
+
+now always prints message
+

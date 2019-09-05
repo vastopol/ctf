@@ -1,0 +1,21 @@
+You Can Do It!
+
+The flag is in the format HTB{plaintext}
+
+Zip Password: hackthebox sha256: 3f416e9d3962a45c13894a31bef91e2007ae04443de987f338810c0f8c8bf178
+
+----------------------------------------
+
+YHAOANUTDSYOEOIEUTTC!
+
+caesar box cipher -> transposition ciphers
+
+brute force
+https://www.dcode.fr/caesar-box-cipher
+
+box width 7
+
+YOUSEETHATYOUCANDOIT·
+
+change the . to !
+

@@ -18,7 +18,7 @@ this is where the check is ?
 
 probably array of size 10
 
-----------
+----------------------------------------
 
 using ollydbg
 

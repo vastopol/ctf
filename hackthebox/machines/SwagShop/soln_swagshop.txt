@@ -27,9 +27,7 @@ http://10.10.10.140/index.php/admin
 
 © 2014 Magento Demo Store. All Rights Reserved.
 
-
 * wappalyzer on index page
-
     Ecommerce
         Magento
     JavaScript Framework
@@ -55,5 +53,7 @@ http://10.10.10.140/index.php/admin
     Magento ver. 1.9.0.0
 
 
+http://10.10.10.140/js/
+SYNTAX: index.php/x.js?f=dir1/file1.js,dir2/file2.js
 
 

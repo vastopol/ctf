@@ -79,7 +79,7 @@ in main function
   return;
 
 
------
+----------------------------------------
 
 the first password is "SuperSeKretKey"
 
@@ -109,8 +109,10 @@ void FUN_00400978(byte *param_1)
   return;
 }
 
-xor each char by 9 in python
+----------------------------------------
 
-for char in "A]Kr=9k0=0o0;k1?k81t"
-    print(chr(ord(char) ^ 9), end='')
+# xor each char by 9
+crypt = "A]Kr=9k0=0o0;k1?k81t"
+for c in crypt:
+    print(chr(ord(c) ^ 9), end='')
 
