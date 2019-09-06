@@ -1,0 +1,45 @@
+Challenge: jumpjumpjump
+Author: cbm-hackers
+Level: 2
+Language: C/C++
+Platform: Unix/linux etc.
+Description:
+Another simple but tricky crackme.... enjoy!!
+
+----------------------------------------
+
+rev03: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/l, for GNU/Linux 3.2.0, BuildID[sha1]=9d23fcc7b9cf9c42f809d46f50ccc249de567cc6, not stripped
+
+2 interesting fuctions
+
+main()
+strcat_str()
+
+in main after the user input received it checks size of char* with strlen
+must be less than 11 chars long or will cause fail
+
+cmp rax, 0xb
+jbe 0x122f
+
+next loops over the string constructing a value from the chars at 124f
+
+|     .---> 0x00001238      8b45e8         mov eax, dword [var_18h]
+|     :||   0x0000123b      4898           cdqe
+|     :||   0x0000123d      0fb6840570ff.  movzx eax, byte [rbp + rax - 0x90]
+|     :||   0x00001245      0fbec0         movsx eax, al
+|     :||   0x00001248      0145ec         add dword [var_14h], eax
+|     :||   0x0000124b      8345e801       add dword [var_18h], 1
+|     :||   ; CODE XREF from main @ 0x1236
+|     :|`-> 0x0000124f      8b45e8         mov eax, dword [var_18h]
+|     :|    0x00001252      4863d8         movsxd rbx, eax
+|     :|    0x00001255      488d8570ffff.  lea rax, [s]
+|     :|    0x0000125c      4889c7         mov rdi, rax                ; const char *s
+|     :|    0x0000125f      e8ecfdffff     call sym.imp.strlen         ; size_t strlen(const char *s)
+|     :|    0x00001264      4839c3         cmp rbx, rax
+|     `===< 0x00001267      72cf           jb 0x1238
+|      |    0x00001269      817dece80300.  cmp dword [var_14h], 0x3e8
+|      |,=< 0x00001270      755f           jne 0x12d1
+
+
+patching 2 spots in the binary reveals the flag
+

@@ -1,5 +1,7 @@
-Language: Assembler
+Challenge: crackme1
+Author: darius949
 Level: 2
+Language: Assembler
 Platform: Unix/linux etc.
 Description:
 This crackme has been imported from crackmes.de.
