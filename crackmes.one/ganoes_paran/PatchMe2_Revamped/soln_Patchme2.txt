@@ -1,0 +1,89 @@
+Chalenge: patchme2_revamped
+Author: ganoes_paran
+Language: C/C++
+Level: 1
+Platform: Windows
+Description:
+This crackme has been imported from crackmes.de.
+The original author is ganoes_paran.
+The password of the archive is "crackmes.de"
+
+----------------------------------------
+
+functions:
+
+* main function @ fcn.004011b0
+* message bubble function @ fcn.00401460
+* popup box function @ fcn.004014d0
+* patch detection function @ fcn.00401580
+* killer function caller @ fcn.004019ff
+* unknown check function @ fcn.004016a0
+* mystery function @ fcn.00401140
+* ostream stuff @ fcn.00401860
+* lock flush @ fcn.00401730
+
+----------------------------------------
+
+calls:
+
+* popup box 1 && 3
+
+    * 0x00401265      e866020000     call fcn.004014d0
+    * 0x00401373      e858010000     call fcn.004014d0
+
+* message bubble 2 && 4
+
+    * 0x004012ec      e86f010000     call fcn.00401460
+    * 0x00401394      e8c7000000     call fcn.00401460
+
+* jump to killer function in fcn.004019ff
+
+|           0x004019ff      3b0d00404000   cmp ecx, dword [section..data] ; [0x404000:4]=0xbb40e64e ; "N\xe6@\xbb\xb1\x19\xbfD\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff\x01"
+|       ,=< 0x00401a05      7502           jne 0x401a09
+|       |   0x00401a07      f3c3           ret
+|       |   ; CODE XREF from fcn.004019ff @ 0x401a05
+\      ,`-> 0x00401a09      e968030000     jmp loc.00401d76
+
+jump to loc.00401d76 code kills debuggers
+NOP @ 0x00401a05 to return
+
+* patch detection check after main screen prints
+
+|           0x00401449      833d80434000.  cmp dword [0x404380], 0     ; [0x404380:4]=0
+|       ,=< 0x00401450      7405           je 0x401457
+|       |   0x00401452      e829010000     call fcn.00401580
+
+change to unconditional jump after check
+JMP @ 0x00401450
+
+----------------------------------------
+
+patches:
+
+* overwrite the beginning of main to jump over the first 4 nags and checks
+
+    s 0x004011b3
+    wa jmp 0x00401437
+    Written 5 byte(s) (jmp 0x00401437) = wx e97f020000
+
+|     ```-> 0x00401437      6820344000     push str.If_you_manage_eliminate_the_nags_before_and_after_this_window__congratulations__you_did_it_____Write_a_tutorial_if_you_did_it____otherwise_try_again ; 0x403420 ; "If you manage eliminate the nags before and after this window, congratulations! you did it!\n\tWrite a tutorial if you did it =) otherwise try again!"
+|           0x0040143c      6824334000     push str.This_is_the_Main_Window ; 0x403324 ; "This is the Main Window"
+|           0x00401441      e88a000000     call fcn.004014d0
+
+
+* overwrite instruction after prints main screen to jump to terminate
+
+    s 0x00401446
+    wa jmp 0x00401e68
+    Written 5 byte(s) (jmp 0x00401e68) = wx e91d0a0000
+
+
+|       `-> 0x00401e68      68090400c0     push 0xc0000409             ; HANDLE hProcess
+|           0x00401e6d      ff1514304000   call dword [sym.imp.KERNEL32.dll_GetCurrentProcess] ; 0x403014 ; HANDLE GetCurrentProcess(void)
+|           0x00401e73      50             push eax                    ; UINT uExitCode
+|           0x00401e74      ff1534304000   call dword [sym.imp.KERNEL32.dll_TerminateProcess] ; 0x403034 ; BOOL TerminateProcess(HANDLE hProcess, UINT uExitCode)
+|           0x00401e7a      c9             leave
+\           0x00401e7b      c3             ret
+
+
+* now prints only main screen with no nags and clean exit

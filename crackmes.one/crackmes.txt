@@ -2,9 +2,13 @@
  Unless the author explicitely said that patching is a valid solution, don't do it.
  Write your keygen, write your solution.
 
+specifically search for "patch" to find patchmes
+
 Completed:
     * cbm-hackers - rev03
+    * ganoes_paran - PatchMe2-Revamped
 
  Unfinished:
     * darius949 - crackme1
     * qhf - asm_is_fun
+
