@@ -4,11 +4,24 @@
 
 specifically search for "patch" to find patchmes
 
-Completed:
-    * cbm-hackers - rev03
-    * ganoes_paran - PatchMe2-Revamped
+----------------------------------------
+
+Completed: 3
+
+    * cbm-hackers
+        * easy_reverse
+        * jumpjumpjump
+
+    * ganoes_paran
+        * patchme2_revamped
+
+----------------------------------------
 
  Unfinished:
-    * darius949 - crackme1
-    * qhf - asm_is_fun
+
+    * darius949
+        * crackme1 (patched, but not reversed)
+
+    * qhf
+        * asm_is_fun
 

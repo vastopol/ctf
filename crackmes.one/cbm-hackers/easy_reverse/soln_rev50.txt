@@ -1,0 +1,33 @@
+Challenge: easy_reverse
+Author: cbm-hackers
+Level: 1
+Language: C/C++
+Platform: Unix/linux etc.
+Description:
+an easy crackme
+
+----------------------------------------
+
+checks size of password is 10 chars
+
+|       |   0x000011e7      e854feffff     call sym.imp.strlen         ; size_t strlen(const char *s)
+|       |   0x000011ec      4883f80a       cmp rax, 0xa
+
+
+load string and check
+
+|      ||   0x000011f2      488b45f0       mov rax, qword [s]
+|      ||   0x000011f6      4883c008       add rax, 8
+|      ||   0x000011fa      488b00         mov rax, qword [rax]
+|      ||   0x000011fd      4883c004       add rax, 4
+|      ||   0x00001201      0fb600         movzx eax, byte [rax]
+|      ||   0x00001204      3c40           cmp al, 0x40                ; segment.PHDR
+
+loads char**
+then get char*
+move pointer forward 4 positions in array
+grab char from begining of pointer
+char is 0x40 '@'
+
+password can be any string of format where '@' is 5th char
+str = XXXX@XXXXX
