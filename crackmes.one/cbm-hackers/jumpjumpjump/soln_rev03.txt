@@ -41,5 +41,35 @@ next loops over the string constructing a value from the chars at 124f
 |      |,=< 0x00001270      755f           jne 0x12d1
 
 
-patching 2 spots in the binary reveals the flag
+After the loop it will compare the value in var_14h to a constant
+the sum of all the bytes in the string should be 0x3e8 (1000)
+
+cmp dword [var_14h], 0x3e8
+jne 0x12d1
+
+
+'d'*10 == hex(0x3e8)
+enter a string with 10 d's "dddddddddd"
+
+print  $rbp-0x14
+$3 = (void *) 0x7fffffffdc4c
+
+print * 0x7fffffffdc4c
+$4 = 0x3f2
+
+this is because the string includes the extra newline at the end.
+
+so there must be 9 letters followed by a newline which is exactly 0x3e8
+
+'z'*7 + 'D'*2 + 0xa
+
+int32   1000
+uint32  1000
+hex     0x3e8
+
+so the magic string is "zzzzzzzDD\n"
+
+then it will print the flag
+
+flag is flag{!#&*/5<DMW}
 

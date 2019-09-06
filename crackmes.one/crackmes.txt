@@ -2,8 +2,9 @@
  Unless the author explicitely said that patching is a valid solution, don't do it.
  Write your keygen, write your solution.
 
- unfinished:
-    * darius949 - crackme1
+Completed:
     * cbm-hackers - rev03
+
+ Unfinished:
+    * darius949 - crackme1
     * qhf - asm_is_fun
-    
