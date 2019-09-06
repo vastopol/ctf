@@ -1,0 +1,54 @@
+Bastion
+OS:	 Windows
+IP:	10.10.10.134
+
+PORT    STATE SERVICE      VERSION
+22/tcp  open  ssh          OpenSSH for_Windows_7.9 (protocol 2.0)
+| ssh-hostkey:
+|   2048 3a:56:ae:75:3c:78:0e:c8:56:4d:cb:1c:22:bf:45:8a (RSA)
+|_  256 cc:2e:56:ab:19:97:d5:bb:03:fb:82:cd:63:da:68:01 (ECDSA)
+135/tcp open  msrpc        Microsoft Windows RPC
+139/tcp open  netbios-ssn  Microsoft Windows 98 netbios-ssn
+445/tcp open  microsoft-ds Microsoft Windows Server 2008 R2 microsoft-ds
+Service Info: OSs: Windows, Windows 98, Windows Server 2008 R2; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_98, cpe:/o:microsoft:windows_server_2008:r2
+
+Host script results:
+| smb-os-discovery:
+|   OS: Windows Server 2016 Standard 14393 (Windows Server 2016 Standard 6.3)
+|   Computer name: Bastion
+|   NetBIOS computer name: BASTION
+|   Workgroup: WORKGROUP
+|_  System time: 2019-09-06T03:38:06+02:00
+| smb-security-mode:
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+|_smbv2-enabled: Server supports SMBv2 protocol
+
+----------------------------------------
+
+windows null session exploit ?
+ports 135, 139, 445 are vulnerable
+
+
+* smbclient -L 10.10.10.134
+
+
+OS=[Windows Server 2016 Standard 14393] Server=[Windows Server 2016 Standard 6.3]
+
+	Sharename       Type      Comment
+	---------       ----      -------
+	ADMIN$          Disk      Remote Admin
+	Backups         Disk
+	C$              Disk      Default share
+	IPC$            IPC       Remote IPC
+Connection to 10.10.10.134 failed (Error NT_STATUS_RESOURCE_NAME_NOT_FOUND)
+NetBIOS over TCP disabled -- no workgroup available
+
+
+login to the smb thing:
+
+smbclient //10.10.10.134/Backups
+
+smbclient //10.10.10.134/IPC$

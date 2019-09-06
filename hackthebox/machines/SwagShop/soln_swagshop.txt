@@ -18,16 +18,17 @@ PORT   STATE SERVICE VERSION
 10025/tcp filtered unknown
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
-http://10.10.10.140/app/
-http://10.10.10.140/lib/
-http://10.10.10.140/var/
-http://10.10.10.140/media/
-http://10.10.10.140/index.php/
-http://10.10.10.140/index.php/admin
+* Enumeration:
+    http://10.10.10.140/app/
+    http://10.10.10.140/lib/
+    http://10.10.10.140/var/
+    http://10.10.10.140/media/
+    http://10.10.10.140/index.php/
+    http://10.10.10.140/index.php/admin
+    http://10.10.10.140/js/
+        SYNTAX: index.php/x.js?f=dir1/file1.js,dir2/file2.js
 
-© 2014 Magento Demo Store. All Rights Reserved.
-
-* wappalyzer on index page
+* Wappalyzer on index page:
     Ecommerce
         Magento
     JavaScript Framework
@@ -43,17 +44,22 @@ http://10.10.10.140/index.php/admin
         jQuery1.10.2
         script.aculo.us
 
-* look for Magento on exploitdb to modify and use
+* look for Magento on exploitdb to find script to modify and use
 
     Magento eCommerce - Remote Code Execution
     https://www.exploit-db.com/exploits/37977
+
+    forme:forme
 
 * login at 10.10.10.140/index.php/admin
     Magento Admin Panel
     Magento ver. 1.9.0.0
 
+* webshell to upload
+    php reverse shell
+    http://pentestmonkey.net/tools/web-shells/php-reverse-shell
 
-http://10.10.10.140/js/
-SYNTAX: index.php/x.js?f=dir1/file1.js,dir2/file2.js
+* rce magento script
+    https://www.exploit-db.com/exploits/37811
 
-
+privilege escalation with vi ?

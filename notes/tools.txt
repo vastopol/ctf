@@ -50,3 +50,5 @@ javah - generate c source and header files from a java file
 jdb - java debugger
 
 opal - java byte cdoe disassembler
+
+metasploit - msfconsole
