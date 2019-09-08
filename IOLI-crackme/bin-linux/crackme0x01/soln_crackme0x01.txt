@@ -1,0 +1,17 @@
+crackme0x01
+Password: 5274
+
+----------------------------------------
+
+this can be found by loading it into a disassembler and looking at main
+at line 0x0804842b the input from scanf is compared to 0x149a which is 5274 in decimal
+the password must be entered in decimal format or it will not work.
+
+|           0x08048426      e8e1feffff     call sym.imp.scanf          ; int scanf(const char *format)
+|           0x0804842b      817dfc9a1400.  cmp dword [var_4h], 0x149a
+|       ,=< 0x08048432      740e           je 0x8048442
+
+inside of main at address 0x08048432 there is the "je 0x8048442" after the "cmp dword [local_4h], 0x149a"
+the input from scanf is compared against this value before the jump, if they are equal then it succeeds
+this is the part which jumps to the printing password ok message if the input was correct.
+changing this to an unconditional jump instruction "jmp 0x8048442" will change the executable to always print password ok.

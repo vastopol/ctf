@@ -1,0 +1,59 @@
+crackme0x03
+Password: 338724
+
+----------------------------------------
+
+main calls test
+test calls shift twice
+
+* extract password in main
+
+    |           0x080484da      e851feffff     call sym.imp.scanf          ; int scanf(const char *format)
+    |           0x080484df      c745f85a0000.  mov dword [var_8h], 0x5a    ; 'Z' ; 90
+    |           0x080484e6      c745f4ec0100.  mov dword [var_ch], 0x1ec   ; 492
+    |           0x080484ed      8b55f4         mov edx, dword [var_ch]
+    |           0x080484f0      8d45f8         lea eax, [var_8h]
+    |           0x080484f3      0110           add dword [eax], edx
+    |           0x080484f5      8b45f8         mov eax, dword [var_8h]
+    |           0x080484f8      0faf45f8       imul eax, dword [var_8h]
+    |           0x080484fc      8945f4         mov dword [var_ch], eax
+    |           0x080484ff      8b45f4         mov eax, dword [var_ch]
+    |           0x08048502      89442404       mov dword [var_4h_2], eax
+    |           0x08048506      8b45fc         mov eax, dword [var_4h]
+    |           0x08048509      890424         mov dword [esp], eax
+    |           0x0804850c      e85dffffff     call sym.test
+
+
+    0x5a + 0x1ec = 0x246
+    0x246 * 0x246 = 0x52b24
+    338724
+
+
+* patch test
+
+    |   sym.test (int32_t arg_8h, uint32_t arg_ch);
+    |           ; arg int32_t arg_8h @ ebp+0x8
+    |           ; arg uint32_t arg_ch @ ebp+0xc
+    |           ; CALL XREF from main @ 0x804850c
+    |           0x0804846e      55             push ebp
+    |           0x0804846f      89e5           mov ebp, esp
+    |           0x08048471      83ec08         sub esp, 8
+    |           0x08048474      8b4508         mov eax, dword [arg_8h]
+    |           0x08048477      3b450c         cmp eax, dword [arg_ch]
+    |       ,=< 0x0804847a      740e           je 0x804848a
+    |       |   0x0804847c      c70424ec8504.  mov dword [esp], str.Lqydolg_Sdvvzrug ; [0x80485ec:4]=0x6479714c ; "Lqydolg#Sdvvzrug$"
+    |       |   0x08048483      e88cffffff     call sym.shift
+    |      ,==< 0x08048488      eb0c           jmp 0x8048496
+    |      ||   ; CODE XREF from sym.test @ 0x804847a
+    |      |`-> 0x0804848a      c70424fe8504.  mov dword [esp], str.Sdvvzrug_RN ; [0x80485fe:4]=0x76766453 ; "Sdvvzrug#RN$$$#=,"
+    |      |    0x08048491      e87effffff     call sym.shift
+    |      |    ; CODE XREF from sym.test @ 0x8048488
+    |      `--> 0x08048496      c9             leave
+    \           0x08048497      c3             ret
+
+    test has 2 encrypted strings
+    Lqydolg#Sdvvzrug$ -> Invalid Password!
+    Sdvvzrug#RN$$$#=, -> Password OK!!! :)
+
+    patching 0x0804847a to be jmp 0x804848a forces correct message
+

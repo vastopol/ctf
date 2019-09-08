@@ -1,0 +1,16 @@
+crackme0x00
+Password: 250382
+
+----------------------------------------
+
+this can be found by running strings on the executable or by loading it into a disassembler and looking at main
+
+|           0x0804845e      c74424048f85.  mov dword [s2], str.250382  ; [0x804858f:4]=0x33303532 ; "250382" ; const char *s2
+|           0x08048466      890424         mov dword [esp], eax        ; const char *s1
+|           0x08048469      e8e2feffff     call sym.imp.strcmp         ; int strcmp(const char *s1, const char *s2)
+|           0x0804846e      85c0           test eax, eax
+|       ,=< 0x08048470      740e           je 0x8048480
+
+inside of the main function at address 0x08048470 is the "jz short loc_8048480" after the "test eax, eax"
+this will jump to the part which prints out the password ok message if the user input is correct.
+modifying this to an unconditional jump instruction "jmp short loc_8048480" will change the executable to always print password ok.

@@ -1,0 +1,32 @@
+crackme0x02
+Password: 338724
+
+----------------------------------------
+
+this can be found by loading it into a disassembler and looking at main
+after the call to scanf values are put into local variables then moved to eax and edx
+
+0x0804842b  mov dword [local_8h], 0x5a
+0x08048432  mov dword [local_ch], 0x1ec
+0x08048439  mov edx, dword [local_ch]
+0x0804843c  lea eax, [local_8h]
+
+next the values are added together, 0x5a + 0x1ec = 582
+
+0x0804843f  add dword [eax], edx
+
+the result is put into eax and multiplied with itself squaring the value, 582 * 582 = 338724
+
+0x08048441      8b45f8         mov eax, dword [local_8h]
+0x08048444      0faf45f8       imul eax, dword [local_8h]
+
+this is the value compared against the user input before the jump not equal, the branch must be false to get the password ok message
+
+0x0804844e  cmp eax, dword [local_ch]
+0x08048451  jne 0x8048461
+
+the correct password message is at location 0x8048453 so then changing the jump to go there will be successful
+
+can do this 2 ways:
+1. changing the "jne 0x8048461" to "nop" will make the program always print the password ok message before it exits
+2. changing the "jne 0x8048461" to "jmp 0x08048453" will make the program goto the password ok message before it exits

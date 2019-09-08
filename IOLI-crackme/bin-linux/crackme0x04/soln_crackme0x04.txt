@@ -1,0 +1,74 @@
+crackme0x04
+Password: 111111111111111
+
+----------------------------------------
+
+main calls check
+
+* patch check function
+
+    |       :   0x0804849b      890424         mov dword [esp], eax        ; const char *s
+    |       :   0x0804849e      e8e1feffff     call sym.imp.strlen         ; size_t strlen(const char *s)
+    |       :   0x080484a3      3945f4         cmp dword [var_ch], eax
+    |      ,==< 0x080484a6      7353           jae 0x80484fb
+
+
+    changing the jump after the check on strlen to always go to the correct message
+
+    s 0x080484a6
+    wa jmp 0x080484dc
+
+* extract password from the check function
+
+    |           0x0804848a      c745f8000000.  mov dword [var_8h], 0
+    |           0x08048491      c745f4000000.  mov dword [var_ch], 0
+    |           ; CODE XREF from sym.check @ 0x80484f9
+    |       .-> 0x08048498      8b4508         mov eax, dword [s]
+    |       :   0x0804849b      890424         mov dword [esp], eax        ; const char *s
+    |       :   0x0804849e      e8e1feffff     call sym.imp.strlen         ; size_t strlen(const char *s)
+    |       :   0x080484a3      3945f4         cmp dword [var_ch], eax
+    |      ,==< 0x080484a6      7353           jae 0x80484fb
+    |      |:   0x080484a8      8b45f4         mov eax, dword [var_ch]
+    |      |:   0x080484ab      034508         add eax, dword [s]
+    |      |:   0x080484ae      0fb600         movzx eax, byte [eax]
+    |      |:   0x080484b1      8845f3         mov byte [var_dh], al
+    |      |:   0x080484b4      8d45fc         lea eax, [var_4h]
+    |      |:   0x080484b7      89442408       mov dword [var_8h_2], eax   ;   ...
+    |      |:   0x080484bb      c74424043886.  mov dword [format], 0x8048638 ; [0x8048638:4]=0x50006425 ; const char *format
+    |      |:   0x080484c3      8d45f3         lea eax, [var_dh]
+    |      |:   0x080484c6      890424         mov dword [esp], eax        ; const char *s
+    |      |:   0x080484c9      e8d6feffff     call sym.imp.sscanf         ; int sscanf(const char *s, const char *format,   ...)
+    |      |:   0x080484ce      8b55fc         mov edx, dword [var_4h]
+    |      |:   0x080484d1      8d45f8         lea eax, [var_8h]
+    |      |:   0x080484d4      0110           add dword [eax], edx
+    |      |:   0x080484d6      837df80f       cmp dword [var_8h], 0xf
+    |     ,===< 0x080484da      7518           jne 0x80484f4
+    |     ||:   0x080484dc      c704243b8604.  mov dword [esp], str.Password_OK ; [0x804863b:4]=0x73736150 ; "Password OK!\n" ; const char *format
+    |     ||:   0x080484e3      e8acfeffff     call sym.imp.printf         ; int printf(const char *format)
+    |     ||:   0x080484e8      c70424000000.  mov dword [esp], 0          ; int status
+    |     ||:   0x080484ef      e8c0feffff     call sym.imp.exit           ; void exit(int status)
+    |     ||:   ; CODE XREF from sym.check @ 0x80484da
+    |     `---> 0x080484f4      8d45f4         lea eax, [var_ch]
+    |      |:   0x080484f7      ff00           inc dword [eax]
+    |      |`=< 0x080484f9      eb9d           jmp 0x8048498
+    |      |    ; CODE XREF from sym.check @ 0x80484a6
+    |      `--> 0x080484fb      c70424498604.  mov dword [esp], str.Password_Incorrect ; [0x8048649:4]=0x73736150 ; "Password Incorrect!\n" ; const char *format
+    |           0x08048502      e88dfeffff     call sym.imp.printf         ; int printf(const char *format)
+    |           0x08048507      c9             leave
+    \           0x08048508      c3             ret
+
+
+    format string '%d'
+    var_ch is a counter
+    var_4h is int return from sscanf
+    var_8h is a accumulator
+    the result of sscanf stored in var_4h is added each iteration
+    var_4h + var8h == 0xf is condition for pass
+
+    0x80484c9 <check+69>:	call   0x80483a4 <sscanf@plt>
+    0x80484ce <check+74>:	mov    edx,DWORD PTR [ebp-0x4]
+    0x80484d1 <check+77>:	lea    eax,[ebp-0x8]
+    0x80484d4 <check+80>:	add    DWORD PTR [eax],edx
+    0x80484d6 <check+82>:	cmp    DWORD PTR [ebp-0x8],0xf
+
+    this means the password is the number 1 fifteen times
