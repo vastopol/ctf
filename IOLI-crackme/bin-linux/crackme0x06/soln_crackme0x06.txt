@@ -1,0 +1,119 @@
+crackme0x06
+Password: sum of digits is 16, and sum of digits is even
+Run code: LOLO="something" ./crackme0x06
+
+----------------------------------------
+
+main calls check
+check calls dummy
+
+* patching
+
+    * in check
+        call to strlen, jmp after cmp
+        change cmp to goto calling parell
+
+        |       :   0x080485a2      e801feffff     call sym.imp.strlen         ; size_t strlen(const char *s)
+        |       :   0x080485a7      3945f4         cmp dword [var_ch], eax
+        |      ,==< 0x080485aa      734d           jae 0x80485f9
+
+        s 0x080485aa
+        wa jmp 0x080485e0
+
+    * in parell
+        this function calls dummy which needs to be patched also
+        nop the call, nop the test, change the jump to goto the print out
+
+        |           0x08048547      e868ffffff     call sym.dummy
+        |           0x0804854c      85c0           test eax, eax
+        |       ,=< 0x0804854e      7436           je 0x8048586
+
+        s 0x08048547
+        wa nop
+        s 0x0804854c
+        wa nop
+        s 0x0804854e
+        wa jmp 0x08048567
+
+* extract the password and environment variable
+
+    * in check
+        it loops over input and adds the integer value of characters
+        this breaks out of loop after 16 been read
+
+    * in parell
+        calls dummy with integer value of the string
+        the return value of dummy needs to be 0
+        this will then fail the test and fall through the jump
+
+        |           0x08048535      e88efeffff     call sym.imp.sscanf         ; int sscanf(const char *s, const char *format,   ...)
+        |           0x0804853a      8b450c         mov eax, dword [arg_ch]
+        |           0x0804853d      89442404       mov dword [format], eax
+        |           0x08048541      8b45fc         mov eax, dword [var_4h]
+        |           0x08048544      890424         mov dword [esp], eax
+        |           0x08048547      e868ffffff     call sym.dummy
+        |           0x0804854c      85c0           test eax, eax
+        |       ,=< 0x0804854e      7436           je 0x8048586
+
+
+    * in dummy
+        need eax + edx == 0 to return the 0
+        for this to happen dummy needs to find "LOLO" in the environment variables
+        once the variable LOLO is found strncmp is true and dummy returns 0
+        can use debugger to modify memory to have variable at runtime
+        or else create the variable on command line when starting
+
+        |   sym.dummy (char **s1);
+        |           ; var int32_t var_8h @ ebp-0x8
+        |           ; var int32_t var_4h @ ebp-0x4
+        |           ; arg char **s1 @ ebp+0xc
+        |           ; var char *s2 @ esp+0x4
+        |           ; var size_t *n @ esp+0x8
+        |           ; CALL XREF from sym.parell @ 0x8048547
+        |           0x080484b4      55             push ebp
+        |           0x080484b5      89e5           mov ebp, esp
+        |           0x080484b7      83ec18         sub esp, 0x18
+        |           0x080484ba      c745fc000000.  mov dword [var_4h], 0
+        |           ; CODE XREF from sym.dummy @ 0x8048503
+        |       .-> 0x080484c1      8b45fc         mov eax, dword [var_4h]
+        |       :   0x080484c4      8d1485000000.  lea edx, [eax*4]
+        |       :   0x080484cb      8b450c         mov eax, dword [s1]
+        |       :   0x080484ce      833c0200       cmp dword [edx + eax], 0
+        |      ,==< 0x080484d2      743a           je 0x804850e
+        |      |:   0x080484d4      8b45fc         mov eax, dword [var_4h]
+        |      |:   0x080484d7      8d0c85000000.  lea ecx, [eax*4]
+        |      |:   0x080484de      8b550c         mov edx, dword [s1]
+        |      |:   0x080484e1      8d45fc         lea eax, [var_4h]
+        |      |:   0x080484e4      ff00           inc dword [eax]
+        |      |:   0x080484e6      c74424080300.  mov dword [n], 3            ; size_t n
+        |      |:   0x080484ee      c74424043887.  mov dword [s2], str.LOLO    ; [0x8048738:4]=0x4f4c4f4c ; "LOLO" ; const char *s2
+        |      |:   0x080484f6      8b0411         mov eax, dword [ecx + edx]
+        |      |:   0x080484f9      890424         mov dword [esp], eax        ; const char *s1
+        |      |:   0x080484fc      e8d7feffff     call sym.imp.strncmp        ; int strncmp(const char *s1, const char *s2, size_t n)
+        |      |:   0x08048501      85c0           test eax, eax
+        |      |`=< 0x08048503      75bc           jne 0x80484c1
+        |      |    0x08048505      c745f8010000.  mov dword [var_8h], 1
+        |      |,=< 0x0804850c      eb07           jmp 0x8048515
+        |      ||   ; CODE XREF from sym.dummy @ 0x80484d2
+        |      `--> 0x0804850e      c745f8000000.  mov dword [var_8h], 0
+        |       |   ; CODE XREF from sym.dummy @ 0x804850c
+        |       `-> 0x08048515      8b45f8         mov eax, dword [var_8h]
+        |           0x08048518      c9             leave
+        \           0x08048519      c3             ret
+
+
+        edx is being used as a pointer to the base of the environment variables, it holds the char** s1
+        ecx is being used as index into array of environment variables
+
+        EDX: 0xffffceec --> 0xffffd107 ("XDG_VTNR=7")
+
+        p &environ
+        $24 = (<data variable, no debug info> *) 0xf7fa0dbc <environ>
+
+        p environ
+        $25 = 0xffffceec
+
+        p *environ
+        $26 = 0xffffd107
+
+

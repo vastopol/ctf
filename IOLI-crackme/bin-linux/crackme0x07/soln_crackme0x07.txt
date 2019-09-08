@@ -1,0 +1,33 @@
+crackme0x07
+Password: sum of digits is 16, and sum of digits is even
+Run code: LOLO="something" ./crackme0x07
+
+----------------------------------------
+
+stripped file
+crackme0x07: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-, for GNU/Linux 2.6.9, stripped
+
+calls:
+
+    main --> fcn.080485b9
+    fcn.080485b9 --> fcn.08048542 and fcn.08048524
+    fcn.08048542 --> fcn.080484b4
+
+functions:
+
+    fcn.080485b9 = first check
+    fcn.080484b4 = check for LOLO
+    fcn.08048542 = print password ok
+    fcn.08048524 = print incorrect password
+
+* patching
+
+    in fcn.080485b9
+
+        s 0x080485db
+        wa jmp 0x08048611
+
+    in fcn.08048542
+
+        s 0x08048548
+        wa jmp 0x08048598

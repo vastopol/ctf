@@ -1,7 +1,6 @@
 IOLI_Crackme
 
-Only the Linux elf binaries so far
-
+Only the Linux elf binaries
 The goal is not only just to extract the password,
 but to patch the files so that they always say "Password OK :)"
 
@@ -11,3 +10,27 @@ Completed:
     * crackme0x02
     * crackme0x03
     * crackme0x04
+    * crackme0x05
+    * crackme0x06
+    * crackme0x07
+    * crackme0x08
+    * crackme0x09
+
+Note1:
+    some of the crackmes have multiple keys that work:
+        * crackme0x04 == sum of digits is 15
+        * crackme0x05 - crackme0x09 == sum of digits is 16, and sum of digits is even
+
+Note2:
+    I solved crackme0x05 in an unusual way.
+    The check needs strings where:
+        * the integer representation of the string is even
+        * the sum of the characters in the string is 16
+    I based my solution on crackme0x04 where I added '1' fifteen times.
+    I saw a similar structure to the crackme0x004 and used that knowledge
+    I didn't think of trying to use other strings which add to 16
+    I also didn't realize the AND EAX, 1; TEST EAX, EAX was a check if divisible by 2 for evens
+    That is why i did format sting attacks targeting the sscanf
+    It stops on a null byte early when it writes to the string buffer
+
+    my key: 0\01111111111111111

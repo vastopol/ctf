@@ -1,0 +1,44 @@
+crackme0x09
+Password: sum of digits is 16, and sum of digits is even
+Run code: LOLO="something" ./crackme0x09
+
+----------------------------------------
+
+stripped
+crackme0x09: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-, for GNU/Linux 2.6.9, stripped
+
+functions:
+
+    main -- 0x080486ee
+    fcn.08048766 = mov ebx, dword [esp]
+    fcn.08048616 = check 1
+    fcn.08048589 = print prints wtf? || password ok
+    fcn.0804855d = print incorrect password
+    fcn.080484d4 = check 2 - LOLO
+
+calls:
+
+    main -> fcn.08048766 and fcn.08048616
+    fcn.08048766 -> ret
+    fcn.08048616 -> fcn.08048766 and fcn.08048589 and fcn.0804855d
+    fcn.08048589 -> fcn.08048766; fcn.080484d4; exit
+    fcn.0804855d -> fcn.08048766; exit
+    fcn.080484d4 -> fcn.08048766; exit
+
+
+* patching
+
+    initially wont show the incorrect password message if correct password but no LOLO variable
+
+    ebx is being used as a pointer to the top of the stack
+    this is used for variables like the strings
+
+    * in fcn.08048616
+
+        s 0x08048644
+        wa jmp 0x0804867c
+
+    * in fcn.08048589
+
+        s 0x080485c4
+        wa jmp 0x080485ef

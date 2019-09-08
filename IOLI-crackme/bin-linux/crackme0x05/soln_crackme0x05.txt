@@ -1,0 +1,70 @@
+crackme0x05
+Password: sum of digits is 16, and sum of digits is even
+
+----------------------------------------
+
+main calls check
+check calls parell
+parell prints the message
+
+* patch check function
+
+    need to jump to the part which calls parell
+
+    |       :   0x080484e2      e89dfeffff     call sym.imp.strlen         ; size_t strlen(const char *s)
+    |       :   0x080484e7      3945f4         cmp dword [var_ch], eax
+    |      ,==< 0x080484ea      7346           jae 0x8048532
+
+    s 0x080484ea
+    wa jmp 0x08048520
+
+* patch parell function
+
+    stop the jump over the print message
+
+    |           0x080484aa      85c0           test eax, eax
+    |       ,=< 0x080484ac      7518           jne 0x80484c6
+    |       |   0x080484ae      c704246b8604.  mov dword [esp], str.Password_OK ; [0x804866b:4]=0x73736150 ; "Password OK!\n" ; const char *format
+    |       |   0x080484b5      e8dafeffff     call sym.imp.printf         ; int printf(const char *format)
+
+    s 0x080484ac
+    wa jmp 0x080484ae
+
+* extract password
+
+    * in check
+        loops over string adding the chars
+        needs to get a 0x10 == 16 when summing the sscanf(%d) of each character
+        so password starts with string of at least 16 ones
+
+        |      |:   0x0804851a      837df810       cmp dword [var_8h], 0x10
+        |     ,===< 0x0804851e      750b           jne 0x804852b
+        |     ||:   0x08048520      8b4508         mov eax, dword [s]
+        |     ||:   0x08048523      890424         mov dword [esp], eax
+        |     ||:   0x08048526      e859ffffff     call sym.parell
+
+    * in parell
+        loads the int representation of the string in eax
+        '1' * 16 -> 0x7fffffff
+        anding with 0x1 makes a 0x1
+
+        |           0x0804849f      e800ffffff     call sym.imp.sscanf
+        |           0x080484a4      8b45fc         mov eax, dword [var_4h]
+        |           0x080484a7      83e001         and eax, 1
+        |           0x080484aa      85c0           test eax, eax
+        |       ,=< 0x080484ac      7518           jne 0x80484c6
+
+
+        initially the check function looks at the individual chars in the string
+        just needs 16 ones at any point, all other chars don't increment counter
+        careful string crafting will allow this to be subverted in parell
+        during the call to the sscanf function the format string should be targeted
+        it uses %d string to write the integer value of string into var_4h
+        the c string functions stop reading on null bytes
+        "0" + 0x00 + "1111111111111111"
+        so need a zero in the var_4h so that when anded with 0x1 it will be 0x0
+        this will fail the test and fall through the jump
+
+        0\01111111111111111
+
+        pretty much works with any escape sequence

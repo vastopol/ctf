@@ -1,0 +1,30 @@
+crackme0x08
+Password: sum of digits is 16, and sum of digits is even
+Run code: LOLO="something" ./crackme0x08
+
+----------------------------------------
+
+calls:
+
+    main -> check
+    check -> parell and che
+    parell -> dummy
+    dummy
+
+functions:
+
+    main
+    check = password check 1
+    dummy = check LOLO
+    che = print incorrect password
+    parell = print password ok
+
+* patching
+
+    in check
+        s 0x080485db
+        wa jmp 0x08048611
+
+    in parell
+        s 0x08048548
+        wa jmp 0x08048598

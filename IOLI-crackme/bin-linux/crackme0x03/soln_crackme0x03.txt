@@ -52,8 +52,12 @@ test calls shift twice
     \           0x08048497      c3             ret
 
     test has 2 encrypted strings
-    Lqydolg#Sdvvzrug$ -> Invalid Password!
-    Sdvvzrug#RN$$$#=, -> Password OK!!! :)
+    Lqydolg#Sdvvzrug$  -->  Invalid Password!
+    Sdvvzrug#RN$$$#=,  -->  Password OK!!! :)
+
+    the encrypred strings are basically a caesar cipher with shift 3
+    Lqydolg#Sdvvzrug$  -->  Invalid#Password$
+    Sdvvzrug#RN$$$#=,  -->  Password#OK$$$#=,
 
     patching 0x0804847a to be jmp 0x804848a forces correct message
 

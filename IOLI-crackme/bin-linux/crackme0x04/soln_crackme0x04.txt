@@ -1,5 +1,5 @@
 crackme0x04
-Password: 111111111111111
+Password: sum of digits is 15
 
 ----------------------------------------
 
@@ -71,4 +71,4 @@ main calls check
     0x80484d4 <check+80>:	add    DWORD PTR [eax],edx
     0x80484d6 <check+82>:	cmp    DWORD PTR [ebp-0x8],0xf
 
-    this means the password is the number 1 fifteen times
+    this means the password is the number fifteen
