@@ -4,16 +4,19 @@ RANK: Script Kiddie
 
 ----------------------------------------
 
-MACHINES: 1
+MACHINES: 2
 
 * Netmon (Retired)
+    * user.txt
+    
+* Haystack
     * user.txt
 
 ----------------------------------------
 
 CHALLENGES:
 
-* Crypto
+* Crypto: 1
     * You Can Do It!
 
 * Reversing: 3

