@@ -1,0 +1,55 @@
+Websites:
+
+    https://anthonyh45.github.io
+    https://anthonyh45.github.io/content/index.html
+    https://github.com/AnthonyH45/anthonyh45.github.io/tree/master/content
+
+    base64 string in site pages
+
+        VHJ5IGNoZWNraW5nIHRoZSBjb250ZW50cyBmb2xkZXIgOik=
+        Try checking the contents folder :)
+
+    get strings from photos
+
+        anthony.jpg
+            dGhlIG51bWJlciAxMyBpcyB1c2VmdWw=
+            the number 13 is useful
+
+        belltower1.jpg
+        belltower2.jpg
+        chungpatio.jpg
+            Tm9wZSwgbm90IHRoaXMgaW1hZ2Uh
+            Nope, not this image!
+
+        nightroad.jpg
+            WE9SIGlzIGFsc28gdXNlZnVs
+            XOR is also useful
+
+        sunset.jpg
+            aHR0cHM6Ly90aW55dXJsLmNvbS95M2xlcXpiOA==
+            https://tinyurl.com/y3leqzb8 (file downloader link)
+
+        sunset2.jpg
+            Tm8gaGludCBoZXJlLCBidXQgaXNuJ3QgdGhpcyBhIG5pY2UgcGljdHVyZSE=
+            No hint here, but isn't this a nice picture!
+
+File:
+
+    whatami: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/l, for GNU/Linux 3.2.0, BuildID[sha1]=d1f8d1fd69f830d994d9ce29548b95527bb1fe18, not stripped
+
+Functions:
+
+    void callMe();      -> print flag
+    void dontCallMe();  -> exit()
+
+Flag:
+
+    ]J^vy=jRW>Rjx<)Rg9`RwaR<kjR}j~Rx=N>RERlZ=A_\p
+
+Decode
+
+    xor13
+    PGS{t0g_Z3_gu1$_j4m_zl_1fg_pgs_u0C3_H_aW0LRQ}
+
+    rot13
+    CTF{g0t_M3_th1$_w4z_my_1st_ctf_h0P3_U_nJ0YED}
