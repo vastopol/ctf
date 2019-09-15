@@ -49,7 +49,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
     Magento eCommerce - Remote Code Execution
     https://www.exploit-db.com/exploits/37977
 
-    forme:forme
+    yourmom:yourmom
 
 * login at 10.10.10.140/index.php/admin
     Magento Admin Panel
@@ -63,3 +63,14 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
     https://www.exploit-db.com/exploits/37811
 
 privilege escalation with vi ?
+
+
+found a compromised homepage. some one overwrote the home page
+
+learned how to put code into the index.php
+using system -> configuration -> design
+then out code into the misc HTML part that goes at the header/footer
+
+
+index.php Uncaught ReferenceError: require is not defined
+

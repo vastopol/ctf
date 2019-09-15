@@ -1,0 +1,29 @@
+PORT    STATE SERVICE       VERSION
+80/tcp  open  http          Microsoft IIS httpd 10.0
+| http-methods:
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/10.0
+| http-title: Support Login Page
+|_Requested resource was login.php
+135/tcp open  msrpc         Microsoft Windows RPC
+445/tcp open  microsoft-ds?
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_smbv2-enabled: Server supports SMBv2 protocol
+
+enumeration
+
+access:
+http://10.10.10.149/login.php
+http://10.10.10.149/errorpage.php
+http://10.10.10.149/issues.php
+http://10.10.10.149/attachments/config.txt
+
+403 errors:
+http://10.10.10.149/attachments/
+http://10.10.10.149/js
+
+support login page
+issues page has config download
+
