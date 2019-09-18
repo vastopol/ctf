@@ -27,13 +27,79 @@ code: "Donnez le no de serie:"
 pass: "Vous avez craque le no de serie"
 fail: "Vous n'etes pas autorise, le no de serie est incorrect"
 
-patched by overwrite jump in main
+----------------------------------------
 
-at address 0x08048696 in main
-    je 0x80486b0
+solve:
 
-change to
-    jmp 0x80486b0
+char[0..n] name;
+int serial = name[0] + 2*name[1] + 2*name[2] + ... + 2*name[n]
 
-now always prints message
+"a"   = 97
 
+"aa"  = 291 (a * 3)
+'a' + 2*'a'
+
+"aaa" = 485 (a * 5)
+'a' + 2*'a' + 2*'a'
+
+"abc" = 491
+'a' + 2*'b' + 2*'c'
+
+"efgh" = 719
+'e' + 2*'f' + 2*'g' + 2*'h'
+
+----------------------------------------
+
+Donnez votre nom:
+Donnez le no de serie:0
+c=0
+Vous avez craque le no de serie
+
+Donnez votre nom:a
+Donnez le no de serie:97
+c=97
+Vous avez craque le no de serie
+
+Donnez votre nom:hello
+Donnez le no de serie:960
+c=960
+Vous avez craque le no de serie
+
+----------------------------------------
+
+summing the characters in name
+
+.text:08048617                 mov     ds:c, 0
+.text:08048621                 mov     dword ptr [esp+1Ch], 0
+.text:08048629                 jmp     short loc_804865E
+.text:0804862B loc_804862B:                            ; CODE XREF: main+10C↓j
+.text:0804862B                 mov     eax, [esp+1Ch]
+.text:0804862F                 movzx   eax, ds:nom[eax]
+.text:08048636                 movsx   edx, al
+.text:08048639                 mov     eax, ds:c
+.text:0804863E                 add     edx, eax
+.text:08048640                 mov     eax, [esp+1Ch]
+.text:08048644                 add     eax, 1
+.text:08048647                 movzx   eax, ds:nom[eax]
+.text:0804864E                 movsx   eax, al
+.text:08048651                 lea     eax, [edx+eax]
+.text:08048654                 mov     ds:c, eax
+.text:08048659                 add     dword ptr [esp+1Ch], 1
+.text:0804865E
+.text:0804865E loc_804865E:                            ; CODE XREF: main+C5↑j
+.text:0804865E                 mov     ebx, [esp+1Ch]
+.text:08048662                 mov     dword ptr [esp], offset nom
+.text:08048669                 call    _strlen
+.text:0804866E                 cmp     ebx, eax
+.text:08048670                 jb      short loc_804862B
+
+
+# compare sum to serial and jump to print if correct
+
+.text:08048689                 mov     edx, ds:c
+.text:0804868F                 mov     eax, ds:serial
+.text:08048694                 cmp     edx, eax
+.text:08048696                 jz      short loc_80486B0
+                                ...
+.text:080486B0                 mov     dword ptr [esp], offset aVousAvezCraque ; "Vous avez craque le no de serie"
+.text:080486B7                 call    _puts

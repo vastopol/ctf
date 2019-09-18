@@ -1,0 +1,76 @@
+
+main calls 2 functions
+
+systemv will initialize some variables
+|           0x000009d4      c745fc050000.  mov dword [var_4h], 5
+|           0x000009db      c745f8070000.  mov dword [var_8h], 7
+|           0x000009e2      c745f4f50100.  mov dword [var_ch], 0x1f5
+
+systemo does math and then takes user input and compares it
+
+var4 = 5 --> (5+7) --> 12
+var8 = 7
+varch = (45 * 12) --> 540
+var10 = 0  <-- set to user input
+
+cmp var10 and varch and both should be 540
+
+----------------------------------------
+
+|   int main (int argc, char **argv, char **envp);
+|           ; DATA XREF from entry0 @ 0x8bd
+|           0x00000a8d      55             push rbp
+|           0x00000a8e      4889e5         mov rbp, rsp
+|           0x00000a91      e83affffff     call sym systemv()          ; sym.systemv
+|           0x00000a96      e851ffffff     call sym systemo()          ; sym.systemo
+|           0x00000a9b      b800000000     mov eax, 0
+|           0x00000aa0      5d             pop rbp
+\           0x00000aa1      c3             ret
+
+|   sym.systemv ();
+|           ; var int32_t var_ch @ rbp-0xc
+|           ; var int32_t var_8h @ rbp-0x8
+|           ; var int32_t var_4h @ rbp-0x4
+|           ; CALL XREF from main @ 0xa91
+|           0x000009d0      55             push rbp
+|           0x000009d1      4889e5         mov rbp, rsp
+|           0x000009d4      c745fc050000.  mov dword [var_4h], 5
+|           0x000009db      c745f8070000.  mov dword [var_8h], 7
+|           0x000009e2      c745f4f50100.  mov dword [var_ch], 0x1f5
+|           0x000009e9      90             nop
+|           0x000009ea      5d             pop rbp
+\           0x000009eb      c3             ret
+
+
+|   sym.systemo ();
+|           ; var int32_t var_10h @ rbp-0x10
+|           ; var uint32_t var_ch @ rbp-0xc
+|           ; var int32_t var_8h @ rbp-0x8
+|           ; var int32_t var_4h @ rbp-0x4
+|           ; CALL XREF from main @ 0xa96
+|           0x000009ec      55             push rbp
+|           0x000009ed      4889e5         mov rbp, rsp
+|           0x000009f0      4883ec10       sub rsp, 0x10
+|           0x000009f4      8b45f8         mov eax, dword [var_8h]
+|           0x000009f7      0145fc         add dword [var_4h], eax
+|           0x000009fa      8b45fc         mov eax, dword [var_4h]
+|           0x000009fd      6bc02d         imul eax, eax, 0x2d
+|           0x00000a00      8945f4         mov dword [var_ch], eax
+|           0x00000a03      c745f0000000.  mov dword [var_10h], 0
+|           0x00000a0a      488d35740100.  lea rsi, str.Password:      ; 0xb85 ; "Password: "
+|           0x00000a11      488d3d681720.  lea rdi, obj.std::cout      ; 0x202180
+|           0x00000a18      e843feffff     call sym std::basic_ostream<char, std::char_traits<char> >& std::operator<< ...
+|           0x00000a1d      488d45f0       lea rax, [var_10h]
+|           0x00000a21      4889c6         mov rsi, rax
+|           0x00000a24      488d3d351620.  lea rdi, obj.std::cin       ; sym..bss
+|           0x00000a2b      e840feffff     call sym std::istream::operator>>(int&) ; sym.std::istream::operator___int
+|           0x00000a30      8b45f0         mov eax, dword [var_10h]
+|           0x00000a33      3b45f4         cmp eax, dword [var_ch]
+|       ,=< 0x00000a36      752a           jne 0xa62
+|       |   0x00000a38      488d35510100.  lea rsi, str.Good_password  ; 0xb90 ; "Good password"
+|       |   0x00000a3f      488d3d3a1720.  lea rdi, obj.std::cout      ; 0x202180
+|       |   0x00000a46      e815feffff     call sym std::basic_ostream<char, std::char_traits<char> >& std::operator<< ...
+            ..........
+            ..........
+
+
