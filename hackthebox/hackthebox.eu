@@ -8,9 +8,10 @@ MACHINES: 2
 
 * Netmon (Retired)
     * user.txt
-    
+
 * Haystack
     * user.txt
+    * root.txt
 
 ----------------------------------------
 

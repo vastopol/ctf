@@ -27,3 +27,8 @@ http://10.10.10.149/js
 support login page
 issues page has config download
 
+config.txt
+
+    unix md5 hash
+    $1$pdQG$o8nrSzsGXeaduXrjlvKc91
+

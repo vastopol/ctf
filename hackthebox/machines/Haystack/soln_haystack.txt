@@ -1,3 +1,5 @@
+https://shouitw.blogspot.com/2019/09/hack-box-writeup-writeup.html
+
 Nmap scan report for 10.10.10.115
 Host is up (0.15s latency).
 Not shown: 997 filtered ports
@@ -199,4 +201,8 @@ uid=994(kibana) gid=992(kibana) grupos=992(kibana) contexto=system_u:system_r:un
 LOGSTASH
 
 /etc/logstash/conf.d
+
+----------------------------------------
+
+found the root flag in /tmp
 
