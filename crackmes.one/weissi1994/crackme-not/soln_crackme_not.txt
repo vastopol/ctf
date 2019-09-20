@@ -1,0 +1,116 @@
+
+first enter name (8 chars truncated)
+then enter password
+can enter upto 32 byte
+
+0x402073 is start of section..bss:
+0x00402094 is loc.welcome
+"Hello " get stored at 0x402094 and gets concated with first 8 chars of name
+password gets stored at start of bss
+
+checks if char of password (excluding \n)
+and char of name+5 are equal
+where char + 5 == char 5 positions down on ascii table
+
+it does this for the length of the password
+so password can be 1 letter
+
+if name is chars,
+'a'     -->  'f'
+"abcd"  -->  "fghi"
+
+if name is numbers,
+1     -->  6
+1234  -->  6789
+
+
+pseudocode for password check loop:
+
+        ...
+        r15 = pw_size-1
+    loc._start.l1
+        r14 = r15 + 5
+        al = byte [r14 + loc.welcome] + 5
+        cmp al, byte [r15 + 0x402073]
+        jne loc._start.wrong
+        dec r15
+        jne loc._start.l1
+        ...
+        success
+        ...
+    loc._start.wrong
+        ...
+
+----------------------------------------
+
+|   entry0 ();
+|           0x00401000      b801000000     mov eax, 1                  ; [02] -r-x section size 301 named .text
+|           0x00401005      bf01000000     mov edi, 1
+|           0x0040100a      48be00204000.  movabs rsi, loc.msg         ; 0x402000 ; "Please enter your name: "
+|           0x00401014      ba19000000     mov edx, 0x19               ; 25
+|           0x00401019      0f05           syscall
+|           0x0040101b      b800000000     mov eax, 0
+|           0x00401020      bf00000000     mov edi, 0
+|           0x00401025      48be74204000.  movabs rsi, loc.buf         ; 0x402074
+|           0x0040102f      ba20000000     mov edx, 0x20               ; 32
+|           0x00401034      0f05           syscall
+|           0x00401036      4883f800       cmp rax, 0
+|       ,=< 0x0040103a      0f8cd4000000   jl loc._start.error
+|       |   0x00401040      4989c6         mov r14, rax
+|       |   0x00401043      4983c606       add r14, 6
+|       |   0x00401047      488b04251920.  mov rax, qword [loc.hello]  ; [0x402019:8]=0x4500206f6c6c6548 ; "Hello "
+|       |   0x0040104f      488904259420.  mov qword [loc.welcome], rax ; [0x402094:8]=0
+|       |   0x00401057      488b04257420.  mov rax, qword [loc.buf]    ; [0x402074:8]=0
+|       |   0x0040105f      488904259a20.  mov qword [0x40209a], rax   ; [0x40209a:8]=0
+|       |   0x00401067      b801000000     mov eax, 1
+|       |   0x0040106c      bf01000000     mov edi, 1
+|       |   0x00401071      48be94204000.  movabs rsi, loc.welcome     ; 0x402094
+|       |   0x0040107b      4c89f2         mov rdx, r14
+|       |   0x0040107e      0f05           syscall
+|       |   0x00401080      b801000000     mov eax, 1
+|       |   0x00401085      bf01000000     mov edi, 1
+|       |   0x0040108a      48be20204000.  movabs rsi, loc.prompt      ; 0x402020 ; "Enter your Password: "
+|       |   0x00401094      ba16000000     mov edx, 0x16               ; 22
+|       |   0x00401099      0f05           syscall
+|       |   0x0040109b      b800000000     mov eax, 0
+|       |   0x004010a0      bf00000000     mov edi, 0
+|       |   0x004010a5      48be74204000.  movabs rsi, loc.buf         ; 0x402074
+|       |   0x004010af      ba20000000     mov edx, 0x20               ; 32
+|       |   0x004010b4      0f05           syscall
+|       |   0x004010b6      4989c7         mov r15, rax
+|       |   0x004010b9      49ffcf         dec r15
+|       |   ;-- _start.l1:
+|       |   ; CODE XREF from entry0 @ 0x4010d8
+|      .--> 0x004010bc      4d89fe         mov r14, r15
+|      :|   0x004010bf      4983c605       add r14, 5
+|      :|   0x004010c3      418a86942040.  mov al, byte [r14 + loc.welcome]
+|      :|   0x004010ca      0405           add al, 5
+|      :|   0x004010cc      413a87732040.  cmp al, byte [r15 + 0x402073]
+|     ,===< 0x004010d3      7522           jne loc._start.wrong
+|     |:|   0x004010d5      49ffcf         dec r15
+|     |`==< 0x004010d8      75e2           jne loc._start.l1
+|     | |   0x004010da      b801000000     mov eax, 1
+|     | |   0x004010df      bf01000000     mov edi, 1
+|     | |   0x004010e4      48be53204000.  movabs rsi, loc.success     ; 0x402053
+|     | |   0x004010ee      ba18000000     mov edx, 0x18               ; 24
+|     | |   0x004010f3      0f05           syscall
+|     |,==< 0x004010f5      eb25           jmp loc._start.exit
+|     |||   ;-- _start.wrong:
+|     |||   ; CODE XREF from entry0 @ 0x4010d3
+|     `---> 0x004010f7      b801000000     mov eax, 1
+|      ||   0x004010fc      bf01000000     mov edi, 1
+|      ||   0x00401101      48be36204000.  movabs rsi, loc.wrong       ; 0x402036
+|      ||   0x0040110b      ba18000000     mov edx, 0x18               ; 24
+|      ||   0x00401110      0f05           syscall
+|     ,===< 0x00401112      eb08           jmp loc._start.exit
+|     |||   ;-- _start.error:
+|     |||   ; CODE XREF from entry0 @ 0x40103a
+|     ||`-> 0x00401114      488904257020.  mov qword [loc.ret_code], rax ; [0x402070:8]=0
+|     ||    ;-- _start.exit:
+|     ||    ; CODE XREFS from entry0 @ 0x4010f5, 0x401112
+|     ``--> 0x0040111c      b83c000000     mov eax, 0x3c               ; '<' ; 60
+|           0x00401121      48bf70204000.  movabs rdi, loc.ret_code    ; 0x402070
+\           0x0040112b      0f05           syscall
+
+
+

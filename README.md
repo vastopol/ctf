@@ -5,6 +5,8 @@ Capture the flag trophies, solutions, and write-ups.
 The main focus here is on reverse engineering and binary exploits for Linux platform.
 
 Some of these are from organized sites or ctf challenges while others are crackmes people made and uploaded.
+Each folder will have more documentation describing the included challenges.
+Included also are notes and some tools.
 
 ## Me
 

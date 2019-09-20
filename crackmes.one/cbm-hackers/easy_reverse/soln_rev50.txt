@@ -26,7 +26,7 @@ load string and check
 loads char**
 then get char*
 move pointer forward 4 positions in array
-grab char from begining of pointer
+grab char from beginning of pointer
 char is 0x40 '@'
 
 password can be any string of format where '@' is 5th char

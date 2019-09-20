@@ -4,25 +4,30 @@
 
 specifically search for "patch" to find patchmes
 
+each folder with a challenge should have a writeup
+K - if it is a keygen style problem a keygen script should be there
+P - if it is a patching style problem a patched executable should be there
+
 ----------------------------------------
 
-Completed: 5
+Completed: 8
 
     * cbm-hackers
-        * easy_reverse
-        * jumpjumpjump
+        * easy_reverse  --  K
+        * jumpjumpjump  --  K
 
     * darius949
-        * crackme1
+        * crackme1  --  K
 
     * destructeur
         * Sh4ll1
 
     * ganoes_paran
-        * patchme2_revamped
+        * patchme2_revamped  --  P
 
-----------------------------------------
+    * rezk2ll
+        * crackme_nasm
+        * beatme  --  K
 
-Unfinished:
-
-    * ...
+    * weissi1994
+        * crackme-not  --  K

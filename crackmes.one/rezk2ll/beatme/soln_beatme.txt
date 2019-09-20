@@ -1,0 +1,113 @@
+Beatme
+
+generic below
+
+functions
+    start = print header, get name and pass, chk
+    sub_8048132 = header load
+    sub_80481D3 = decode string store and load loop
+    sub_80481E1 = pusha, popa
+    sub_80481E4 = final chk, print yes/no
+
+
+in start
+    enter username: ReZK2LL
+    enter password: 7ZVi^O6PP(Ctrl+n)
+
+    username in ex is the author name (7chars)
+    then start calls the sub_80481E4
+
+in sub_80481E4
+    first char of password in ebx and sub 0x30
+        0x37 == '7'
+    size of username into eax
+    on compare both should be 0x07
+
+        mov esi, 0x804940a
+        mov bl, byte [esi]
+        sub bl, 0x30                               ; 48
+        mov al, byte [0x804941e]                   ; [0x804941e:1]=0
+        cmp al, bl
+
+    next push eax, then 7 on stack
+    read time stamp counter to eax and edx
+    move eax to data segment
+    pop all stack to restore eax to 7
+    nop sled
+    push eax, then 7 on stack
+    read time stamp counter to eax and edx
+    move previous time stamp read to ebx
+    subtract eax and ebx, then compare eax 0x3500
+    want to be > 0x3500, take jle
+
+        mov ebx, dword [0x80493e6]  ; [0x80493e6:4]=0
+        sub eax, ebx
+        cmp eax, 0x3500
+
+    next pop all stack to restore eax to 7
+    esi holds password, increment by 1, moves to second char
+    move second char of password to ebx
+    move 3rd char of name to eax 'Z'
+    compare eax and ebx, must be equal
+
+        popal
+        inc esi
+        mov bl, byte [esi]
+        mov al, byte [0x80493ee]    ; [0x80493ee:1]=0
+        cmp bl, al
+
+    next increment esi moves to last 5 char of password & newline
+    push password onto the stack, call func to decode
+    decode by subtract each char by -1  -->  "7Z.....\t"
+    pop from stack to esi,
+    move esi to edi, push esi
+
+    move byte to ebx of size and shift right by 1,  (0x07 >> 0x01)  --> 0x03
+    (div by 2 and Half the value when shifted right by 1)
+    loop doing string crypt, subtract val from each ( in ex is 3)
+
+    transforms th 6 letters after the first
+    clear ecx and move byte there
+    add null to edi, call func
+    pop esi
+    move section..bss into edi, (bss starts at  0x80493ec)
+    compare the 2 strings byte start and both should be the same upto end
+
+        0x804826c:	repz cmps BYTE PTR ds:[esi],BYTE PTR es:[edi]
+
+    will also check the second to last chars 'L' after from end of string + 2
+
+    ReZK2LL
+
+    7Z + ...
+    V  ->  R
+    i  ->  e
+    ^  ->  Z
+    O  ->  K
+    6  ->  2
+    P  ->  L
+
+    Password = 7ZVi^O6PP
+
+    $ ./BeatMe
+     ____             _   __  __
+    | __ )  ___  __ _| |_|  \/  | ___
+    |  _ \ / _ \/ _` | __| |\/| |/ _ \
+    | |_) |  __/ (_| | |_| |  | |  __/
+    |____/ \___|\__,_|\__|_|  |_|\___| | ReZK2LL
+
+    USERNAME : ReZK2LL
+    PASSWORD : 7ZVi^O6PP
+    CORRECT , YOU WIN
+
+----------
+
+general solution
+
+based on name
+
+pass is = size + name[2] + transformed name
+
+for the chars in rest of password subtract size/2 from ord(char)
+
+
