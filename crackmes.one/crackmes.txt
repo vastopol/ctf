@@ -10,7 +10,7 @@ P - if it is a patching style problem a patched executable should be there
 
 ----------------------------------------
 
-Completed: 8
+Completed: 9
 
     * cbm-hackers
         * easy_reverse  --  K
@@ -28,6 +28,7 @@ Completed: 8
     * rezk2ll
         * crackme_nasm
         * beatme  --  K
+        * keygenmenasm
 
     * weissi1994
         * crackme-not  --  K

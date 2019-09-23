@@ -1,0 +1,50 @@
+input  --  0x08048080
+    name and password are same size
+    size >= 3 and <= 14
+
+    then ... clear regs and
+
+    al = 5
+    edx = size-1  (chars w/o the newline)
+    esi = name
+
+cipher  --  0x0804811a
+
+    first char or with 5
+    then all others or with prev char
+
+    name: abcd
+
+    >>> chr(ord('a')|5)
+    'e'
+    >>> chr(ord('b')|ord('a'))
+    'c'
+    >>> chr(ord('c')|ord('b'))
+    'c'
+    >>> chr(ord('d')|ord('c'))
+    'g'
+
+
+----------
+
+$ ./keygenme
+	### KeygenmeNasm ###
+	By rezk2ll ( khaled )
+Username : aaaaa
+Password : eaaaa
+good work :), i hope you keygenned me
+
+----------
+
+>>> name = "abcde"
+>>> chr(ord('a')|5)+chr(ord('b')|ord('a'))+chr(ord('c')|ord('b'))+chr(ord('d')|ord('c'))+chr(ord('e')|ord('d'))
+'eccge'
+
+
+$ ./keygenme
+	### KeygenmeNasm ###
+	By rezk2ll ( khaled )
+Username : abcde
+Password : eccge
+good work :), i hope you keygenned me
+
