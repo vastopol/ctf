@@ -4,12 +4,16 @@ RANK: Script Kiddie
 
 ----------------------------------------
 
-MACHINES: 2
+MACHINES: 3
 
 * Netmon (Retired)
     * user.txt
 
 * Haystack
+    * user.txt
+    * root.txt
+
+* Writeup
     * user.txt
     * root.txt
 

