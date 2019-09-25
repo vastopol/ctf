@@ -14,13 +14,6 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 ----------------------------------------
 
-hint:
-
-https://shouitw.blogspot.com/2019/09/hack-box-swagshop-writeup.html
-
-----------------------------------------
-
-
 enumeration
     http://10.10.10.138/
     http://10.10.10.138/robots.txt

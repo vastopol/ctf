@@ -19,10 +19,6 @@ PORT     STATE SERVICE VERSION
 
 hints:
 
-https://shouitw.blogspot.com/2019/09/hack-box-writeup-writeup.html
-
-forums:
-
 Port 80 isn't worthless, ie hints there
 ELK stack
 database of some kind
