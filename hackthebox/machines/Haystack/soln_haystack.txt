@@ -1,5 +1,3 @@
-https://shouitw.blogspot.com/2019/09/hack-box-writeup-writeup.html
-
 Nmap scan report for 10.10.10.115
 Host is up (0.15s latency).
 Not shown: 997 filtered ports
@@ -20,6 +18,10 @@ PORT     STATE SERVICE VERSION
 ----------------------------------------
 
 hints:
+
+https://shouitw.blogspot.com/2019/09/hack-box-writeup-writeup.html
+
+forums:
 
 Port 80 isn't worthless, ie hints there
 ELK stack
@@ -202,7 +204,11 @@ LOGSTASH
 
 /etc/logstash/conf.d
 
+...
+
 ----------------------------------------
 
-found the root flag in /tmp
+actually found the root flag in /tmp
+
+...
 

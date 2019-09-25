@@ -1,19 +1,5 @@
-Help
-OS:	 Linux
-Difficulty:	Easy
-Points:	20
-Release:	19 Jan 2019
-IP:	10.10.10.121
-
-
-
-1. run nmap to scan the system
-
-    nmap -A 10.10.10.121
-
 Nmap scan report for 10.10.10.121
-Host is up (0.19s latency).
-Not shown: 997 closed ports
+
 PORT     STATE SERVICE VERSION
 22/tcp   open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.6 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey:

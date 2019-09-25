@@ -1,6 +1,3 @@
-https://leetvilu.blogspot.com/2019/06/write-up-on-htb-swagshop.html
-https://www.reddit.com/r/hackthebox/comments/boyxts/swagshop/
-
 Nmap scan report for 10.10.10.140
 
 PORT   STATE SERVICE VERSION
@@ -17,6 +14,16 @@ PORT   STATE SERVICE VERSION
 5810/tcp  filtered unknown
 10025/tcp filtered unknown
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+----------------------------------------
+
+hints:
+
+https://shouitw.blogspot.com/2019/09/hack-box-swagshop-writeup.html
+https://leetvilu.blogspot.com/2019/06/write-up-on-htb-swagshop.html
+https://www.reddit.com/r/hackthebox/comments/boyxts/swagshop/
+
+----------------------------------------
 
 * Enumeration:
     http://10.10.10.140/app/
@@ -73,4 +80,5 @@ then out code into the misc HTML part that goes at the header/footer
 
 
 index.php Uncaught ReferenceError: require is not defined
+
 
