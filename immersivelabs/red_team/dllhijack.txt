@@ -1,0 +1,24 @@
+Windows: DLL Hijacking
+
+1. Locate the directory with write access that is searched when Windows attempts to locate a DLL
+2. Create a DLL payload which can be added to the folder
+3. Gain SYSTEM access and read whats in the C:/token.txt file
+
+Dynamic Link Libraries (DLLs) are used throughout the Windows operating system They are often written as a library to hold code or functions that can be used by multiple programs.
+If a program needs to use a piece of functionality contained within a DLL, it will first need to load that DLL.
+If an explicit path is not defined, Windows will use the following search order to locate the DLL on the system:
+
+1. The directory from which the application is loaded
+2. The current directory
+3. The system directory, usually C:\Windows\System32\
+4. The 16-bit system directory
+5. The Windows directory.
+6. The directories that are listed in the PATH environment variable.
+
+If a DLL is missing from the system and an attacker has write access to any folder in the above search order, they can drop a DLL into the folder with the name of the missing DLL.
+This will then be loaded by the program, which will allow code execution in the context of the user running the program (which could be SYSTEM!).
+Alternatively, if the DLL does exist on the system, but is in a folder that is low on the search order (i.e. in a directory in the PATH) and there is a folder that the attacker can write to further up in the search order, then the attacker’s DLL will be loaded instead.
+
+In this lab, a developer has installed a custom service called “DebugService”, which runs as SYSTEM and is set to auto run.
+This service searches for a missing DLL called “Debug.dll”.
+

@@ -1,0 +1,9 @@
+Google Chromes’ User Data information can be located in the AppData directory.
+
+Chrome uses the Win32 API, which contains two functions for handling password encryption and decryption: CryptProtectData and CryptUnprotectData.
+Mimikatz takes advantage of the CryptUnprotectData API function and displays all credentials used on websites visited in plaintext.
+
+The following command will go through all the entries within the file you have provided and extract the plaintext passwords.
+
+dpapi::chrome /unprotect /in:"[FILE PATH HERE]"
+
