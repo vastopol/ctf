@@ -1,0 +1,134 @@
+* Inspect Me    (DONE)
+
+Inpect this code! http://2018shell.picoctf.com:47428
+
+picoCTF{ur_4_real_1nspect0r_g4dget_e96dd105}
+
+----------------------------------------
+
+* Client Side is Still Bad    (DONE)
+
+I forgot my password again, but this time there doesn't seem to be a reset, can you help me?
+http://2018shell.picoctf.com:53990
+
+picoCTF{client_is_bad_040594}
+
+----------------------------------------
+
+* Logon    (DONE)
+
+I made a website so now you can log on to! I don't seem to have the admin password. See if you can't get to the flag.
+http://2018shell.picoctf.com:37861
+
+picoCTF{l0g1ns_ar3nt_r34l_a280e12c}
+
+----------------------------------------
+
+* Irish Name Repo    (DONE)
+
+There is a website running at http://2018shell.picoctf.com:11899
+Do you think you can log us in? Try to see if you can login!
+
+picoCTF{con4n_r3411y_1snt_1r1sh_9cbc118f}
+
+----------------------------------------
+
+* Mr. Robots
+
+Do you see the same things I see? The glimpses of the flag hidden away?
+http://2018shell.picoctf.com:10157
+
+----------------------------------------
+
+* No Login    (DONE)
+
+Looks like someone started making a website but never got around to making a login, but I heard there was a flag if you were the admin.
+http://2018shell.picoctf.com:52920
+
+picoCTF{n0l0g0n_n0_pr0bl3m_3184f702}
+
+----------------------------------------
+
+* Secret Agent    (DONE)
+
+Here's a little website that hasn't fully been finished. But I heard google gets all your info anyway.
+http://2018shell.picoctf.com:3827
+
+picoCTF{s3cr3t_ag3nt_m4n_12387c22}
+
+----------------------------------------
+
+* Buttons
+
+There is a website running at http://2018shell.picoctf.com:7949
+Try to see if you can push their buttons.
+
+----------------------------------------
+
+* The Vault    (DONE)
+
+There is a website running at http://2018shell.picoctf.com:64349
+Try to see if you can login!
+
+login.txt
+
+picoCTF{w3lc0m3_t0_th3_vau1t_e4ca2258}
+
+----------------------------------------
+
+* Artisinal Handcrafted HTTP 3
+
+We found a hidden flag server hiding behind a proxy, but the proxy has some... _interesting_ ideas of what qualifies someone to make HTTP requests.
+Looks like you'll have to do this one by hand. Try connecting via nc 2018shell.picoctf.com 4914, and use the proxy to send HTTP requests to `flag.local`.
+We've also recovered a username and a password for you to use on the login page: `realbusinessuser`/`potoooooooo`.
+
+----------------------------------------
+
+* Flaskcards
+
+We found this fishy website for flashcards that we think may be sending secrets. Could you take a look?
+http://2018shell.picoctf.com:51878/
+
+----------------------------------------
+
+* fancy-alive-monitoring
+
+One of my school mate developed an alive monitoring tool.
+Can you get a flag from http://2018shell.picoctf.com:8587
+
+----------------------------------------
+
+* Secure Logon
+
+Uh oh, the login page is more secure... I think.
+http://2018shell.picoctf.com:13747
+
+server_noflag.py
+
+----------------------------------------
+
+* Help Me Reset 2
+
+There is a website running at http://2018shell.picoctf.com:29523
+We need to get into any user for a flag!
+
+----------------------------------------
+
+* A Simple Question
+
+There is a website running at http://2018shell.picoctf.com:36052
+Try to see if you can answer its question.
+
+----------------------------------------
+
+* LambDash 3
+
+C? Who uses that anymore. If we really want to be secure, we should all start learning lambda calculus.
+http://2018shell.picoctf.com:34424
+
+BROKEN ????
+site is down
+
+----------------------------------------
+
+

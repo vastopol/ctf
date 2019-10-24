@@ -1,0 +1,169 @@
+* General Warmup 1    (DONE)
+
+If I told you your grade was 0x41 in hexadecimal, what would it be in ASCII?
+
+picoCTF{A}
+
+----------------------------------------
+
+* General Warmup 2    (DONE)
+
+Can you convert the number 27 (base 10) to binary (base 2)?
+
+picoCTF{11011}
+
+----------------------------------------
+
+* General Warmup 3    (DONE)
+
+What is 0x3D (base 16) in decimal (base 10)?
+
+picoCTF{61}
+
+----------------------------------------
+
+* Resources    (DONE)
+
+We put together a bunch of resources to help you out on our website!
+If you go over there, you might even find a flag!
+https://picoctf.com/resources
+
+picoCTF{xiexie_ni_lai_zheli}
+
+----------------------------------------
+
+* grep 1    (DONE)
+
+Can you find the flag in file?
+
+file
+
+picoCTF{grep_and_you_will_find_42783683}
+
+----------------------------------------
+
+* net cat    (DONE)
+
+Can you connect to 2018shell.picoctf.com at port 22847 to get the flag?
+
+picoCTF{NEtcat_iS_a_NEcESSiTy_69222dcc}
+
+----------------------------------------
+
+* strings    (DONE)
+
+Can you find the flag in this file without actually running it?
+
+strings
+
+picoCTF{sTrIngS_sAVeS_Time_2fbe2166}
+
+----------------------------------------
+
+* pipe    (DONE)
+
+Can you find a way to save the output from this program and search for the flag?
+Connect with 2018shell.picoctf.com 44310
+
+picoCTF{almost_like_mario_a13e5b27}
+
+----------------------------------------
+
+* grep 2    (DONE)
+
+Can you find the flag in /problems/grep-2_3_826f886f547acb8a9c3fccb030e8168d/files on the shell server?
+
+picoCTF{grep_r_and_you_will_find_556620f7}
+
+----------------------------------------
+
+* Aca-Shell-A    (DONE)
+
+Connect with nc 2018shell.picoctf.com 42334
+
+picoCTF{CrUsHeD_It_d6f202f1}
+
+----------------------------------------
+
+* environ    (DONE)
+
+Can you find the flag we've hidden in an environment variable on the shell server?
+
+picoCTF{eNv1r0nM3nT_v4r14Bl3_fL4g_3758492}
+
+----------------------------------------
+
+* ssh-keyz
+
+please add your own public key to ~/.ssh/authorized_keys, using the webshell.
+The flag is in the ssh banner which will be displayed when you login remotely with ssh to with your username.
+
+----------------------------------------
+
+* what base is this?    (DONE)
+
+To be successful on your mission, you must be able read data represented in different ways, such as hexadecimal or binary.
+Can you get the flag from this program to prove you are ready?
+Connect with nc 2018shell.picoctf.com 1225
+
+picoCTF{delusions_about_finding_values_451a9a74}
+
+----------------------------------------
+
+* you can't see me    (DONE)
+
+'...reading transmission... Y.O.U. .C.A.N.'.T. .S.E.E. .M.E. ...transmission ended...'
+Maybe something lies in /problems/you-can-t-see-me_3_1a39ec6c80b3f3a18610074f68acfe69
+
+picoCTF{j0hn_c3na_paparapaaaaaaa_paparapaaaaaa_cf5156ef}
+
+----------------------------------------
+
+* absolutely-relative
+
+In a filesystem, everything is relative ¯\_(ツ)_/¯. Can you find a way to get a flag from this program?
+You can find it in /problems/absolutely-relative_0_d4f0f1c47f503378c4bb81981a80a9b6 on the shell server.
+Source.
+
+absolutely-relative
+absolutely-relative.c
+
+----------------------------------------
+
+* in out error
+
+Can you utlize stdin, stdout, and stderr to get the flag from this program?
+You can also find it in /problems/in-out-error_2_c33e2a987fbd0f75e78481b14bfd15f4 on the shell server
+
+in-out-error
+
+----------------------------------------
+
+* learn gdb
+
+Using a debugging tool will be extremely useful on your missions.
+Can you run this program in gdb and find the flag?
+You can find the file in /problems/learn-gdb_0_716957192e537ac769f0975c74b34194 on the shell server.
+
+run
+
+----------------------------------------
+
+* store
+
+We started a little store, can you buy the flag?
+Connect with 2018shell.picoctf.com 43581
+
+store
+source.c
+
+----------------------------------------
+
+* script me
+
+Can you understand the language and answer the questions to retrieve the flag?
+Connect to the service with nc 2018shell.picoctf.com 61344
+
+----------------------------------------
+
+

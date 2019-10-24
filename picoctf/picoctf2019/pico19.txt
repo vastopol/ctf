@@ -1,0 +1,34 @@
+picoCTF 2019 challenges
+
+The picoCTF 2019 competition runs from September 27, 2019 12:00PM EST to October 11, 2019 12:00PM EST.
+
+----------------------------------------
+
+Overview:
+
+Binary Exploitation
+0
+
+Cryptography
+0
+
+Forensics
+0
+
+General Skills
+0
+
+Reversing
+3
+
+Web Exploitation
+0
+
+----------------------------------------
+
+* Reversing
+    vault-door-training (DONE)
+    vault-door-1  (DONE)
+    vault-door-3  (DONE)
+    vault-door-4
+

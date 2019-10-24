@@ -1,0 +1,34 @@
+picoCTF 2018 challenges
+
+2018 Shell Server Consolidation
+Problem Status Notice:
+As part of the groundwork for the upcoming 2019 competition, we are re-organizing our infrastructure of past competition servers.
+The 2018shell1 through 2018shell4 servers have been consolidated to a single 2018shell.picoctf.com host.
+
+As a result, a small number of problems have been re-assigned to different ports, and a few problems have newly randomized flags.
+Please see the Piazza problem status post for details, and double-check your problem descriptions for any n that list.
+
+----------------------------------------
+
+Overview:
+
+Binary Exploitation
+3 / 8
+
+Cryptography
+2 / 6
+
+Forensics
+5 / 14
+
+General Skills
+13 / 19
+
+Reversing
+4 / 7
+
+Web Exploitation
+7 / 16
+
+----------------------------------------
+

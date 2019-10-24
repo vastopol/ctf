@@ -13,13 +13,13 @@ MACHINES: 3
     * user.txt
     * root.txt
 
-* Writeup
+* Writeup (Retired)
     * user.txt
     * root.txt
 
 ----------------------------------------
 
-CHALLENGES:
+CHALLENGES: 16
 
 * Crypto: 1
     * You Can Do It!
@@ -33,12 +33,12 @@ CHALLENGES:
     * DSYM
 
 * Stego: 3
-    * Unified
+    * Unified (Retired)
     * Da Vinci
     * Beatles (Retired)
 
 * Misc: 8
-    * fs0ciety
+    * fs0ciety (Retired)
     * 0ld is g0ld
     * Art
     * Inferno

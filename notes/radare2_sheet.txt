@@ -48,3 +48,11 @@ ragg2 -P 100 -r
 inspect a register see offset needed to overflow
 wopO dr eip
 
+
+
+/i  string
+
+    searches for a byte
+    probably broken because doesn't work for multiple
+
+    

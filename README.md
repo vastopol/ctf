@@ -33,6 +33,7 @@ Included also are notes and some tools.
 * picoCTF
     * https://picoctf.com/
     * https://2018game.picoctf.com/
+    * https://2019game.picoctf.com/
 
 * Python Challenge
     * http://www.pythonchallenge.com/

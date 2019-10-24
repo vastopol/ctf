@@ -1,0 +1,68 @@
+* Reversing Warmup 1    (DONE)
+
+Can you navigate to /problems/reversing-warmup-1_2_a237211c4be8902c67102f827027e633 on the shell server and run this program to retreive the flag?
+
+run
+
+picoCTF{welc0m3_t0_r3VeRs1nG}
+
+----------------------------------------
+
+* Reversing Warmup 2    (DONE)
+
+Can you decode the following string dGg0dF93NHNfczFtcEwz from base64 format to ASCII?
+
+picoCTF{th4t_w4s_s1mpL3}
+
+----------------------------------------
+
+* assembly-0    (DONE)
+
+What does asm0(0x2a,0x4f) return? Submit the flag as a hexadecimal value (starting with '0x').
+NOTE: Your submission for this question will NOT be in the normal flag format.
+
+intro_asm_rev.S
+
+0x4f
+
+----------------------------------------
+
+* assembly-1    (DONE)
+
+What does asm1(0xcd) return? Submit the flag as a hexadecimal value (starting with '0x').
+NOTE: Your submission for this question will NOT be in the normal flag format.
+
+eq_asm_rev.S
+
+0xca
+
+----------------------------------------
+
+* be-quick-or-be-dead-1
+
+You find this when searching for some music, which leads you to be-quick-or-be-dead-1. Can you run it fast enough?
+
+be-quick-or-be-dead-1
+
+----------------------------------------
+
+* quackme
+
+Can you deal with the Duck Web? Get us the flag from this program.
+You can also find the program in /problems/quackme_1_374d85dc071ada50a08b36597288bcfd.
+
+main
+
+----------------------------------------
+
+* assembly-2
+
+What does asm2(0x8,0x21) return? Submit the flag as a hexadecimal value (starting with '0x').
+NOTE: Your submission for this question will NOT be in the normal flag format.
+Source located in the directory at /problems/assembly-2_1_c1900e7d33989b0191c51ef927b24f37.
+
+loop_asm_rev.S
+
+----------------------------------------
+
+

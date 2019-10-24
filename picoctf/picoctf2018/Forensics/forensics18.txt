@@ -1,0 +1,129 @@
+* Forensics Warmup 1    (DONE)
+
+Can you unzip this file for me and retreive the flag?
+
+flag.zip
+
+picoCTF{welcome_to_forensics}
+
+----------------------------------------
+
+* Forensics Warmup 2    (DONE)
+
+Hmm for some reason I can't open this PNG? Any ideas?
+
+flag.png
+
+picoCTF{extensions_are_a_lie}
+
+----------------------------------------
+
+* Desrouleaux    (DONE)
+
+Our network administrator is having some trouble handling the tickets for all of of our incidents.
+Can you help him out by answering all the questions?
+Connect with nc 2018shell.picoctf.com 54782
+
+incidents.json
+
+picoCTF{J4y_s0n_d3rUUUULo_c74e3495}
+
+----------------------------------------
+
+* Reading Between the Eyes
+
+Stego-Saurus hid a message for you in this image, can you retreive it?
+
+husky.png
+
+----------------------------------------
+
+* Recovering From the Snap
+
+There used to be a bunch of animals here, what did Dr. Xernon do to them?
+
+animals.dd
+
+----------------------------------------
+
+* admin panel    (DONE)
+
+We captured some traffic logging into the admin panel, can you find the password?
+
+data.pcap
+
+picoCTF{n0ts3cur3_894a6546}
+
+----------------------------------------
+
+* hex editor    (DONE)
+
+This cat has a secret to teach you.
+
+hex_editor.jpg
+
+picoCTF{and_thats_how_u_edit_hex_kittos_22C1d865}
+
+----------------------------------------
+
+* Truly an Artist
+
+Can you help us find the flag in this Meta-Material?
+
+2018.png
+
+----------------------------------------
+
+* now you don't
+
+We heard that there is something hidden in this picture. Can you find it?
+
+nowYouDont.png
+
+----------------------------------------
+
+* Ext Super Magic
+
+We salvaged a ruined Ext SuperMagic II-class mech recently and pulled the filesystem out of the black box.
+It looks a bit corrupted, but maybe there's something interesting in there.
+
+----------------------------------------
+
+* Lying Out
+
+Some odd traffic has been detected on the network, can you identify it?
+Connect with nc 2018shell.picoctf.com 2245 to help us answer some questions.
+
+----------------------------------------
+
+* What's My Name?
+
+Say my name, say my name.
+
+myname.pcap
+
+----------------------------------------
+
+* Malware Shops
+
+There has been some malware detected, can you help with the analysis?
+Connect with nc 2018shell.picoctf.com 57920
+
+info.txt
+plot.png
+
+----------------------------------------
+
+* LoadSomeBits
+
+Can you find the flag encoded inside this image?
+You can also find the file in /problems/loadsomebits_1_5ccf71e5726692c713405bb17da5cb37 on the shell server.
+
+pico2018-special-logo.bmp
+
+----------------------------------------
+
+
+
+
+

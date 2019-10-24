@@ -1,0 +1,8 @@
+Reverse Engineering: vault-door-4
+
+This vault uses ASCII encoding for the password.
+The source code for this vault is here: VaultDoor4.java
+
+----------------------------------------
+
+
