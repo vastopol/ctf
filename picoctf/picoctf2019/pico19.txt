@@ -7,7 +7,7 @@ The picoCTF 2019 competition runs from September 27, 2019 12:00PM EST to October
 Overview:
 
 Binary Exploitation
-0
+3
 
 Cryptography
 0
@@ -28,7 +28,15 @@ Web Exploitation
 
 * Reversing
     vault-door-training (DONE)
-    vault-door-1  (DONE)
-    vault-door-3  (DONE)
+    vault-door-1        (DONE)
+    vault-door-3        (DONE)
     vault-door-4
 
+* Binary Exploitation
+    practice-run-1  (DONE)
+    overflow-0      (DONE)
+    overflow-1      (DONE)
+    overflow-2
+    ...
+    ghost_diary
+    handy-shellcode
