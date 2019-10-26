@@ -1,0 +1,37 @@
+Reverse Engineering: vault-door-7
+
+This vault uses bit shifts to convert a password string into an array of integers.
+Hurry, agent, we are running out of time to stop Dr. Evil's nefarious plans!
+The source code for this vault is here: VaultDoor7.java
+
+----------------------------------------
+
+using byte packing into 32 bit integers, each int is 4 chars
+
+int[] x = passwordToIntArray(password);
+return x[0] == 1096770097
+    && x[1] == 1952395366
+    && x[2] == 1600270708
+    && x[3] == 1601398833
+    && x[4] == 1716808014
+    && x[5] == 1734305381
+    && x[6] == 828716089
+    && x[7] == 895562083;
+
+
+-----
+
+ints = [1096770097, 1952395366, 1600270708, 1601398833, 1716808014, 1734305381, 828716089, 895562083]
+hexs = [hex(i) for i in ints]
+str1 = [str(h)[2:] for h in hexs]
+str2 = str()
+for s in str1:
+    for t in [s[0:2], s[2:4], s[4:6], s[6:]]:
+        str2 += chr(int(t,16))
+
+print(str2)
+
+----------------------------------------
+
+picoCTF{A_b1t_0f_b1t_sh1fTiNg_fe1e495a1c}
+

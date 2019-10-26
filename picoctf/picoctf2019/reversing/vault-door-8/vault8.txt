@@ -1,0 +1,66 @@
+Reverse Engineering: vault-door-8
+
+Apparently Dr. Evil's minions knew that our agency was making copies of their source code,
+because they intentionally sabotaged this source code in order to make it harder for our agents to analyze and crack into!
+The result is a quite mess, but I trust that my best special agent will find a way to solve it.
+The source code for this vault is here: VaultDoor8.java
+
+----------------------------------------
+
+expects whole flag as input,
+strips away the "picoCTF{" and the "}"
+
+Scramble a password by transposing pairs of bits.
+
+Move the bit in position p1 to position p2, and move the bit
+that was in position p2 to position p1. Precondition: p1 < p2
+
+
+-----
+
+main
+    String f = c.substring(8,c.length()-1);
+    a.checkPassword(f)
+
+
+public boolean checkPassword(String password)
+    char[] scrambled = scramble(password);
+    char[] expected = { 0xF4, 0xC0, 0x97, 0xF0, 0x77, 0x97, 0xC0, 0xE4,
+                        0xF0, 0x77, 0xA4, 0xD0, 0xC5, 0x77, 0xF4, 0x86,
+                        0xD0, 0xA5, 0x45, 0x96, 0x27, 0xB5, 0x77, 0xE1,
+                        0xC0, 0xA4, 0x95, 0x94, 0xD1, 0x95, 0x94, 0xD0 };
+    return Arrays.equals(scrambled, expected);
+
+
+public char[] scramble(String password)
+    char[] a = password.toCharArray();
+    for (int b=0; b<a.length; b++)
+        char c = a[b];
+        c = switchBits(c,1,2);
+        c = switchBits(c,0,3);
+        c = switchBits(c,5,6);
+        c = switchBits(c,4,7);
+        c = switchBits(c,0,1);
+        c = switchBits(c,3,4);
+        c = switchBits(c,2,5);
+        c = switchBits(c,6,7);
+        a[b] = c;
+    return a;
+
+public char switchBits(char c, int p1, int p2)
+    char mask1  = (char) (1 << p1);
+    char mask2  = (char) (1 << p2);
+    char bit1   = (char) (c & mask1);
+    char bit2   = (char) (c & mask2);
+    char rest   = (char) (c & ~(mask1 | mask2));
+    char shift  = (char) (p2 - p1);
+    char result = (char) ((bit1<<shift) | (bit2>>shift) | rest);
+    return result;
+
+
+-----
+
+expected = [ 0xF4, 0xC0, 0x97, 0xF0, 0x77, 0x97, 0xC0, 0xE4, 0xF0, 0x77, 0xA4, 0xD0, 0xC5, 0x77, 0xF4, 0x86, 0xD0, 0xA5, 0x45, 0x96, 0x27, 0xB5, 0x77, 0xE1, 0xC0, 0xA4, 0x95, 0x94, 0xD1, 0x95, 0x94, 0xD0 ]
+
+----------------------------------------
+

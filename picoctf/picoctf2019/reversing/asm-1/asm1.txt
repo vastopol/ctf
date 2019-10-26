@@ -1,0 +1,38 @@
+Reverse Engineering: asm-1
+
+What does asm1(0x1f3) return? Submit the flag as a hexadecimal value (starting with '0x').
+NOTE: Your submission for this question will NOT be in the normal flag format.
+Source located in the directory at /problems/asm1_2_4ced82d316c06cd3a46ba3bda9f6c144.
+
+----------------------------------------
+
+0x1f3  ==  499
+0x767  ==  1895
+0x529  ==  1321
+0x523  ==  1315
+
+    <+3>:	cmp    DWORD PTR [ebp+0x8],0x767
+	<+10>:	jg     0x512 <asm1+37>
+
+    fail so no jg
+
+	<+12>:	cmp    DWORD PTR [ebp+0x8],0x1f3
+	<+19>:	jne    0x50a <asm1+29>
+
+    pass so no jne
+
+	<+21>:	mov    eax,DWORD PTR [ebp+0x8]
+	<+24>:	add    eax,0xb
+	<+27>:	jmp    0x529 <asm1+60>
+
+    eax  ==  0x1fe  == 510
+
+	<+60>:	pop    ebp
+	<+61>:	ret
+
+
+----------------------------------------
+
+final value:
+
+0x1fe

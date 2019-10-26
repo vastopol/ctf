@@ -1,0 +1,79 @@
+Reverse Engineering: asm-3
+
+What does asm3(0xdff83990,0xeeff29ae,0xfa706498) return? Submit the flag as a hexadecimal value (starting with '0x').
+NOTE: Your submission for this question will NOT be in the normal flag format.
+Source located in the directory at /problems/asm3_3_8aa3e17880273360f781adadc67a15f0.
+
+----------------------------------------
+
+working with the low 16 bits of eax after the xor
+this will be a 16 bit value ax = [ah:al]
+
+
+clear eax with xor
+
+    xor    eax,eax
+
+high byte of ax gets [ebp+0xb]
+
+    mov    ah,BYTE PTR [ebp+0xb]
+
+shift low 16 bits of eax left by 0x10 (16)
+
+    shl    ax,0x10
+
+subtract [ebp+0xd] from low byte of ax
+
+	sub    al,BYTE PTR [ebp+0xd]
+
+add [ebp+0xe] to high byte of ax
+
+	add    ah,BYTE PTR [ebp+0xe]
+
+xor low 16 bits of eax with [ebp+0x12]
+
+    xor    ax,WORD PTR [ebp+0x12]
+
+
+-----
+
+stack layout
+
+asm3(0xdff83990,0xeeff29ae,0xfa706498)
+
+ebp+10 = arg3 == 0xfa706498
+ebp+c  = arg2 == 0xeeff29ae
+ebp+8  = arg1 == 0xdff83990
+ebp+4  = return address
+ebp <--- base pointer
+
+
+little endian bytes
+
+                             10 12 14 16
+pos: 8  9  a  b  c  d  e  f  |  |  |  |
+
+val: 90 39 f8 df ae 29 ff ee 98 64 70 fa
+
+
+little endian words
+
+pos: 8     a     c     e     10    12
+
+val: 3990  dff8  29ae  eeff  6498  fa70
+
+
+registers
+
+ax  =  0x0000
+ah  =  0xdf    --> ax = 0xdf00
+ax <<  0x10    --> ax = 0x0000
+al -=  0x29    --> ax = 0x00d7
+ah +=  0xff    --> ax = 0xffd7
+ax ^=  0xfa70  --> ax = 0x5a7
+
+----------------------------------------
+
+final value:
+
+0x5a7

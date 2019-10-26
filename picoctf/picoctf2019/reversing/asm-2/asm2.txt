@@ -1,0 +1,52 @@
+Reverse Engineering: asm-2
+
+What does asm2(0x6,0x24) return? Submit the flag as a hexadecimal value (starting with '0x').
+NOTE: Your submission for this question will NOT be in the normal flag format.
+Source located in the directory at /problems/asm2_6_88bbaaae0b7723b33c39fce07d342e36.
+
+
+----------------------------------------
+
+
+before call it push 2 args to stack
+in the function it moves copies to locals
+
+
+[ebp-0x8] == arg2 = 0x24
+[ebp-0x4] == arg1 = 0x6
+
+ebp  <--
+
+[ebp+0x8] == local1 --> 0x24
+[ebp+0xc] == local2 --> 0x6
+
+
+jump to line 31 to compare, for jump
+line 20 to 38 form a loop, 40 saves return value
+
+<+20>:	add    DWORD PTR [ebp-0x4],0x1
+<+24>:	add    DWORD PTR [ebp-0x8],0xf9
+<+31>:	cmp    DWORD PTR [ebp-0x8],0x3c75
+<+38>:	jle    0x501 <asm2+20>
+<+40>:	mov    eax,DWORD PTR [ebp-0x4]
+
+
+0xf9 = 249
+0x3c75 = 15477
+
+uses local1 as counter, increments each time
+local2 is accumulator, add 249 each time
+loops until local2 reach at least  15477
+then return counter
+
+local1 = 0x24
+local2 = 0x6
+while local2 <= 0x3c75:
+    local1 += 0x1
+    local2 += 0xf9
+
+print(hex(local1))
+
+----------------------------------------
+
+0x63

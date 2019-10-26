@@ -1,0 +1,33 @@
+Reverse Engineering: reverse-cipher
+
+We have recovered a binary and a text file. Can you reverse the flag.
+Its also found in /problems/reverse-cipher_4_12cef42b8e03692a36099b293f991a41 on the shell server.
+
+----------------------------------------
+
+            0x00001211      c745f8000000.  mov dword [var_8h], 0
+|       ,=< 0x00001218      eb23           jmp 0x123d
+|       |   ; CODE XREF from main @ 0x1241
+|      .--> 0x0000121a      8b45f8         mov eax, dword [var_8h]
+|      :|   0x0000121d      4898           cdqe
+|      :|   0x0000121f      0fb64405b0     movzx eax, byte [rbp + rax - 0x50]
+|      :|   0x00001224      8845ff         mov byte [c], al
+|      :|   0x00001227      0fbe45ff       movsx eax, byte [c]
+|      :|   0x0000122b      488b55e0       mov rdx, qword [var_20h]
+|      :|   0x0000122f      4889d6         mov rsi, rdx                ; FILE *stream
+|      :|   0x00001232      89c7           mov edi, eax                ; int c
+|      :|   0x00001234      e827feffff     call sym.imp.fputc          ; int fputc(int c, FILE *stream)
+|      :|   0x00001239      8345f801       add dword [var_8h], 1
+|      :|   ; CODE XREF from main @ 0x1218
+|      :`-> 0x0000123d      837df807       cmp dword [var_8h], 7
+|      `==< 0x00001241      7ed7           jle 0x121a
+
+
+loop for 0 to 7
+
+
+
+
+----------------------------------------
+
+

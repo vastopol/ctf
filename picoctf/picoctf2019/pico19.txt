@@ -1,7 +1,5 @@
 picoCTF 2019 challenges
 
-The picoCTF 2019 competition runs from September 27, 2019 12:00PM EST to October 11, 2019 12:00PM EST.
-
 ----------------------------------------
 
 Overview:
@@ -16,27 +14,46 @@ Forensics
 0
 
 General Skills
-0
+4
 
-Reversing
-3
+Reverse Engineering
+10
 
 Web Exploitation
-0
+1
 
 ----------------------------------------
 
 * Reversing
+    asm-1               (DONE)
+    asm-2               (DONE)
+    asm-3               (DONE)
+    asm-4
     vault-door-training (DONE)
     vault-door-1        (DONE)
     vault-door-3        (DONE)
-    vault-door-4
+    vault-door-4        (DONE)
+    vault-door-5        (DONE)
+    vault-door-6        (DONE)
+    vault-door-7        (DONE)
+    vault-door-8
+    reverse-cipher
 
 * Binary Exploitation
     practice-run-1  (DONE)
     overflow-0      (DONE)
     overflow-1      (DONE)
     overflow-2
-    ...
     ghost_diary
     handy-shellcode
+
+* General Skills
+    2Warm         (DONE)
+    Bases         (DONE)
+    Lets Warm Up  (DONE)
+    Warmed Up     (DONE)
+
+* Web Exploitation
+    Insp3ct0r     (DONE)
+
+
