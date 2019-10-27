@@ -1,0 +1,19 @@
+Binary Exploitation: handy-shellcode
+
+This program executes any shellcode that you give it. Can you spawn a shell and use that to read the flag.txt?
+You can find the program in /problems/handy-shellcode_5_d1b3658f284f442eac06607b8ac4d1f5 on the shell server. Source.
+
+----------------------------------------
+
+server
+
+Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-1051-aws x86_64)
+
+vuln
+
+#define BUFSIZE 148
+#define FLAGSIZE 128
+
+
+----------------------------------------
+

@@ -5,7 +5,7 @@ picoCTF 2019 challenges
 Overview:
 
 Binary Exploitation
-3
+4
 
 Cryptography
 0
@@ -43,7 +43,12 @@ Web Exploitation
     practice-run-1  (DONE)
     overflow-0      (DONE)
     overflow-1      (DONE)
-    overflow-2
+    overflow-2      (DONE)
+    NewOverflow-1
+    CanaRy
+    leap-frog
+    stringzz
+    rop32
     ghost_diary
     handy-shellcode
 
@@ -55,5 +60,3 @@ Web Exploitation
 
 * Web Exploitation
     Insp3ct0r     (DONE)
-
-
