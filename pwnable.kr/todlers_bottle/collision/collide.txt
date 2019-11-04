@@ -1,0 +1,39 @@
+need the sum of 20 chars to be hex value: 0x21DD09EC
+
+unsigned long hashcode = 0x21DD09EC;
+if(strlen(argv[1]) != 20)
+if(hashcode == check_password( argv[1] ))
+
+
+? 0x21DD09EC
+
+int32   568134124
+uint32  568134124
+hex     0x21dd09ec
+octal   04167204754
+unit    541.8M
+segment 21dd000:09ec
+string  "\xec\t\xdd!"
+fvalue: 568134124.0
+float:  0.000000f
+double: 0.000000
+binary  0b00100001110111010000100111101100
+trits   0t1110121001012111121
+
+
+int* ip = (int*)p;
+int i;
+int res=0;
+for(i=0; i<5; i++){
+	res += ip[i];
+}
+return res;
+
+
+
+20 chars = 20 * 8 bits = 160
+5 integers = 5 * 32 bits = 160
+
+casts the char array to int array
+
+need 5 ints that add to 0x21DD09EC

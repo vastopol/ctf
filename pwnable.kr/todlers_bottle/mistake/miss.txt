@@ -1,0 +1,7 @@
+
+
+password size 10
+
+xor each char with 1
+
+
