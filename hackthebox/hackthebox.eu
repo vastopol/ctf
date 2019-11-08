@@ -9,7 +9,7 @@ MACHINES: 3
 * Netmon (Retired)
     * user.txt
 
-* Haystack
+* Haystack (Retired)
     * user.txt
     * root.txt
 
@@ -27,10 +27,11 @@ CHALLENGES: 16
 * Pwn: 1
     * Little Tommy
 
-* Reversing: 3
-    * Snake
+* Reversing: 4
+    * Snake (Retired)
     * Impossible Password
     * DSYM
+    * Baby_RE
 
 * Stego: 3
     * Unified (Retired)

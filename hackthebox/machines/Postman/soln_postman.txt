@@ -1,0 +1,67 @@
+Nmap scan report for 10.10.10.160
+Host is up (0.079s latency).
+Not shown: 985 closed ports
+PORT      STATE    SERVICE        VERSION
+22/tcp    open     ssh            OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey:
+|   2048 46:83:4f:f1:38:61:c0:1c:74:cb:b5:d1:4a:68:4d:77 (RSA)
+|_  256 2d:8d:27:d2:df:15:1a:31:53:05:fb:ff:f0:62:26:89 (ECDSA)
+80/tcp    open     http           Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: The Cyber Geek's Personal Website
+593/tcp   filtered http-rpc-epmap
+912/tcp   filtered apex-mesh
+1010/tcp  filtered surf
+1151/tcp  filtered unizensus
+1521/tcp  filtered oracle
+2033/tcp  filtered glogger
+2710/tcp  filtered sso-service
+2809/tcp  filtered corbaloc
+3784/tcp  filtered bfd-control
+3801/tcp  filtered ibm-mgr
+3827/tcp  filtered netmpi
+9900/tcp  filtered iua
+10000/tcp open     http           MiniServ 1.910 (Webmin httpd)
+|_http-title: Site doesn't have a title (text/html; Charset=iso-8859-1).
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+-----
+
+
+http://10.10.10.160/js/
+http://10.10.10.160/css/
+
+-----
+
+http://10.10.10.160:10000/
+
+Error - Document follows
+This web server is running in SSL mode. Try the URL https://Postman:10000/ instead.
+
+need https
+
+https://10.10.10.160:10000/
+
+webmin admin login
+
+-----
+
+need exploits for version 1.910
+
+searchsploit webmin
+
+...
+Webmin 1.910 - 'Package Updates' Remote Command Execution (Metasploit)  | exploits/linux/remote/46984.rb
+...
+Webmin 1.920 - Remote Code Execution                                    | exploits/linux/webapps/47293.sh
+Testing for RCE (CVE-2019-15107) on https://160.10.10.10:10000: OK! (target is not vulnerable)
+...
+Webmin 1.920 - Unauthenticated Remote Code Execution (Metasploit)       | exploits/linux/remote/47230.rb
+...
+
+
+multiple logins failed
+
+403
+Access denied for 10.10.14.213. The host has been blocked because of too many authentication failures.
+
