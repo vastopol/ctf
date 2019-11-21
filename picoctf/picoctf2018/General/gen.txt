@@ -139,13 +139,15 @@ in-out-error
 
 ----------------------------------------
 
-* learn gdb
+* learn gdb     (DONE)
 
 Using a debugging tool will be extremely useful on your missions.
 Can you run this program in gdb and find the flag?
 You can find the file in /problems/learn-gdb_0_716957192e537ac769f0975c74b34194 on the shell server.
 
 run
+
+picoCTF{gDb_iS_sUp3r_u53fuL_a6c61d82}
 
 ----------------------------------------
 

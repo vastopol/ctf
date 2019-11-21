@@ -32,7 +32,7 @@ picoCTF{aLw4y5_Ch3cK_tHe_bUfF3r_s1z3_d1667872}
 
 ----------------------------------------
 
-* shellcode
+* shellcode     (DONE)
 
 This program executes any input you give it. Can you get a shell?
 You can find the program in /problems/shellcode_4_99838609970da2f5f6cf39d6d9ed57cd on the shell server.
@@ -40,11 +40,11 @@ You can find the program in /problems/shellcode_4_99838609970da2f5f6cf39d6d9ed57
 vuln
 vuln.c
 
+picoCTF{shellc0de_w00h00_b766002c}
+
 ----------------------------------------
 
 * buffer overflow 2
-
-Binary Exploitation
 
 Alright, this time you'll need to control some arguments. Can you get the flag from this program?
 You can find it in /problems/buffer-overflow-2_3_02aff35ae94896082cad513865e6c2eb on the shell server
@@ -56,8 +56,6 @@ vuln.c
 
 * got-2-learn-libc
 
-Binary Exploitation
-
 This program gives you the address of some system calls. Can you get a shell?
 You can find the program in /problems/got-2-learn-libc_4_526cc290dde8d914a30538d3d0ac4ef1 on the shell server
 
@@ -66,9 +64,7 @@ vuln.c
 
 ----------------------------------------
 
-* echooo
-
-Binary Exploitation
+* echooo        (DONE)
 
 This program prints any input you give it. Can you leak the flag?
 Connect with nc 2018shell.picoctf.com 23397.
@@ -76,11 +72,18 @@ Connect with nc 2018shell.picoctf.com 23397.
 echo
 echo.c
 
+picoCTF{foRm4t_stRinGs_aRe_DanGer0us_254148ae}
+
+----------------------------------------
+
+* authenticate
+
+Can you authenticate to this service and get the flag?
+Connect with nc 2018shell.picoctf.com 26336.
+
 ----------------------------------------
 
 * got-shell?
-
-Binary Exploitation
 
 Can you authenticate to this service and get the flag?
 Connect to it with nc 2018shell.picoctf.com 27952

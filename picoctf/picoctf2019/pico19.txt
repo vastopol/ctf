@@ -42,6 +42,8 @@ Web Exploitation
     reverse-cipher
 
 * Binary Exploitation
+    handy-shellcode     (DONE)
+    slippery-shellcode  (DONE)
     practice-run-1      (DONE)
     overflow-0          (DONE)
     overflow-1          (DONE)
@@ -53,9 +55,8 @@ Web Exploitation
     stringzz
     rop32
     ghost_diary
-    handy-shellcode     (DONE)
-    slippery-shellcode  (DONE)
     seed-sPRiNG
+    pointy
 
 * General Skills
     2Warm               (DONE)

@@ -13,22 +13,22 @@ Please see the Piazza problem status post for details, and double-check your pro
 Overview:
 
 Binary Exploitation
-3 / 8
+5
 
 Cryptography
-2 / 6
+2
 
 Forensics
-5 / 14
+5
 
 General Skills
-13 / 19
+14
 
 Reversing
-4 / 7
+4
 
 Web Exploitation
-7 / 16
+7
 
 ----------------------------------------
 
