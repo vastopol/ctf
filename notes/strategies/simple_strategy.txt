@@ -111,12 +111,5 @@ searching:
     GET localhost:9200/_search?q=query
 
 
------
-
-gdb redirect
-
-info functions
-print & fun
-set $ rip = <addr>
-c
+-----------------
 

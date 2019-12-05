@@ -1,0 +1,8 @@
+
+Mommy, I wanna play a game!
+(if your network response time is too slow, try nc 0 9007 inside pwnable.kr server)
+
+Running at : nc pwnable.kr 9007
+
+----------------------------------------
+

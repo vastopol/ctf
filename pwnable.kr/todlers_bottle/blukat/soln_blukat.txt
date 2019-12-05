@@ -1,0 +1,26 @@
+
+Sometimes, pwnable is strange...
+hint: if this challenge is hard, you are a skilled player.
+
+ssh blukat@pwnable.kr -p2222 (pw: guest)
+
+----------------------------------------
+
+the program reads in from a password file
+this can be bypassed by breaking after the read finishes,
+then by inspecting the password buffer in memory you can see the string
+
+
+b *0x000000000040083a
+
+
+print(char*) &password
+$8 = 0x6010a0 <password> "cat: password: Permission denied\n"
+
+
+when run the program , enter password = "cat: password: Permission denied"
+
+----------------------------------------
+
+Pl3as_DonT_Miss_youR_GrouP_Perm!!
+

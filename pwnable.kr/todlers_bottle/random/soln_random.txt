@@ -1,0 +1,43 @@
+
+Daddy, teach me how to use random value in programming!
+
+ssh random@pwnable.kr -p2222 (pw:guest)
+
+----------------------------------------
+
+gets a value from rand() then xor with user input
+result must be 0xdeadbeef
+
+break at instruction after call to rand()
+return value is in eax, and is always the same value each time
+
+b * 0x400606
+
+rax            0x6b8b4567	1804289383
+
+
+need to figure out:
+
+x ^ 0x6b8b4567 = 0xdeadbeef
+
+result:
+
+? 0xdeadbeef ^ 0x6b8b4567
+
+int32   -1255736440
+uint32  3039230856
+hex     0xb526fb88
+octal   026511575610
+unit    2.8G
+segment b526000:0b88
+string  "\x88\xfb&\xb5"
+fvalue: 1804289383.0
+float:  -0.000001f
+double: 0.000000
+binary  0b10110101001001101111101110001000
+trits   0t21211210211220221210
+
+----------------------------------------
+
+
+Mommy, I thought libc random is unpredictable...

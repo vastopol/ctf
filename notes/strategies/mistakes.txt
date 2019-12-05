@@ -1,0 +1,13 @@
+programming errors in C
+
+
+* operator precedence with opening files and file descriptors
+
+* rand() from libc returning the same value each time
+
+* not checking size of user input vs buffer size
+
+* calling printf with 1 user controlled string argument
+* not passing pointers to the variables in a scanf call
+
+

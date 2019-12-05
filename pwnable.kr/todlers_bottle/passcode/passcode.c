@@ -11,7 +11,7 @@ void login(){
 
 	// ha! mommy told me that 32bit is vulnerable to bruteforcing :)
 	printf("enter passcode2 : ");
-        scanf("%d", passcode2);
+    scanf("%d", passcode2);
 
 	printf("checking...\n");
 	if(passcode1==338150 && passcode2==13371337){

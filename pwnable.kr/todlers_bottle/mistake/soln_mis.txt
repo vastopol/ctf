@@ -1,0 +1,62 @@
+We all make mistakes, let's move on.
+(don't take this too seriously, no fancy hacking skill is required at all)
+
+This task is based on real event
+Thanks to dhmonkey
+
+hint : operator priority
+
+ssh mistake@pwnable.kr -p2222 (pw:guest)
+
+----------------------------------------
+
+https://en.cppreference.com/w/c/language/operator_precedence
+
+the > operator has higher precedence than =
+
+if(fd=open("/home/mistake/password",O_RDONLY,0400) < 0)
+
+actually
+
+if( fd = ( open("/home/mistake/password",O_RDONLY,0400) < 0) )
+
+because of the precedence of < the return of open is compared to 0
+open returns the number of the file descriptor
+
+
+in this case it does not read the password file since fd=0
+it seems like the program hangs but it is actually waiting,
+it will read input from user on stdin to the password buffer
+the user can enter whatever they want as the password
+
+next it wants to get the user input for the xor
+the input ^ 1 must produce the password
+
+----------
+
+#define PW_LEN 10
+#define XORKEY 1
+
+void xor(char* s, int len){
+	int i;
+	for(i=0; i<len; i++){
+		s[i] ^= XORKEY;
+	}
+}
+
+
+'b' ^ 1  == 'c'
+'c' ^ 1  == 'b'
+
+'d' ^ 1  == 'e'
+'e' ^ 1  == 'd'
+
+'0' ^ 1  == '1'
+'1' ^ 1  == '0'
+
+'2' ^ 1  == '3'
+'3' ^ 1  == '2'
+
+----------------------------------------
+
+Mommy, the operator priority always confuses me :(

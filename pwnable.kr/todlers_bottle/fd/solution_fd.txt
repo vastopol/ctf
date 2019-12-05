@@ -1,4 +1,13 @@
 
+Mommy! what is a file descriptor in Linux?
+
+* try to play the wargame your self but if you are ABSOLUTE beginner, follow this tutorial link:
+https://youtu.be/971eZhMHQQw
+
+ssh fd@pwnable.kr -p2222 (pw:guest)
+
+----------------------------------------
+
 0 is file descriptor for stdin
 1 is file descriptor for stdout
 
@@ -13,20 +22,19 @@ pdf @ main
 [0x08048494]> pdf @ main
             ;-- main:
 / (fcn) sym.main 204
-|   sym.main (int arg_8h, int arg_ch, int arg_1ch);
-|           ; var int local_8h_2 @ ebp-0x8
-|           ; arg int arg_8h @ ebp+0x8      ; argc
-|           ; arg int arg_ch @ ebp+0xc      ; argv
-|           ; var int local_4h @ esp+0x4
-|           ; var int local_8h @ esp+0x8
-|           ; var int local_18h @ esp+0x18  ; fd
-|           ; arg int arg_1ch @ esp+0x1c    ; envp
+|   int main (int argc, char **argv, char **envp);
+|           ; var int32_t var_8h_2 @ ebp-0x8
+|           ; arg signed int arg_8h @ ebp+0x8
+|           ; arg char **str @ ebp+0xc
+|           ; var void *buf @ esp+0x4
+|           ; var size_t nbyte @ esp+0x8
+|           ; var int32_t fildes @ esp+0x18
+|           ; var ssize_t var_1ch @ esp+0x1c
 
 here needs argc > 1
 
-|           0x0804849f      837d0801       cmp dword [ebp + arg_8h], 1 ; [0x1:4]=0x1464c45
+|           0x0804849f      837d0801       cmp dword [ebp + arg_8h], 1
 |       ,=< 0x080484a3      7f16           jg 0x80484bb
-
 
 here it moves argv into eax
 next it add four to eax to get argv+1
@@ -35,14 +43,12 @@ move argv[1] onto stack
 calls atoi to convert argv[1] from char
 next subtract it subtract 0x1234 from eax
 
-|      |`-> 0x080484bb      8b450c         mov eax, dword [ebp + arg_ch] ; [0xc:4]=0
+|      |`-> 0x080484bb      8b450c         mov eax, dword [str]
 |      |    0x080484be      83c004         add eax, 4
 |      |    0x080484c1      8b00           mov eax, dword [eax]
-|      |    0x080484c3      890424         mov dword [esp], eax
-|      |    0x080484c6      e805ffffff     call sym.imp.atoi          ; int atoi(const char *str)
+|      |    0x080484c3      890424         mov dword [esp], eax        ; const char *str
+|      |    0x080484c6      e805ffffff     call sym.imp.atoi           ; int atoi(const char *str)
 |      |    0x080484cb      2d34120000     sub eax, 0x1234
-
-
 
 0x1234 = 4660
 check with calculator
@@ -50,10 +56,8 @@ check with calculator
 by entering 4660 as command line arguments it will subtract to 0
 this is because 0 is the file descriptor for stdin and want to read in
 
-
 [0x08048494]> ? 0x1234
 4660 0x1234 011064 4.6K 0000:0234 4660 "4\x12" 0001001000110100 4660.0 4660.000000f 4660.000000
-
 
 next it
 stores the result of subtraction into fd
@@ -64,15 +68,13 @@ put value of fd into eax
 put value of fd from eax on stack
 calls read to open on the file descriptor
 
-|      |    0x080484d0      89442418       mov dword [esp + local_18h], eax
-|      |    0x080484d4      c744241c0000.  mov dword [esp + arg_1ch], 0
-|      |    0x080484dc      c74424082000.  mov dword [esp + local_8h], 0x20 ; [0x20:4]=0x114c ; "L." 0x00000020
-|      |    0x080484e4      c744240460a0.  mov dword [esp + local_4h], obj.buf ; [0x804a060:4]=0x74736873 ; LEA obj.buf ; "shstrtab" @ 0x804a060
-|      |    0x080484ec      8b442418       mov eax, dword [esp + local_18h] ; [0x18:4]=0x80483e0 sym._start
-|      |    0x080484f0      890424         mov dword [esp], eax
-|      |    0x080484f3      e878feffff     call sym.imp.read          ; ssize_t read(int fildes, void *buf, size_t nbyte)
-
-
+|      |    0x080484d0      89442418       mov dword [fildes], eax
+|      |    0x080484d4      c744241c0000.  mov dword [var_1ch], 0
+|      |    0x080484dc      c74424082000.  mov dword [nbyte], 0x20     ; [0x20:4]=-1 ; 32 ; size_t nbyte
+|      |    0x080484e4      c744240460a0.  mov dword [buf], obj.buf    ; [0x804a060:4]=0 ; void *buf
+|      |    0x080484ec      8b442418       mov eax, dword [fildes]
+|      |    0x080484f0      890424         mov dword [esp], eax        ; int fildes
+|      |    0x080484f3      e878feffff     call sym.imp.read           ; ssize_t read(int fildes, void *buf, size_t nbyte)
 
 it saves return value of read to envp
 move the address of the string "LETMEWIN" into edx
@@ -81,20 +83,19 @@ next does some checking
 the repe cmpsb is a string comparison
 after does some checking
 
-|      |    0x080484f8      8944241c       mov dword [esp + arg_1ch], eax
-|      |    0x080484fc      ba46860408     mov edx, str.LETMEWIN_n     ; "LETMEWIN." @ 0x8048646
-|      |    0x08048501      b860a00408     mov eax, obj.buf            ; "shstrtab" @ 0x804a060
+|      |    0x080484f8      8944241c       mov dword [var_1ch], eax
+|      |    0x080484fc      ba46860408     mov edx, str.LETMEWIN       ; 0x8048646 ; "LETMEWIN\n"
+|      |    0x08048501      b860a00408     mov eax, obj.buf            ; 0x804a060
 |      |    0x08048506      b90a000000     mov ecx, 0xa
 |      |    0x0804850b      89d6           mov esi, edx
 |      |    0x0804850d      89c7           mov edi, eax
-|      |    0x0804850f      f3a6           repe cmpsb byte [esi], byte ptr es:[edi] ; [0x170000001c:1]=255 ; 28
+|      |    0x0804850f      f3a6           repe cmpsb byte [esi], byte ptr es:[edi]
 |      |    0x08048511      0f97c2         seta dl
 |      |    0x08048514      0f92c0         setb al
 |      |    0x08048517      89d1           mov ecx, edx
 |      |    0x08048519      28c1           sub cl, al
 |      |    0x0804851b      89c8           mov eax, ecx
 |      |    0x0804851d      0fbec0         movsx eax, al
-
 
 next uses the test instruction to tell if they matched
 here it checks that the text entered was the same as what it was expecting
@@ -103,11 +104,10 @@ it then push the string for the command to cat the flag file and then calls syst
 
 |      |    0x08048520      85c0           test eax, eax
 |      |,=< 0x08048522      7524           jne 0x8048548
-|      ||   0x08048524      c70424508604.  mov dword [esp], str.good_job_:_ ; [0x8048650:4]=0x646f6f67 ; LEA str.good_job_:_ ; "good job :)" @ 0x8048650
-|      ||   0x0804852b      e850feffff     call sym.imp.puts          ; int puts(const char *s)
-|      ||   0x08048530      c704245c8604.  mov dword [esp], str._bin_cat_flag ; [0x804865c:4]=0x6e69622f ; LEA str._bin_cat_flag ; "/bin/cat flag" @ 0x804865c
-|      ||   0x08048537      e854feffff     call sym.imp.system        ; int system(const char *string)
-
+|      ||   0x08048524      c70424508604.  mov dword [esp], str.good_job_: ; [0x8048650:4]=0x646f6f67 ; "good job :)" ; const char *s
+|      ||   0x0804852b      e850feffff     call sym.imp.puts           ; int puts(const char *s)
+|      ||   0x08048530      c704245c8604.  mov dword [esp], str.bin_cat_flag ; [0x804865c:4]=0x6e69622f ; "/bin/cat flag" ; const char *string
+|      ||   0x08048537      e854feffff     call sym.imp.system         ; int system(const char *string)
 
 
 run the program with value
@@ -119,6 +119,6 @@ good job :)
 mommy! I think I know what a file descriptor is!!
 [0x08048494]>
 
+----------------------------------------
 
-
-flag = "mommy! I think I know what a file descriptor is!!"
+mommy! I think I know what a file descriptor is!!

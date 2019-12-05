@@ -1,3 +1,13 @@
+
+Papa brought me a packed present! let's open it.
+
+Download : http://pwnable.kr/bin/flag
+
+This is reversing task. all you need is binary
+
+----------------------------------------
+
+
 * The file is packed with the UPX Packer
 
     strings | grep upx
@@ -70,9 +80,9 @@ seek for address and look
 .
 .
 
+----------------------------------------
 
-
-FLAG = "UPX...? sounds like a delivery service :)"
+UPX...? sounds like a delivery service :)
 
 
 

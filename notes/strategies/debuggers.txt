@@ -1,0 +1,33 @@
+Hints/Methods for using debuggers on challenges
+
+use Peda for enhanced GDB interface
+
+----------
+
+1.  Uncalled function
+
+    in the binary there is some function(s) which are not called.
+    need to find a way to redirect control flow to there.
+    since inside a debugger can change register values
+    set a breakpoint and stop the program
+    redirect execution by overwriting the instruction pointer
+    use the address of the function want to call
+
+    info functions
+    print &func_name
+    set $rip = func_addr
+    continue
+
+
+2.  Open and read data from a protected file
+
+    cant open a password file that is read protected
+    the program does and then reads that data into a buffer
+    set a breakpoint and stop the program after the read finishes
+    now the data will be in memory so can print the contents of the variable
+
+    print (char*) &password
+
+
+3.  ...
+

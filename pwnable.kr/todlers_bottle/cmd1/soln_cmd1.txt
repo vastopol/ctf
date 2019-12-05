@@ -1,0 +1,23 @@
+
+Mommy! what is PATH environment in Linux?
+
+ssh cmd1@pwnable.kr -p2222 (pw:guest)
+
+----------------------------------------
+
+can directly read the flag file, must give input to program
+it will execute only argv[1] if it has no "sh", "flag", or "tmp"
+
+
+must pass the absolute path of binaries to the program
+want to cat the file, since cat takes arguments need to use quotes
+have to use a regex to glob for the word flag since the filter
+
+
+command to run:
+
+./cmd1 "/bin/cat ~/f*"
+
+----------------------------------------
+
+mommy now I get what PATH environment is for :)

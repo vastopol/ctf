@@ -1,0 +1,7 @@
+
+Mommy, there was a shocking news about bash.
+I bet you already know, but lets just make it sure :)
+
+ssh shellshock@pwnable.kr -p2222 (pw:guest)
+
+----------------------------------------

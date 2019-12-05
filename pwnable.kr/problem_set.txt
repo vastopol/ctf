@@ -1,425 +1,97 @@
 Problems from pwnable.kr
 
-when ssh in usually
-- to use peda, issue `source /usr/share/peda/peda.py` in gdb terminal
-- can also use radare2
-
-Points: 13
-
-Levels:
-
-[Toddler's Bottle] : 3/21
+[Toddler's Bottle] : 7/21
 [Rookiss]          : 0/17
 [Grotesque]        : 0/17
 [Hacker's Secret]  : 0/13
+
+note:
+over ssh - to use peda, issue `source /usr/share/peda/peda.py` in gdb terminal
 
 ========================================
 
 [Toddler's Bottle]
 
-    fd      (DONE)
-
-            Mommy! what is a file descriptor in Linux?
-
-            * try to play the wargame your self but if you are ABSOLUTE beginner, follow this tutorial link:
-            https://youtu.be/971eZhMHQQw
-
-            ssh fd@pwnable.kr -p2222 (pw:guest)
-
-            FLAG = "mommy! I think I know what a file descriptor is!!"
-
-    ----------------------------------------
-
-    collision
-
-            Daddy told me about cool MD5 hash collision today.
-            I wanna do something like that too!
-
-            ssh col@pwnable.kr -p2222 (pw:guest)
-
-    ----------------------------------------
-
-    bof     (DONE)
-
-            Nana told me that buffer overflow is one of the most common software vulnerability.
-            Is that true?
-
-            Download : http://pwnable.kr/bin/bof
-            Download : http://pwnable.kr/bin/bof.c
-
-            Running at : nc pwnable.kr 9000
-
-            FLAG = "daddy, I just pwned a buFFer :)"
-
-    ----------------------------------------
-
-    flag    (DONE)
-
-            Papa brought me a packed present! let's open it.
-
-            Download : http://pwnable.kr/bin/flag
-
-            This is reversing task. all you need is binary
-
-            FLAG = "UPX...? sounds like a delivery service :)"
-
-    ----------------------------------------
-
-    passcode
-
-            Mommy told me to make a passcode based login system.
-            My initial C code was compiled without any error!
-            Well, there was some compiler warning, but who cares about that?
-
-            ssh passcode@pwnable.kr -p2222 (pw:guest)
-
-    ----------------------------------------
-
-    random
-
-            Daddy, teach me how to use random value in programming!
-
-            ssh random@pwnable.kr -p2222 (pw:guest)
-
-    ----------------------------------------
-
-    input
-
-            Mom? how can I pass my input to a computer program?
-
-            ssh input2@pwnable.kr -p2222 (pw:guest)
-
-    ----------------------------------------
-
-    leg
-
-            Daddy told me I should study arm.
-            But I prefer to study my leg!
-
-            Download : http://pwnable.kr/bin/leg.c
-            Download : http://pwnable.kr/bin/leg.asm
-
-            ssh leg@pwnable.kr -p2222 (pw:guest)
-
-    ----------------------------------------
-
-    mistake
-
-            We all make mistakes, let's move on.
-            (don't take this too seriously, no fancy hacking skill is required at all)
-
-            This task is based on real event
-            Thanks to dhmonkey
-
-            hint : operator priority
-
-            ssh mistake@pwnable.kr -p2222 (pw:guest)
-
-    ----------------------------------------
-
-    shellshock
-
-            Mommy, there was a shocking news about bash.
-            I bet you already know, but lets just make it sure :)
-
-            ssh shellshock@pwnable.kr -p2222 (pw:guest)
-
-    ----------------------------------------
-
-    coin1
-
-            Mommy, I wanna play a game!
-            (if your network response time is too slow, try nc 0 9007 inside pwnable.kr server)
-
-            Running at : nc pwnable.kr 9007
-
-    ----------------------------------------
-
-    blackjack
-
-            Hey! check out this C implementation of blackjack game!
-            I found it online
-            * http://cboard.cprogramming.com/c-programming/114023-simple-blackjack-program.html
-
-            I like to give my flags to millionares.
-            how much money you got?
-
-            Running at : nc pwnable.kr 9009
-
-    ----------------------------------------
-
-    lotto
-
-            Mommy! I made a lotto program for my homework.
-            do you want to play?
-
-            ssh lotto@pwnable.kr -p2222 (pw:guest)
-
-    ----------------------------------------
-
-    cmd1
-
-            Mommy! what is PATH environment in Linux?
-
-            ssh cmd1@pwnable.kr -p2222 (pw:guest)
-
-    ----------------------------------------
-
-    cmd2    *** need cmd1 flag as ssh password
-
-            Daddy bought me a system command shell.
-            but he put some filters to prevent me from playing with it without his permission...
-            but I wanna play anytime I want!
-
-            ssh cmd2@pwnable.kr -p2222 (pw:flag of cmd1)
-
-    ----------------------------------------
-
-    uaf
-
-            Mommy, what is Use After Free bug?
-
-            ssh uaf@pwnable.kr -p2222 (pw:guest)
-
-    ----------------------------------------
-
-    memcpy
-
-            Are you tired of hacking?, take some rest here.
-            Just help me out with my small experiment regarding memcpy performance.
-            after that, flag is yours.
-
-            http://pwnable.kr/bin/memcpy.c
-
-            ssh memcpy@pwnable.kr -p2222 (pw:guest)
-
-    ----------------------------------------
-
-    asm
-
-            Mommy! I think I know how to make shellcodes
-
-            ssh asm@pwnable.kr -p2222 (pw: guest)
-
-    ----------------------------------------
-
-    unlink
-
-            Daddy! how can I exploit unlink corruption?
-
-            ssh unlink@pwnable.kr -p2222 (pw: guest)
-
-    ----------------------------------------
-
-    blukat
-
-            Sometimes, pwnable is strange...
-            hint: if this challenge is hard, you are a skilled player.
-
-            ssh blukat@pwnable.kr -p2222 (pw: guest)
-
-    ----------------------------------------
-
-    horcruxes
-
-            Voldemort concealed his splitted soul inside 7 horcruxes.
-            Find all horcruxes, and ROP it!
-            author: jiwon choi
-
-            ssh horcruxes@pwnable.kr -p2222 (pw:guest)
+    * fd          (DONE)
+    * collision
+    * bof         (DONE)
+    * flag        (DONE)
+    * passcode
+    * random      (DONE)
+    * input
+    * leg
+    * mistake     (DONE)
+    * shellshock
+    * coin1
+    * blackjack
+    * lotto
+    * cmd1        (DONE)
+    * cmd2
+    * uaf
+    * memcpy
+    * asm
+    * unlink
+    * blukat      (DONE)
+    * horcruxes
 
 ========================================
 
 [Rookiss]
 
-    brain fuck
-
-    ----------------------------------------
-
-    md5 calculator
-
-    ----------------------------------------
-
-    simple login
-
-    ----------------------------------------
-
-    otp
-
-    ----------------------------------------
-
-    ascii_easy
-
-    ----------------------------------------
-
-    tiny_easy
-
-    ----------------------------------------
-
-    fsb
-
-    ----------------------------------------
-
-    dragon
-
-    ----------------------------------------
-
-    fix
-
-    ----------------------------------------
-
-    syscall
-
-    ----------------------------------------
-
-    crypto1
-
-    ----------------------------------------
-
-    echo1
-
-    ----------------------------------------
-
-    echo2
-
-    ----------------------------------------
-
-    rsa calculator
-
-    ----------------------------------------
-
-    note
-
-    ----------------------------------------
-
-    alloca
-
-    ----------------------------------------
-
-    loveletter
+    * brain fuck
+    * md5 calculator
+    * simple login
+    * otp
+    * ascii_easy
+    * tiny_easy
+    * fsb
+    * dragon
+    * fix
+    * syscall
+    * crypto1
+    * echo1
+    * echo2
+    * rsa calculator
+    * note
+    * alloca
+    * loveletter
 
 ========================================
 
 [Grotesque]
 
-    proxy server
-
-    ----------------------------------------
-
-    rootkit
-
-    ----------------------------------------
-
-    dos4fun
-
-    ----------------------------------------
-
-    ascii
-
-    ----------------------------------------
-
-    aeg
-
-    ----------------------------------------
-
-    coin2
-
-    ----------------------------------------
-
-    maze
-
-    ----------------------------------------
-
-    wtf
-
-    ----------------------------------------
-
-    sudoku
-
-    ----------------------------------------
-
-    starcraft
-
-    ----------------------------------------
-
-    cmd3
-
-    ----------------------------------------
-
-    elf
-
-    ----------------------------------------
-
-    lfh
-
-    ----------------------------------------
-
-    lokihardt
-
-    ----------------------------------------
-
-    asg
-
-    ----------------------------------------
-
-    hunter
-
-    ----------------------------------------
-
-    mipstake
+    * proxy server
+    * rootkit
+    * dos4fun
+    * ascii
+    * aeg
+    * coin2
+    * maze
+    * wtf
+    * sudoku
+    * starcraft
+    * cmd3
+    * elf
+    * lfh
+    * lokihardt
+    * asg
+    * hunter
+    * mipstake
 
 ========================================
 
 [Hacker's Secret]
 
-    unexploitable
-
-    ----------------------------------------
-
-    tiny
-
-    ----------------------------------------
-
-    softmmu
-
-    ----------------------------------------
-
-    towelroot
-
-    ----------------------------------------
-
-    nuclear
-
-    ----------------------------------------
-
-    malware
-
-    ----------------------------------------
-
-    exploitable
-
-    ----------------------------------------
-
-    tiny_hard
-
-    ----------------------------------------
-
-    kcrc
-
-    ----------------------------------------
-
-    exynos
-
-    ----------------------------------------
-
-    combabo calculator
-
-    ----------------------------------------
-
-    pwnsandbox
-
-    ----------------------------------------
-
-    crcgen
-
-
+    * unexploitable
+    * tiny
+    * softmmu
+    * towelroot
+    * nuclear
+    * malware
+    * exploitable
+    * tiny_hard
+    * kcrc
+    * exynos
+    * combabo calculator
+    * pwnsandbox
+    * crcgen
