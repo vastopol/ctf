@@ -8,18 +8,39 @@ Some of these are from organized sites or ctf challenges while others are crackm
 Each folder will have more documentation describing the included challenges.
 Included also are notes and some tools.
 
-## Me
-
-* https://www.hackthebox.eu/home/users/profile/127692
-* https://crackmes.one/user/vastopol
-
 ## Sites
+
+* Python Challenge
+    * http://www.pythonchallenge.com/
+
+* Over The Wire
+    * https://overthewire.org/wargames/
+
+* Under The Wire
+    * https://www.underthewire.tech/wargames.htm
+
+* Immersive Labs
+    * https://immersivelabs.online/signin
+
+* picoCTF
+    * https://picoctf.com/
+    * https://2018game.picoctf.com/
+    * https://2019game.picoctf.com/
 
 * Hack The Box
     * https://www.hackthebox.eu
 
+* Embedded Security CTF
+    * https://microcorruption.com/login
+
 * pwnable.kr
     * https://pwnable.kr/play.php
+
+* pwnable.tw
+    * https://pwnable.tw/challenge/
+
+* reversing.kr
+    * http://reversing.kr/challenge.php
 
 * crackmes.one
     * https://www.crackmes.one
@@ -30,12 +51,9 @@ Included also are notes and some tools.
 * protostar
     * https://exploit.education/protostar/
 
-* picoCTF
-    * https://picoctf.com/
-    * https://2018game.picoctf.com/
-    * https://2019game.picoctf.com/
+* MalwareTech
+    * https://www.malwaretech.com/beginner-malware-reversing-challenges
 
-* Python Challenge
-    * http://www.pythonchallenge.com/
-
+* etc...
+    * https://www.sjoerdlangkemper.nl/2018/12/19/practice-hacking-with-vulnerable-systems/
 

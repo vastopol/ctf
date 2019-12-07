@@ -1,0 +1,36 @@
+
+4438 <main>
+4438:  3e40 2045      mov	#0x4520, r14
+443c:  0f4e           mov	r14, r15
+443e:  3e40 f800      mov	#0xf8, r14
+4442:  3f40 0024      mov	#0x2400, r15
+4446:  b012 8644      call	#0x4486 <enc>
+444a:  b012 0024      call	#0x2400
+444e:  0f43           clr	r15
+
+
+451a <do_nothing>
+451a:  0e4f           mov	r15, r14
+451c:  0f4e           mov	r14, r15
+451e:  3041           ret
+4520:  7768           addc.b	@r8+, r7
+4522:  6174           subc.b	@r4, sp
+4524:  2773           subc	#0x2, r7
+4526:  2074           subc	@r4, pc
+4528:  6865           addc.b	@r5, r8
+452a:  2070           subc	@pc, pc
+452c:  6173           subc.b	#0x2, sp
+452e:  7377           .word	0x7773
+4530:  6f72           subc.b	#0x4, r15
+4532:  643f           jmp	#0x43fc <__none__+0x43fc>
+
+
+
+do_nothing is probably a dummy function
+seems like first 3 instructions are fake
+the rest could possibly be data hidden as code
+
+main seems to put a location partway through do_nothing in r14
+
+after encryption main calls into the 2400 address ?
+

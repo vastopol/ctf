@@ -113,3 +113,17 @@ searching:
 
 -----------------
 
+Trick a device into consuming more input than it allocated memory for and you've caused a buffer overflow.
+
+Overflow a buffer that lives on the program stack and you've "smashed the stack";
+look that up on Google if you like, but the exploit is simple: overwrite another stack variable,
+often the return address of the function you're in, and use that to take control of the device,
+often by aiming the CPU at memory you control.
+
+Overflow a buffer that was created by an allocator and you've "corrupted the heap":
+allocators keep metadata to track the memory they're managing,
+and they trust that only the program can manipulate that metadata; 
+corrupt to trick the program into writing to arbitrary places in memory.
+
+Zero bottles of beer on the wall, zero bottles of beer;
+take one down, pass it around, 65535 bottles of beer on the wall.

@@ -1,0 +1,26 @@
+check password function
+
+448a <check_password>
+448a:  bf90 4a56 0000 cmp	#0x564a, 0x0(r15)
+4490:  0d20           jnz	$+0x1c
+4492:  bf90 4871 0200 cmp	#0x7148, 0x2(r15)
+4498:  0920           jnz	$+0x14
+449a:  bf90 5053 0400 cmp	#0x5350, 0x4(r15)
+44a0:  0520           jne	#0x44ac <check_password+0x22>
+44a2:  1e43           mov	#0x1, r14
+44a4:  bf90 2d57 0600 cmp	#0x572d, 0x6(r15)
+44aa:  0124           jeq	#0x44ae <check_password+0x24>
+44ac:  0e43           clr	r14
+44ae:  0f4e           mov	r14, r15
+44b0:  3041           ret
+
+
+decode the ascii
+
+56 4a 71 48 53 50 57 2d
+VJqHSPW-
+
+little endian byte order
+
+4a 56 48 71 50 53 2d 57
+JVHqPS-W

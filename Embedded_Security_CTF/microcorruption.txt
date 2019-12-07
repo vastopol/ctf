@@ -1,0 +1,12 @@
+Embedded Security CTF
+
+* Tutorial      (DONE)
+* New Orleans   (DONE)
+* Sydney        (DONE)
+* Hanoi         (DONE)
+* Cusco         (DONE)
+* Reykjavik
+* Whitehorse
+* Johannesburg
+* Addis Ababa
+
