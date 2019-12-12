@@ -1,0 +1,48 @@
+You need to make sure the ROP chain is positioned properly over the return address.
+If it is not, you are likely to get a segfault, or the normal output.
+
+Positioning the beginning of the ROP chain should be exactly like positioning the overwritten return address in OVER
+(though the program may be slightly different). You can either:
+
+examine the objdump output to determine what’s on the stack in the vulnerable function,
+and therefore the distance between the return address and the beginning of the buffer; or
+try inputting different amounts of data and see what length is required to get a segfault.
+This should indicate where the return address starts relative to the buffer.
+
+If your ROP chain causes the program to not produce any output, this is probably because you need to add padding between your exploit and the shell commands.
+You can check if a shell is actually running by seeing if the debugger gives a message like “process 13977 is executing new program: /bin/dash”.
+
+An example of padding is a string with a lot of newlines.
+This is needed because gets will read part of the next lines into an internal buffer to speed up reading those future lines.
+This buffer will not be shared with the executed shell, as described in item 7 of the instructions.
+
+If you get an error about “[-] Error - Can’t find a writable section”, then you are probably using Python 3 instead of Python 2 to run ROPgadget.py.
+It is a Python 2 program that is silently incompatible with Python 3.
+
+
+generate rop chain
+
+ROPgadget --binary vuln --ropchain
+
+The generated python code will have a space for “padding”. You will need to modify this to correctly place the ROP chain on the stack.
+
+To execute a command in the shell, you will need to modify the generated python code to output a shell command after the exploit string.
+You will need additional padding before this shell command to deal with gets’s buffering.
+
+stdio.h functions like gets default to reading a lot of extra data from a file to avoid making many system calls.
+This data is buffered for future gets, getchar, etc. calls (making them faster).
+But when our exploit code starts a shell with execve, these buffers are discarded.
+
+To avoid this problem, you should have some unused bytes between the attack string and the shell commands, such as several thousand newlines.
+(Note that the python expression "\n" * 10000 will produce a string containing 10000 newlines.) This will act similarly to a NOP sled.
+
+
+------
+
+
+avoid bad bytes
+
+ROPgadget --binary vuln --ropchain --badbytes "0a"
+
+this could be useful if newlines kill the shell which you spawn and catch
+

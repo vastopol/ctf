@@ -7,7 +7,7 @@ mainly the Binary Exploitation and Reverse Engineering
 Overview:
 
 Binary Exploitation
-8
+9
 
 Cryptography
 0
@@ -57,7 +57,7 @@ Web Exploitation
     pointy
     seed-sPRiNG
     L1im1tL355
-    rop32
+    rop32               (DONE)
     ghost_diary
 
 
