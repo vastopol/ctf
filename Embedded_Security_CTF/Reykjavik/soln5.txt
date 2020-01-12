@@ -13,7 +13,7 @@
 451a:  0e4f           mov	r15, r14
 451c:  0f4e           mov	r14, r15
 451e:  3041           ret
-4520:  7768           addc.b	@r8+, r7
+4520:  7768           addc.b	@r8+, r7           ; start of hidden data
 4522:  6174           subc.b	@r4, sp
 4524:  2773           subc	#0x2, r7
 4526:  2074           subc	@r4, pc
@@ -25,12 +25,227 @@
 4532:  643f           jmp	#0x43fc <__none__+0x43fc>
 
 
+445a <INT>
+445a:  1e41 0200      mov	0x2(sp), r14
+445e:  0212           push	sr
+4460:  0f4e           mov	r14, r15
+4462:  8f10           swpb	r15
+4464:  024f           mov	r15, sr
+4466:  32d0 0080      bis	#0x8000, sr
+446a:  b012 1000      call	#0x10
+446e:  3241           pop	sr
+4470:  3041           ret
+4472:  5468 6973      addc.b	0x7369(r8), r4         ; start of hidden data
+4476:  4973           sbc.b	r9
+4478:  5365           .word	0x6553
+447a:  6375           .word	0x7563
+447c:  7265           addc.b	@r5+, sr
+447e:  5269 6768      addc.b	0x6867(r9), sr
+4482:  743f           jmp	#0x436c <__none__+0x436c>
 
-do_nothing is probably a dummy function
+
+4486 <enc>
+4486:  0b12           push	r11
+4488:  0a12           push	r10
+448a:  0912           push	r9
+448c:  0812           push	r8
+448e:  0d43           clr	r13
+4490:  cd4d 7c24      mov.b	r13, 0x247c(r13)
+4494:  1d53           inc	r13
+4496:  3d90 0001      cmp	#0x100, r13
+449a:  fa23           jne	#0x4490 <enc+0xa>
+449c:  3c40 7c24      mov	#0x247c, r12
+44a0:  0d43           clr	r13
+44a2:  0b4d           mov	r13, r11
+44a4:  684c           mov.b	@r12, r8
+44a6:  4a48           mov.b	r8, r10
+44a8:  0d5a           add	r10, r13
+44aa:  0a4b           mov	r11, r10
+44ac:  3af0 0f00      and	#0xf, r10
+44b0:  5a4a 7244      mov.b	0x4472(r10), r10
+44b4:  8a11           sxt	r10
+44b6:  0d5a           add	r10, r13
+44b8:  3df0 ff00      and	#0xff, r13
+44bc:  0a4d           mov	r13, r10
+44be:  3a50 7c24      add	#0x247c, r10
+44c2:  694a           mov.b	@r10, r9
+44c4:  ca48 0000      mov.b	r8, 0x0(r10)
+44c8:  cc49 0000      mov.b	r9, 0x0(r12)
+44cc:  1b53           inc	r11
+44ce:  1c53           inc	r12
+44d0:  3b90 0001      cmp	#0x100, r11
+44d4:  e723           jne	#0x44a4 <enc+0x1e>
+44d6:  0b43           clr	r11
+44d8:  0c4b           mov	r11, r12
+44da:  183c           jmp	#0x450c <enc+0x86>
+44dc:  1c53           inc	r12
+44de:  3cf0 ff00      and	#0xff, r12
+44e2:  0a4c           mov	r12, r10
+44e4:  3a50 7c24      add	#0x247c, r10
+44e8:  684a           mov.b	@r10, r8
+44ea:  4b58           add.b	r8, r11
+44ec:  4b4b           mov.b	r11, r11
+44ee:  0d4b           mov	r11, r13
+44f0:  3d50 7c24      add	#0x247c, r13
+44f4:  694d           mov.b	@r13, r9
+44f6:  cd48 0000      mov.b	r8, 0x0(r13)
+44fa:  ca49 0000      mov.b	r9, 0x0(r10)
+44fe:  695d           add.b	@r13, r9
+4500:  4d49           mov.b	r9, r13
+4502:  dfed 7c24 0000 xor.b	0x247c(r13), 0x0(r15)
+4508:  1f53           inc	r15
+450a:  3e53           add	#-0x1, r14
+450c:  0e93           tst	r14
+450e:  e623           jnz	#0x44dc <enc+0x56>
+4510:  3841           pop	r8
+4512:  3941           pop	r9
+4514:  3a41           pop	r10
+4516:  3b41           pop	r11
+4518:  3041           ret
+
+----------------------------------------
+
+
+do_nothing is probably a dummy function?
 seems like first 3 instructions are fake
 the rest could possibly be data hidden as code
 
-main seems to put a location partway through do_nothing in r14
+the interrupt also has embedded data
 
-after encryption main calls into the 2400 address ?
+main puts a location partway through do_nothing in r14
+then that is moved into r15, next 0xf8 goes into r14
+then 0x2400 goes in r15,  call encryption
+then main calls the 2400 address
 
+
+do_nothing:
+
+    4520:   7768 6174 2773 2074 6865 2070 6173 7377   what's the passw
+    4530:   6f72 643f 0000 0013 4c85 1bc5 80df e9bf   ord?....L.......
+
+INT:
+
+    4470:   3041 5468 6973 4973 5365 6375 7265 5269   0AThisIsSecureRi
+    4480:   6768 743f 0000 0b12 0a12 0912 0812 0d43   ght?...........C
+
+
+----------------------------------------
+
+
+on call to enc
+
+r14 = 00f8, r15 = 2400
+
+0x247c  --> offset in sp ?
+
+0xf8 = 248
+0x100 = 256
+
+0x2574
+
+loops 256 multiple places
+
+44b0:  5a4a 7244      mov.b	0x4472(r10), r10
+r10 is a counter into the sp offset  ?
+
+
+overwrite a bunch of memory with 00 to ff in sequence
+alphabet in memory etc...
+
+2490:   1415 1617 1819 1a1b 1c1d 1e1f 2021 2223   ............ !"#
+24a0:   2425 2627 2829 2a2b 2c2d 2e2f 3031 3233   $%&'()*+,-./0123
+24b0:   3435 3637 3839 3a3b 3c3d 3e3f 4041 4243   456789:;<=>?@ABC
+24c0:   4445 4647 4849 4a4b 4c4d 4e4f 5051 5253   DEFGHIJKLMNOPQRS
+24d0:   5455 5657 5859 5a5b 5c5d 5e5f 6061 6263   TUVWXYZ[\]^_`abc
+24e0:   6465 6667 6869 6a6b 6c6d 6e6f 7071 7273   defghijklmnopqrs
+24f0:   7475 7677 7879 7a7b 7c7d 7e7f 8081 8283   tuvwxyz{|}~....
+
+loops around 256 again and encrypts the stuff in memory
+
+then loops 248 more
+
+----------------------------------------
+
+https://onlinedisassembler.com/
+
+0B 12 04 12 04 41 24 52 31 50 E0 FF 3B 40 20 45 07 3C 1B 53 8F 11 0F 12 03 12 B0 12 64 24 21 52 6F 4B 4F 93 F6 23 30 12 0A 00 03 12 B0 12 64 24 21 52 30 12 1F 00 3F 40 DC FF 0F 54 0F 12 23 12 B0 12 64 24 31 50 06 00 B4 90 99 C8 DC FF 05 20 21 53 31 50 20 00 34 41 3B 41 30 41 1E 41 02 00 02 12 0F 4E 8F 10 02 4F 32 D0 00 80 B0 12 10 00 32 41 30 41
+
+----------------------------------------
+
+fun 0x2400  ? string loader, r11 points at chars
+
+at some point the values are shifted down
+when the encryption functi9ons runs in inserts instructions
+
+
+2400    push r11
+2402    push r4
+2404    mov sp, r4
+2406    add #0x4, r4
+2408    add #0xffe0, sp
+240c    mov, #0x4520, r11       ;  pointer to question string
+2410    jmp $+0x10              ;  pc = 2420
+2412    inc r11
+2414    sxt r15
+2416    push r15
+2418    push #0x0
+241a    call #0x2464
+241e    add #0x4, sp
+2420    mov.b @r11, r15
+2422    tst.b r15
+2424    jnz $-0x12              ; pc = 2420
+2426    push #0xa
+242a    push #0x0
+242c    call #0x2464
+2430    add #0x4, sp
+2432    push #0x1f
+2436    mov #0xffdc, r15
+243a    add r4, r15             ; 0x43da
+243c    push r15
+243e    push #0x2
+2440    call #0x2464            ; gets call, sz=31  0x1f
+2444    add #0x6, sp
+2448    cmp #0xc899, -0x24(r4)  ; check if 0x43da == 51353;  0x43fe-0x24 = 0x43da in stack
+244e    jnz $+0xc
+
+        here the disassembly changes from the online disassembler ??
+
+inserted
+
+2450    push #0x7f      ; unlock interrupt
+2454    call #0x2464
+
+        Door Unlocked
+        If you were not connected to the debug lock, the door would now be open.
+        Now reset the CPU and type "solve" to run on the real lock, without the debugger.
+        The CPU completed in 22814 cycles.
+
+        not sure what happened
+
+original:
+
+2450    incd r1      -->  2458
+2452    add #0x20    -->  245a
+2456    pop r4       -->  245e
+2458    pop r11      -->  2460
+245a    ret          -->  2462
+
+--------------------
+
+fun 0x2464   ? interrupt caller
+
+2464    mov 0x2(sp), r14
+2468    push sr
+246a    mov r14, r15
+246c    swpb r15
+246e    mov r15, sr
+2470    bis #0x8000, sr
+2474    call #0x10
+2478    pop sr
+247a    ret
+
+----------------------------------------
+
+password hex code
+
+99 c8

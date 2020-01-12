@@ -5,8 +5,9 @@ Embedded Security CTF
 * Sydney        (DONE)
 * Hanoi         (DONE)
 * Cusco         (DONE)
-* Reykjavik
-* Whitehorse
+* Reykjavik     (DONE)
+* Whitehorse    (DONE)
+* Montevideo
 * Johannesburg
 * Addis Ababa
 
