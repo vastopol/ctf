@@ -1,0 +1,23 @@
+00000000   00 00 12 04  00 00 00 00  00 00 03 00  00 00 80 00  04 00 01 00  00 00 05 00  FF FF FF 00  00 04 08 00  00 00 00 00  7F FF 00 00  00 00 08 07
+0000002C   00 00 00 00  00 00 00 00  00 00 00 00  01
+
+57 byte file
+
+CheckFileType - SUCCESS
+File Type: data
+MIME Type: application/octet-stream
+Suggested file extension(s): bin lha lzh exe class so dll img iso
+
+md5sum:  63728d0a1d1d944dd710f1e547dd5518
+shasum:  299949e52899f58bd602345238aedb07baa72e0c
+sha256sum: 5d0999123e1e4f62d61fb4af1903c55db191156bbed7c3bee42d84f06edf4ede
+
+https://hybrid-analysis.com/sample/58a3607e4ad79abf71eadd58cc7c5fe1823098194b3e29cf5696df1add074cc2?environmentId=100
+https://any.run/report/b70e3e1a3f39afe6849c056648f9cd34a4a79260ad6b1c9b9c3f5858dd8d7820/fbddf780-b4f5-41c4-bec5-19d77d6838cc
+
+https://www.hybrid-analysis.com/sample/5d0999123e1e4f62d61fb4af1903c55db191156bbed7c3bee42d84f06edf4ede/?lang=ko
+https://urlscan.io/result/82282af3-1076-4369-9c3c-aea4bcb3d279
+
+
+windows7 32 bit ?
+

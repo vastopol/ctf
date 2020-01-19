@@ -1,0 +1,13 @@
+Rijndael is too mainstream, so we went custom.
+This should work out of the box and be unbreakable!
+
+nc outofthesbox.insomnihack.ch 1337
+out_of_the_sbox.zip
+
+----------
+
+reuse the part from welcome
+
+POW: Give me an input whose md5sum starts with "xxxxxx"
+
+

