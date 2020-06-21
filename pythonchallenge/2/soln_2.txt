@@ -1,0 +1,17 @@
+
+2. http://www.pythonchallenge.com/pc/def/ocr.html
+
+    recognize the characters. maybe they are in the book,
+    but MAYBE they are in the page source.
+
+    download ocr.html
+
+    t, l, e, q, a, i, y, u,
+
+
+the page has embedded text at the bottom
+
+
+make python script
+
+e, q, u, a, l, i, t, y, 

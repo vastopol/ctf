@@ -1,5 +1,5 @@
-
 Insomni'hack Teaser 2020
+
 Greetings and welcome to the Insomni'hack teaser!
 
 The teaser will start on January 18th at 9am UTC (10:00 CET) and will last 24 hours.
@@ -14,5 +14,6 @@ Team:
 
 ----------
 
-Challenges:
-    welcome (DONE)
+Solves:
+    welcome
+    

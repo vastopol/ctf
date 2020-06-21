@@ -6,14 +6,14 @@ RANK: Script Kiddie
 
 MACHINES: 3
 
-* Netmon (Retired)
+* Netmon
     * user.txt
 
-* Haystack (Retired)
+* Haystack
     * user.txt
     * root.txt
 
-* Writeup (Retired)
+* Writeup
     * user.txt
     * root.txt
 
@@ -28,18 +28,18 @@ CHALLENGES: 16
     * Little Tommy
 
 * Reversing: 4
-    * Snake (Retired)
+    * Snake
     * Impossible Password
     * DSYM
     * Baby_RE
 
 * Stego: 3
-    * Unified (Retired)
+    * Unified
     * Da Vinci
-    * Beatles (Retired)
+    * Beatles
 
 * Misc: 8
-    * fs0ciety (Retired)
+    * fs0ciety
     * 0ld is g0ld
     * Art
     * Inferno

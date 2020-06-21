@@ -1,5 +1,7 @@
 Embedded Security CTF
 
+Electronic locks based around the MSP430 chip
+
 * Tutorial      (DONE)
 * New Orleans   (DONE)
 * Sydney        (DONE)

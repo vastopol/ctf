@@ -1,0 +1,6 @@
+The ucr ctf team pwnLANdir$ competed with shellphish on these challenges
+
+mainly keeping this for historical purposes
+
+https://oooverflow.io/dc-ctf-2019-quals/
+
