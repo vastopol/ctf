@@ -1,0 +1,13 @@
+4438 <main>
+
+44b0 <test_password_valid>
+
+44da <unlock_door>
+
+45c8 <printf>
+
+----------
+
+
+maybe use string format error?
+
