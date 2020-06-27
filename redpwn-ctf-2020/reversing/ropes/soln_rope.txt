@@ -1,0 +1,6 @@
+
+Running strings on the executable will get the flag 
+
+
+First part is: flag{r0pes_ar3_
+Second part is: just_l0ng_str1ngs}

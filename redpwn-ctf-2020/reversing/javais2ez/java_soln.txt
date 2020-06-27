@@ -1,0 +1,52 @@
+Chris won't stop making Java RE challenges... but he might if you find the correct key to this challenge! Flag is in the form of flag{answer_here}
+
+
+
+
+
+----------------------------------------
+
+public class JavaIsEZ2 {
+   // $FF: synthetic field
+   private static String[] a = new String[]{"redpwn", "ctf2020"};
+   // $FF: synthetic field
+   private static long[] a = new long[]{8248156489741230770L, -5342668067454976247L, -889275714L, -559038737L};
+   // $FF: synthetic field
+   private static int a;
+
+   // $FF: synthetic method
+   // $FF: bridge method
+   public static void main(String[] param0) {
+      // $FF: Couldn't be decompiled
+   }
+
+   public static long print(long var0) {
+      System.out.println(var0);
+      return var0;
+   }
+}
+
+----------
+
+ghidra
+
+void <clinit>_void(void)
+
+{
+  String[] ppSVar1;
+  long[] plVar2;
+  
+  ppSVar1 = new String[2];
+  ppSVar1[0] = "redpwn";
+  ppSVar1[1] = "ctf2020";
+  JavaIsEZ2.a = ppSVar1;
+  plVar2 = new long[4];
+  plVar2[0] = 0x727756a076dbe2b2;
+  plVar2[1] = -0x4a24f84cf97a00f7;
+  plVar2[2] = -0x35014542;
+  plVar2[3] = -0x21524111;
+  JavaIsEZ2.a = plVar2;
+  return;
+}
+
+

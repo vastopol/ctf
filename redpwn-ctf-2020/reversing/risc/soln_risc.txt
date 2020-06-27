@@ -1,0 +1,145 @@
+
+PIE - Position Independent Executable
+
+
+syscall on linux 
+
+0	sys_read
+1	sys_write
+60	sys_exit
+
+----------------------------------------
+
+;-- section..text:
+;-- segment.LOAD1:
+;-- rip:
+┌ 126: entry0 ();
+│           0x00001000      488d35fa1f00.  lea rsi, qword str.Enter_access_code: ; 0x3001 ; "Enter access code: \x13Access authorized.\n\x0fAccess denied.\n\t" ; [06] -r-x section size 185 named .text
+│           0x00001007      e85c000000     call 0x1068
+│           0x0000100c      4831ff         xor rdi, rdi                ; uint32_t arg2
+│           0x0000100f      488d353a2000.  lea rsi, qword [0x00003050]
+│           0x00001016      48c7c2300000.  mov rdx, 0x30               ; '0'
+│           0x0000101d      4831c0         xor rax, rax
+│           0x00001020      0f05           syscall
+│           0x00001022      488d2d0f2000.  lea rbp, qword [0x00003038] ; "\t"
+│           0x00001029      4831f6         xor rsi, rsi
+│           0x0000102c      e84d000000     call fcn.0000107e
+│           0x00001031      48833dff1f00.  cmp qword [0x00003038], 0   ; [0x3038:8]=9 ; "\t"
+│       ┌─< 0x00001039      7415           je 0x1050
+│       │   0x0000103b      488d35e71f00.  lea rsi, qword str.Access_denied. ; 0x3029 ; "Access denied.\n\t"
+│       │   0x00001042      e821000000     call 0x1068
+│       │   0x00001047      48c7c7ffffff.  mov rdi, -1
+│      ┌──< 0x0000104e      eb0f           jmp 0x105f
+│      ││   ; CODE XREF from entry0 @ 0x1039
+│      │└─> 0x00001050      488d35be1f00.  lea rsi, qword str.Access_authorized. ; 0x3015 ; "Access authorized.\n\x0fAccess denied.\n\t"
+│      │    0x00001057      e80c000000     call 0x1068
+│      │    0x0000105c      4831ff         xor rdi, rdi
+│      │    ; CODE XREF from entry0 @ 0x104e
+│      └──> 0x0000105f      48c7c03c0000.  mov rax, 0x3c               ; '<'
+│           0x00001066      0f05           syscall
+│           ; CALL XREFS from entry0 @ 0x1007, 0x1042, 0x1057
+│           0x00001068      48c7c7010000.  mov rdi, 1
+│           0x0000106f      480fb656ff     movzx rdx, byte [rsi - 1]
+│           0x00001074      48c7c0010000.  mov rax, 1
+│           0x0000107b      0f05           syscall
+└           0x0000107d      c3             ret
+
+
+annotated broken down assembly routine for entry0
+
+
+entry0:
+
+    1000:	48 8d 35 fa 1f 00 00 	lea    0x1ffa(%rip),%rsi        # 0x3001    // Enter access code
+    1007:	e8 5c 00 00 00       	callq  0x1068
+    
+        prints string to enter code
+    
+    100c:	48 31 ff             	xor    %rdi,%rdi
+    100f:	48 8d 35 3a 20 00 00 	lea    0x203a(%rip),%rsi        # 0x3050    // location for read
+    1016:	48 c7 c2 30 00 00 00 	mov    $0x30,%rdx
+    101d:	48 31 c0             	xor    %rax,%rax
+    1020:	0f 05                	syscall 
+    
+        syscall to read input size 0x30  (48 chars)
+    
+    1022:	48 8d 2d 0f 20 00 00 	lea    0x200f(%rip),%rbp        # 0x3038    // string to check
+    1029:	48 31 f6             	xor    %rsi,%rsi
+    
+        load string from input to stack
+    
+    102c:	e8 4d 00 00 00       	callq  0x107e
+        
+        call function check
+    
+    1031:	48 83 3d ff 1f 00 00 	cmpq   $0x0,0x1fff(%rip)        # 0x3038
+    1039:	74 15                	je     0x1050
+    
+        if check return 0 (jump equals 0)
+        goto part which prints access granted
+    
+    103b:	48 8d 35 e7 1f 00 00 	lea    0x1fe7(%rip),%rsi        # 0x3029    // access denied
+    1042:	e8 21 00 00 00       	callq  0x1068
+    1047:	48 c7 c7 ff ff ff ff 	mov    $0xffffffffffffffff,%rdi
+    104e:	eb 0f                	jmp    0x105f
+    
+    1050:	48 8d 35 be 1f 00 00 	lea    0x1fbe(%rip),%rsi        # 0x3015    // access granted
+    1057:	e8 0c 00 00 00       	callq  0x1068
+    
+        print access granted message
+    
+exit
+    105c:	48 31 ff             	xor    %rdi,%rdi
+    105f:	48 c7 c0 3c 00 00 00 	mov    $0x3c,%rax   // syscall 60 is exit
+    1066:	0f 05                	syscall 
+    
+print    
+    1068:	48 c7 c7 01 00 00 00 	mov    $0x1,%rdi
+    106f:	48 0f b6 56 ff       	movzbq -0x1(%rsi),%rdx
+    1074:	48 c7 c0 01 00 00 00 	mov    $0x1,%rax
+    107b:	0f 05                	syscall 
+    107d:	c3                   	retq   
+
+
+
+----------------------------------------
+
+
+
+input check function
+get it to run
+
+initially entry at 0x1000
+run once then will have real entry to break on
+0x555555555000
+
+
+
+┌ 59: fcn.0000107e (uint32_t arg2);
+│           ; arg uint32_t arg2 @ rsi
+│      ┌┌─> 0x0000107e      4883fe01       cmp rsi, 1                  ; arg2
+│     ┌───< 0x00001082      7501           jne 0x1085
+│     │╎╎   0x00001084      c3             ret
+│     │╎╎   ; CODE XREF from fcn.0000107e @ 0x1082
+│     └───> 0x00001085      488b44f500     mov rax, qword [rbp + rsi*8]
+│      ╎╎   0x0000108a      488b44c500     mov rax, qword [rbp + rax*8]
+│      ╎╎   0x0000108f      488b5cf508     mov rbx, qword [rbp + rsi*8 + 8]
+│      ╎╎   0x00001094      482944dd00     sub qword [rbp + rbx*8], rax
+│     ┌───< 0x00001099      7718           ja 0x10b3
+│     │╎╎   0x0000109b      48837cf51002   cmp qword [rbp + rsi*8 + 0x10], 2
+│    ┌────< 0x000010a1      740f           je 0x10b2
+│    ││╎╎   0x000010a3      48837cf51000   cmp qword [rbp + rsi*8 + 0x10], 0
+│   ┌─────< 0x000010a9      7408           je 0x10b3
+│   │││╎╎   0x000010ab      488b74f510     mov rsi, qword [rbp + rsi*8 + 0x10]
+│   │││└──< 0x000010b0      ebcc           jmp fcn.0000107e
+│   │││ ╎   ; CODE XREF from fcn.0000107e @ 0x10a1
+│   │└────> 0x000010b2      cc             int3
+│   │ │ ╎   ; CODE XREFS from fcn.0000107e @ 0x1099, 0x10a9
+│   └─└───> 0x000010b3      4883c603       add rsi, 3
+└       └─< 0x000010b7      ebc5           jmp fcn.0000107e
+
+
+
+read in 1 argument integer/pointer to string  
+this must be greater than size 1
+

@@ -1,0 +1,33 @@
+There's not a lot of useful functions in the binary itself. I wonder where you can get some...
+
+nc 2020.redpwnc.tf 31350
+
+----------------------------------------
+
+char name[16];
+...
+read(0, name, 0x100);
+
+----------------------------------------
+
+
+this is a return to libc attack
+need to write a /bin/sh string onto stack 
+then return to address of system from in the library file
+
+objdump -d libc.so.6 | grep system
+000000000004f440 <__libc_system@@GLIBC_PRIVATE>:
+   4f443:	74 0b                	je     4f450 <__libc_system@@GLIBC_PRIVATE+0x10>
+
+
+
+int sym.__libc_system (const char *string);
+
+address: 0x0004f440
+need to have null terminated string of "/bin/sh" on stack
+
+
+
+"/bin/sh"
+
+\x40\xf4\x04

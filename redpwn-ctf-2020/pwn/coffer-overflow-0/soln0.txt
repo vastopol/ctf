@@ -1,0 +1,33 @@
+Can you fill up the coffers? We even managed to find the source for you.
+
+nc 2020.redpwnc.tf 31199
+
+flag{b0ffer_0verf10w_3asy_as_123}
+
+----------------------------------------
+
+long code = 0;
+char name[16];
+
+...
+
+gets(name);
+
+if(code != 0) {
+  system("/bin/sh");
+}
+
+----------------------------------------
+
+basically this has a char array of size 16
+after the array in memory is a long
+you need to overflow the array into the long
+just need to change value doesnt matter what it is
+this happens since gets does not check size when writing
+the long is initially set to 0
+after change value through overflow will pass check in the if
+this will call bin/sh on the server
+then cat flag.txt
+
+need 24 bytes to get to where the location of the long is in memory
+the 25th byte will start changing the value

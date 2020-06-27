@@ -1,0 +1,133 @@
+It never ends
+
+nc 2020.redpwnc.tf 31039
+
+----------
+
+
+bubble sort?
+
+│           ; var int64_t var_ch @ rbp-0xc
+│           ; var int64_t var_8h @ rbp-0x8
+│           ; var uint32_t var_1h @ rbp-0x1
+│           0x000011d9      55             push rbp                    ; .//main.c:28
+│           0x000011da      4889e5         mov rbp, rsp
+│           0x000011dd      4883ec10       sub rsp, 0x10
+│           0x000011e1      488b05b82e00.  mov rax, qword [obj.stdout] ; .//main.c:30 ; obj.stdout__GLIBC_2.2.5
+│                                                                      ; [0x40a0:8]=0
+│           0x000011e8      be00000000     mov esi, 0                  ; char *buf
+│           0x000011ed      4889c7         mov rdi, rax                ; FILE *stream
+│           0x000011f0      e84bfeffff     call sym.imp.setbuf         ; void setbuf(FILE *stream, char *buf)
+│           0x000011f5      488b05b42e00.  mov rax, qword [obj.stdin]  ; .//main.c:31 ; obj.stdin__GLIBC_2.2.5
+│                                                                      ; [0x40b0:8]=0
+│           0x000011fc      be00000000     mov esi, 0                  ; char *buf
+│           0x00001201      4889c7         mov rdi, rax                ; FILE *stream
+│           0x00001204      e837feffff     call sym.imp.setbuf         ; void setbuf(FILE *stream, char *buf)
+│           0x00001209      488b05b02e00.  mov rax, qword [obj.stderr] ; .//main.c:32 ; obj.stderr__GLIBC_2.2.5
+│                                                                      ; [0x40c0:8]=0
+│           0x00001210      be00000000     mov esi, 0                  ; char *buf
+│           0x00001215      4889c7         mov rdi, rax                ; FILE *stream
+│           0x00001218      e823feffff     call sym.imp.setbuf         ; void setbuf(FILE *stream, char *buf)
+│           0x0000121d      488d3df40d00.  lea rdi, qword str.I_hate_my_data_structures_class__Why_can_t_I_just_sort_by_hand ; .//main.c:33 ; 0x2018 ; "I hate my data structures class! Why can't I just sort by hand?" ; const char *s
+│           0x00001224      e807feffff     call sym.imp.puts           ; int puts(const char *s)
+│           0x00001229      c645ff00       mov byte [var_1h], 0        ; .//main.c:34
+│           ; CODE XREF from main @ 0x1348
+│       ┌─> 0x0000122d      488d45f4       lea rax, qword [var_ch]     ; .//main.c:38
+│       ╎   0x00001231      4889c6         mov rsi, rax
+│       ╎   0x00001234      488d3d1d0e00.  lea rdi, qword [0x00002058] ; "%d" ; const char *format
+│       ╎   0x0000123b      b800000000     mov eax, 0
+│       ╎   0x00001240      e81bfeffff     call sym.imp.__isoc99_scanf ; int scanf(const char *format)
+│       ╎   0x00001245      8945f8         mov dword [var_8h], eax
+│       ╎   0x00001248      8b45f4         mov eax, dword [var_ch]     ; .//main.c:39
+│       ╎   0x0000124b      83f808         cmp eax, 8
+│      ┌──< 0x0000124e      0f87f9000000   ja 0x134d
+│      │╎   0x00001254      8b45f4         mov eax, dword [var_ch]     ; .//main.c:42
+│      │╎   0x00001257      89c0           mov eax, eax
+│      │╎   0x00001259      488d14850000.  lea rdx, qword [rax*4]
+│      │╎   0x00001261      488d05f82d00.  lea rax, qword obj.nums     ; 0x4060
+│      │╎   0x00001268      8b1402         mov edx, dword [rdx + rax]
+│      │╎   0x0000126b      8b45f4         mov eax, dword [var_ch]
+│      │╎   0x0000126e      83c001         add eax, 1
+│      │╎   0x00001271      89c0           mov eax, eax
+│      │╎   0x00001273      488d0c850000.  lea rcx, qword [rax*4]
+│      │╎   0x0000127b      488d05de2d00.  lea rax, qword obj.nums     ; 0x4060
+│      │╎   0x00001282      8b0401         mov eax, dword [rcx + rax]
+│      │╎   0x00001285      8b75f4         mov esi, dword [var_ch]
+│      │╎   0x00001288      89d1           mov ecx, edx
+│      │╎   0x0000128a      31c1           xor ecx, eax
+│      │╎   0x0000128c      89f0           mov eax, esi
+│      │╎   0x0000128e      488d14850000.  lea rdx, qword [rax*4]
+│      │╎   0x00001296      488d05c32d00.  lea rax, qword obj.nums     ; 0x4060
+│      │╎   0x0000129d      890c02         mov dword [rdx + rax], ecx
+│      │╎   0x000012a0      8b45f4         mov eax, dword [var_ch]     ; .//main.c:43
+│      │╎   0x000012a3      83c001         add eax, 1
+│      │╎   0x000012a6      89c0           mov eax, eax
+│      │╎   0x000012a8      488d14850000.  lea rdx, qword [rax*4]
+│      │╎   0x000012b0      488d05a92d00.  lea rax, qword obj.nums     ; 0x4060
+│      │╎   0x000012b7      8b1402         mov edx, dword [rdx + rax]
+│      │╎   0x000012ba      8b45f4         mov eax, dword [var_ch]
+│      │╎   0x000012bd      89c0           mov eax, eax
+│      │╎   0x000012bf      488d0c850000.  lea rcx, qword [rax*4]
+│      │╎   0x000012c7      488d05922d00.  lea rax, qword obj.nums     ; 0x4060
+│      │╎   0x000012ce      8b0401         mov eax, dword [rcx + rax]
+│      │╎   0x000012d1      8b4df4         mov ecx, dword [var_ch]
+│      │╎   0x000012d4      8d7101         lea esi, dword [rcx + 1]
+│      │╎   0x000012d7      89d1           mov ecx, edx
+│      │╎   0x000012d9      31c1           xor ecx, eax
+│      │╎   0x000012db      89f0           mov eax, esi
+│      │╎   0x000012dd      488d14850000.  lea rdx, qword [rax*4]
+│      │╎   0x000012e5      488d05742d00.  lea rax, qword obj.nums     ; 0x4060
+│      │╎   0x000012ec      890c02         mov dword [rdx + rax], ecx
+│      │╎   0x000012ef      8b45f4         mov eax, dword [var_ch]     ; .//main.c:44
+│      │╎   0x000012f2      89c0           mov eax, eax
+│      │╎   0x000012f4      488d14850000.  lea rdx, qword [rax*4]
+│      │╎   0x000012fc      488d055d2d00.  lea rax, qword obj.nums     ; 0x4060
+│      │╎   0x00001303      8b1402         mov edx, dword [rdx + rax]
+│      │╎   0x00001306      8b45f4         mov eax, dword [var_ch]
+│      │╎   0x00001309      83c001         add eax, 1
+│      │╎   0x0000130c      89c0           mov eax, eax
+│      │╎   0x0000130e      488d0c850000.  lea rcx, qword [rax*4]
+│      │╎   0x00001316      488d05432d00.  lea rax, qword obj.nums     ; 0x4060
+│      │╎   0x0000131d      8b0401         mov eax, dword [rcx + rax]
+│      │╎   0x00001320      8b75f4         mov esi, dword [var_ch]
+│      │╎   0x00001323      31c2           xor edx, eax
+│      │╎   0x00001325      89d1           mov ecx, edx
+│      │╎   0x00001327      89f0           mov eax, esi
+│      │╎   0x00001329      488d14850000.  lea rdx, qword [rax*4]
+│      │╎   0x00001331      488d05282d00.  lea rax, qword obj.nums     ; 0x4060
+│      │╎   0x00001338      890c02         mov dword [rdx + rax], ecx
+│      │╎   0x0000133b      b800000000     mov eax, 0                  ; .//main.c:45
+│      │╎   0x00001340      e820feffff     call sym.check
+│      │╎   0x00001345      8845ff         mov byte [var_1h], al
+│      │└─< 0x00001348      e9e0feffff     jmp 0x122d                  ; .//main.c:37
+│      │    ; CODE XREF from main @ 0x124e
+│      └──> 0x0000134d      90             nop                         ; .//main.c:40
+│           0x0000134e      807dff00       cmp byte [var_1h], 0        ; .//main.c:49
+│       ┌─< 0x00001352      7418           je 0x136c
+│       │   0x00001354      488d3d000d00.  lea rdi, qword str.Well_done ; .//main.c:51 ; 0x205b ; "Well done!" ; const char *s
+│       │   0x0000135b      e8d0fcffff     call sym.imp.puts           ; int puts(const char *s)
+│       │   0x00001360      b800000000     mov eax, 0                  ; .//main.c:52
+│       │   0x00001365      e855feffff     call sym.print_flag
+│      ┌──< 0x0000136a      eb0c           jmp 0x1378
+│      ││   ; CODE XREF from main @ 0x1352
+│      │└─> 0x0000136c      488d3df30c00.  lea rdi, qword str.Try_again ; .//main.c:56 ; 0x2066 ; "Try again!" ; const char *s
+│      │    0x00001373      e8b8fcffff     call sym.imp.puts           ; int puts(const char *s)
+│      │    ; CODE XREF from main @ 0x136a
+│      └──> 0x00001378      b800000000     mov eax, 0
+│           0x0000137d      c9             leave                       ; .//main.c:58
+└           0x0000137e      c3             ret
+
+
+
+print nums
+$1 = {0x1, 0xa, 0x3, 0x2, 0x5, 0x9, 0x8, 0x7, 0x4, 0x6}
+
+
+
+----------------------------------------
+
+8 numbers entered 1 at a time
+
+
+
+ 
