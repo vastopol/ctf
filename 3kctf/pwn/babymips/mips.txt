@@ -1,0 +1,2 @@
+nc babymips.3k.ctf.to 7777
+

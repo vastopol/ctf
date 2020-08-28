@@ -1,0 +1,9 @@
+https://2020.ctf.the3000.org/
+
+Challenges:
+
+    Reversing 
+    PWN 
+    Web 
+    Crypto 
+    Misc 

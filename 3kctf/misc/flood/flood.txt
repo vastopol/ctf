@@ -1,0 +1,25 @@
+nc flood.3k.ctf.to 7777
+
+perl script
+
+need to auth
+35ec04cd3b79ab89896836c69257ce86487cf55f
+
+then enter name
+flag.txt
+
+but uses regex with global replace to remove ' ', '/', '.'
+
+
+https://www.cgisecurity.com/lib/sips.html
+
+
+might need to use a weird name
+eventually get enough points then load game
+
+
+
+set name to
+|ls
+
+

@@ -1,17 +1,23 @@
-# ctf
+# Capture The Flag
 
-Capture the flag trophies, solutions, and write-ups.
+Capture the flag solutions and write-ups. 
 
-The main focus here is on reverse engineering and binary exploits for Linux platform.
+DO NOT cheat and submit other people's solutions.
 
-Some of these are from organized sites or ctf challenges while others are crackmes people made and uploaded.
-Each folder will have more documentation describing the included challenges.
-Included also are notes and some tools.
+The main focus here is on learning reverse engineering and binary exploits.
+ 
+Included are notes and tools, each folder should have documentation describing the included challenges.
 
-## Sites
+There are many uncompleted and unfinished challenges. Some of them will probably stay unsolved.
 
-* Python Challenge
-    * http://www.pythonchallenge.com/
+
+## Learning
+
+* Immersive Labs
+    * https://immersivelabs.online/signin
+    
+* Hacker101
+    * https://www.hacker101.com/
 
 * Over The Wire
     * https://overthewire.org/wargames/
@@ -19,13 +25,22 @@ Included also are notes and some tools.
 * Under The Wire
     * https://www.underthewire.tech/wargames.htm
 
-* Immersive Labs
-    * https://immersivelabs.online/signin
+
+## CTF
 
 * picoCTF
     * https://picoctf.com/
     * https://2018game.picoctf.com/
     * https://2019game.picoctf.com/
+
+* redpwnCTF
+
+* insomnihackCTF
+
+* 3kCTF
+
+
+## PWN
 
 * Hack The Box
     * https://www.hackthebox.eu
@@ -38,6 +53,12 @@ Included also are notes and some tools.
 
 * pwnable.tw
     * https://pwnable.tw/challenge/
+    
+* protostar
+    * https://exploit.education/protostar/
+
+
+## Reversing/CrackMe
 
 * reversing.kr
     * http://reversing.kr/challenge.php
@@ -48,12 +69,13 @@ Included also are notes and some tools.
 * IOLI-crackme
     * https://github.com/radare/radare2book/tree/master/crackmes/ioli
 
-* protostar
-    * https://exploit.education/protostar/
+
+## Misc
 
 * MalwareTech
     * https://www.malwaretech.com/beginner-malware-reversing-challenges
 
-* etc...
-    * https://www.sjoerdlangkemper.nl/2018/12/19/practice-hacking-with-vulnerable-systems/
+* Python Challenge
+    * http://www.pythonchallenge.com/
+
 

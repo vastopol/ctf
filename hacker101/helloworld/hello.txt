@@ -1,0 +1,11 @@
+
+
+reads in 32 bytes char array for the user name
+uses the function read_all_stdin
+
+there is a print_flags function
+0x004006ee
+
+want to overwrite the return value on the stack with address
+
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\ee\06\40

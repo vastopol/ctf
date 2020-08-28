@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<style>
+			body {
+				background-image: url("background.png");
+			}
+		</style>
+	</head>
+	<body>
+		<p>Welcome to level 0.  Enjoy your stay.</p>
+	</body>
+</html>
+
+
+
+----------
+
+there is a background image
+right click and then inspect 
+
+
+^FLAG^1660911108e531a585082fa75c3f2d9276cac4f4bfcc519fa765edd579c02590$FLAG$
+

@@ -1,0 +1,31 @@
+pyzzle1
+
+A puzzle be a game, problem, or toy dat tests a personz ingenuity or knowledge. 
+In a puzzle, tha solver is sposed ta fuckin put pieces together up in a logical way, 
+up in order ta arrive all up in tha erect or funk solution of tha puzzle.
+
+----------
+
+this looks like some kind of python parse tree 
+
+there are very long embedded ascii 0 and 1 strings
+
+----------
+
+https://stackoverflow.com/questions/56487216/how-can-i-convert-python-code-into-a-parse-tree-and-back-into-the-original-code
+
+
+
+import libcst as cst
+
+foo = open("pyzzle")
+body = foo.read()
+
+class ModifyValueVisitor(cst.CSTTransformer):
+    def leave_Assign(self, node, updated_node):
+        return updated_node.with_changes(value=cst.Integer(value='2'))
+
+tree = body.visit(ModifyValueVisitor())
+
+s = ''.join(chr(int(bin_text[i:i+8], 2)) for i in xrange(0, len(bin_text), 8))
+

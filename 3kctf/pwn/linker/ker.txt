@@ -1,0 +1,4 @@
+nc linker.3k.ctf.to 9654
+
+Note: Ubuntu GLIBC 2.27-3ubuntu1.2 
+
